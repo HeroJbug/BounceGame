@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         //GetComponent<Rigidbody>().AddForce(speed*moveVec);
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            GetComponent<Rigidbody>().AddExplosionForce(boostSpeed, transform.position - moveVec, 5f, 0f, ForceMode.Impulse);
+            rBody.AddExplosionForce(boostSpeed, transform.position - moveVec, 5f, 0f, ForceMode.Impulse);
             isBoosting = true;
         }
 

@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
         if(recalculatePathTimer <= 0)
         {
             EnemyPathRequestManager.RequestPath(transform.position, target.position, PathFound);
-            recalculatePathTimer = 1f;
+            recalculatePathTimer = 0.5f;
         }
         else
         {
@@ -42,41 +42,24 @@ public class Enemy : MonoBehaviour
 
     IEnumerator FollowPath()
     {
-        Vector3 currentWP = path[0];
-        while(true)
+        if (path.Length > 0)
         {
-            if(transform.position == currentWP)
+            Vector3 currentWP = path[0];
+            while (true)
             {
-                targetIdx++;
-                if(targetIdx >= path.Length)
+                if (transform.position == currentWP)
                 {
-                    yield break;
+                    targetIdx++;
+                    if (targetIdx >= path.Length)
+                    {
+                        yield break;
+                    }
+                    currentWP = path[targetIdx];
                 }
-                currentWP = path[targetIdx];
-            }
 
-            transform.position = Vector3.MoveTowards(transform.position, currentWP, speed * Time.deltaTime);
-            yield return null;
+                transform.position = Vector3.MoveTowards(transform.position, currentWP, speed * Time.deltaTime);
+                yield return null;
+            }
         }
     }
-
-/*    public void OnDrawGizmos()
-    {
-        if(path != null)
-        {
-            for(int i = targetIdx; i < path.Length; i++)
-            {
-                Gizmos.color = Color.black;
-                Gizmos.DrawCube(path[i], Vector3.one);
-                if(i == targetIdx)
-                {
-                    Gizmos.DrawLine(transform.position, path[i]);
-                }
-                else
-                {
-                    Gizmos.DrawLine(path[i - 1], path[i]);
-                }
-            }
-        }
-    }*/
 }
