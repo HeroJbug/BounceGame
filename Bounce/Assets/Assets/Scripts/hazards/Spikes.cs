@@ -25,9 +25,9 @@ public class Spikes : Hazard
 		{
 			foreach (string layerName in layersToAffect)
 			{
-				if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit2D[] hits))
+				if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit[] hits))
 				{
-					foreach (RaycastHit2D hit in hits)
+					foreach (RaycastHit hit in hits)
 					{
 						Debug.Log("Yaboi!");
 					}

@@ -32,7 +32,7 @@ public class Turret : Hazard, IFirable
 		{
 			foreach (string layerName in layersToAffect)
 			{
-				if (cooldown <= 0 && shots > 0 && ColInCircle(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit2D hit))
+				if (cooldown <= 0 && shots > 0 && ColInCircle(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit hit))
 				{
 					Debug.Log("fired");
 					Vector3 firDir = hit.transform.position - this.transform.position;

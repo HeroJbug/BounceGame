@@ -44,16 +44,22 @@ public abstract class Hazard : MonoBehaviour
 		transform.position += Vector3.up * height; 
 	}
 
-	protected bool ColInCircleAll(Vector2 origin, float radius, int layer, out RaycastHit2D[] hits)
+	protected bool ColInCircleAll(Vector3 origin, float radius, int layer, out RaycastHit[] hits)
     {
-        hits = Physics2D.CircleCastAll(origin, radius, Vector2.zero, 1, layer);
-        return (hits.Length > 0);
+		hits = Physics.SphereCastAll(origin, radius, Vector3.forward, 0, layer);
+		return (hits.Length > 0);
     }
 
-	protected bool ColInCircle(Vector2 origin, float radius, int layer, out RaycastHit2D hit)
+	protected bool ColInCircle(Vector3 origin, float radius, int layer, out RaycastHit hit)
 	{
-		hit = Physics2D.CircleCast(origin, radius, Vector2.zero, 1, layer);
-		return hit;
+		hit = new RaycastHit();
+		RaycastHit[] hits = Physics.SphereCastAll(origin, radius, Vector3.forward, 0, layer);
+		if (hits != null)
+		{
+			hit = hits[0];
+			return true;
+		}
+		return false;
 	}
 
 	protected void Falling()
