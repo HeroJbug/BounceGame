@@ -99,4 +99,5 @@ MonoBehaviour:
   - Player
   shadowObj: {fileID: 8489070424410074529, guid: 07197829c2163fe4d80c9f24de0dec1b,
     type: 3}
+  acceleration: 1.25
   drawGizmos: 1

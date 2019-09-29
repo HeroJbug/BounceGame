@@ -29,6 +29,7 @@ public class OilSpill : Hazard
 				List<PlayerMovement> detectedPlayers = new List<PlayerMovement>();
 				if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit[] hits))
 				{
+					Debug.Log("is in");
 					foreach (RaycastHit hit in hits)
 					{
 						PlayerMovement player = hit.collider.gameObject.GetComponent<PlayerMovement>();
@@ -40,33 +41,30 @@ public class OilSpill : Hazard
 					}
 				}
 
-				if (detectedPlayers != lastDetectedPlayers)
+				if (lastDetectedPlayers != null)
 				{
-					if (lastDetectedPlayers != null)
+					if (detectedPlayers == null)
 					{
-						if (detectedPlayers == null)
+						foreach (PlayerMovement player in lastDetectedPlayers)
 						{
-							foreach(PlayerMovement player in lastDetectedPlayers)
-							{
-								player.speed = defaultSpeeds[player];
-							}
-						}
-						else
-						{
-							foreach(PlayerMovement player in lastDetectedPlayers)
-							{
-								if (!detectedPlayers.Contains(player))
-								{
-									player.speed = defaultSpeeds[player];
-								}
-							}
+							player.speed = defaultSpeeds[player];
+							defaultSpeeds.Remove(player);
 						}
 					}
 					else
 					{
-						lastDetectedPlayers = detectedPlayers;
+						foreach (PlayerMovement player in lastDetectedPlayers)
+						{
+							if (!detectedPlayers.Contains(player))
+							{
+								player.speed = defaultSpeeds[player];
+								defaultSpeeds.Remove(player);
+							}
+						}
 					}
+
 				}
+				lastDetectedPlayers = detectedPlayers;
 			}
 		}
 		else
@@ -79,7 +77,7 @@ public class OilSpill : Hazard
 	{
 		if (drawGizmos)
 		{
-			Gizmos.color = Color.red;
+			Gizmos.color = ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask("Player"), out RaycastHit[] hits) ? Color.yellow : Color.red;
 			Gizmos.DrawWireSphere(transform.position, targetRadius);
 		}
 	}
