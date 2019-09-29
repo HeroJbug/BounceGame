@@ -17,7 +17,7 @@ public class Walls : MonoBehaviour
         {
             Vector3 hitPoint = collision.gameObject.transform.position;
             Destroy(collision.gameObject);
-            Instantiate(explosion, hitPoint,Quaternion.identity);
+            Instantiate(explosion, hitPoint,Quaternion.identity).transform.Rotate(new Vector3(180,0,0));
         }
     }
 }
