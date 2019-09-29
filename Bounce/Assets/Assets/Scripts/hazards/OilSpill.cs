@@ -37,7 +37,12 @@ public class OilSpill : Hazard
 						if (!defaultSpeeds.ContainsKey(player)) { defaultSpeeds.Add(player, player.speed); }
 
 						player.speed += acceleration;
-						
+
+						Vector2 distance = hit.point - transform.position;
+						distance.Normalize();
+						distance *= -1;
+
+						player.GetComponent<Rigidbody>().MovePosition(player.transform.position + (Vector3)(distance * player.speed) * Time.deltaTime);
 					}
 				}
 
