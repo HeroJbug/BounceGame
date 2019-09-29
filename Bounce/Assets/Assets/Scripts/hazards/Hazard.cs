@@ -3,54 +3,91 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hazard : MonoBehaviour
+public enum HazardTypes : int
 {
-    /// <summary>
-    /// The damage to deal to entity
-    /// </summary>
-    protected float startingDistance;
-    public float damageToDeal;
+	SPIKES,
+	TURRENT,
+	OILSPILL,
+	BOMB
+}
+
+public abstract class Hazard : MonoBehaviour
+{
+	[SerializeField]
+	protected float startingDistance = 100;
+	[SerializeField]
+    protected float targetRadius = 1.03f;
+	[SerializeField]
+	protected float fallSpeed = 100;
     [SerializeField]
-    protected float targetRadius;
-    [SerializeField]
-    protected float fallSpeed;
-    [SerializeField]
-    private LayerMask[] layersToHurt;
+    protected List<string> layersToAffect;
     private bool hasLanded = false;
+	private float height;
+	protected HazardTypes type;
+	[SerializeField]
+	private GameObject shadowObj;
+	private GameObject shadow;
+	private Vector3 pos;
+	private float shadowAlpha;
 
-    // Start is called before the first frame update
-    void Awake()
-    {
-        transform.position = new Vector3(transform.position.x, transform.position.y, startingDistance);
-    }
+	protected void Initialize()
+	{
+		height = startingDistance;
+		pos = transform.position;
+		shadow = Instantiate(shadowObj, new Vector3(0, 0, this.transform.position.z + 0.3f), transform.rotation, transform);
+		shadow.transform.position -= Vector3.up * (height + 0.6f);
+		shadow.transform.localScale = new Vector3(0.17f, 0.08f);
+		var color = shadow.GetComponent<SpriteRenderer>().color;
+		shadowAlpha = color.a;
+		color.a = 0;
+		shadow.GetComponent<SpriteRenderer>().color = color;
+		transform.position += Vector3.up * height; 
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (hasLanded) //if the hazard has landed
-        {
-            foreach (LayerMask layer in layersToHurt)
-            {
-                if (ColInCircle(transform.position, targetRadius, layer, out RaycastHit2D[] hits))
-                {
-                    foreach (RaycastHit2D hit in hits)
-                    {
-                        //deal damage to every gameobject in hits
-                    }
-                }
-            }
-        }
-        else //if the hazard is falling down
-        {
-            transform.position += Vector3.forward * (fallSpeed * Time.deltaTime);
-
-            hasLanded = (transform.position.z >= 1);
-        }
-    }
-
-    protected bool ColInCircle(Vector2 origin, float radius, int layer, out RaycastHit2D[] hits)
+	protected bool ColInCircleAll(Vector2 origin, float radius, int layer, out RaycastHit2D[] hits)
     {
         hits = Physics2D.CircleCastAll(origin, radius, Vector2.zero, 1, layer);
         return (hits.Length > 0);
     }
+
+	protected bool ColInCircle(Vector2 origin, float radius, int layer, out RaycastHit2D hit)
+	{
+		hit = Physics2D.CircleCast(origin, radius, Vector2.zero, 1, layer);
+		return hit;
+	}
+
+	protected void Falling()
+	{
+		height -= (fallSpeed * Time.deltaTime);
+
+		transform.position = pos + Vector3.up * height;
+		shadow.transform.position = this.transform.position - Vector3.up * (height + 0.6f);
+
+		var color = shadow.GetComponent<SpriteRenderer>().color;
+		color.a = shadowAlpha * (1 - height/startingDistance);
+		shadow.GetComponent<SpriteRenderer>().color = color;
+
+		hasLanded = (height <= 0);
+		if (hasLanded)
+		{
+			transform.position = pos;
+			shadow.transform.position = new Vector3 (pos.x, pos.y - 0.6f, pos.z + 0.3f);
+		}
+	}
+
+	public bool Landed
+	{
+		get
+		{
+			return hasLanded;
+		}
+	}
+
+	public HazardTypes Type
+	{
+		get
+		{
+			return type;
+		}
+	}
 }
