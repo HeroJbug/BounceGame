@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.13854995, g: 0.11592554, b: 0.092321254, a: 1}
+  m_IndirectSpecularColor: {r: 0.138545, g: 0.1159225, b: 0.09232289, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,6 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 133082449}
   - component: {fileID: 133082450}
+  - component: {fileID: 133082451}
   m_Layer: 0
   m_Name: Wall_B
   m_TagString: Untagged
@@ -164,6 +165,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.182974, y: 20, z: 2}
   m_Center: {x: -2.591487, y: 0.000000066435526, z: 0.00000014326159}
+--- !u!114 &133082451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133082448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953747de26a09f84787526cd29f2d785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 2147660409176068684, guid: 9257fe6061f688f44b3e9bfba2a4f6f0,
+    type: 3}
 --- !u!1 &153617028
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 153617029}
   - component: {fileID: 153617030}
+  - component: {fileID: 153617031}
   m_Layer: 0
   m_Name: Wall_R
   m_TagString: Untagged
@@ -208,6 +224,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 20, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &153617031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153617028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953747de26a09f84787526cd29f2d785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 2147660409176068684, guid: 9257fe6061f688f44b3e9bfba2a4f6f0,
+    type: 3}
 --- !u!1 &249697992
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +483,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 2.3098895e-26, z: 6.12e-43, w: 2.074401e-26}
+  m_BoundingSphereOverride: {x: 0, y: -9.476056e+22, z: 6.04e-43, w: -8.312175e+22}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -464,13 +494,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: -0.08682413, y: -0.08682413, z: -0.0075961305, w: 0.99240386}
+  m_LocalRotation: {x: -0.08715578, y: 0, z: 0, w: 0.9961947}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -10, y: -10, z: 0}
+  m_LocalEulerAnglesHint: {x: -10, y: 0, z: 0}
 --- !u!1 &864520515
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 864520517}
   - component: {fileID: 864520516}
+  - component: {fileID: 864520518}
   m_Layer: 0
   m_Name: Wall_L
   m_TagString: Untagged
@@ -515,6 +546,20 @@ Transform:
   m_Father: {fileID: 249697996}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &864520518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864520515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953747de26a09f84787526cd29f2d785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 2147660409176068684, guid: 9257fe6061f688f44b3e9bfba2a4f6f0,
+    type: 3}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,6 +915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1911701534}
   - component: {fileID: 1911701535}
+  - component: {fileID: 1911701536}
   m_Layer: 0
   m_Name: Wall_T
   m_TagString: Untagged
@@ -904,6 +950,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.182974, y: 20, z: 2}
   m_Center: {x: -2.591487, y: 0.000000066435526, z: 0.00000014326159}
+--- !u!114 &1911701536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911701533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953747de26a09f84787526cd29f2d785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 2147660409176068684, guid: 9257fe6061f688f44b3e9bfba2a4f6f0,
+    type: 3}
 --- !u!1001 &4839217592622646030
 PrefabInstance:
   m_ObjectHideFlags: 0
