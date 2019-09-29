@@ -7,6 +7,7 @@ public class PlayerControllerTemp : MonoBehaviour
     public float moveSpeed = 5f;
     Rigidbody2D rbody;
     Vector2 moveVec;
+	Vector2 velocity;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,16 @@ public class PlayerControllerTemp : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rbody.MovePosition(rbody.position + moveVec * moveSpeed * Time.deltaTime);
+		velocity = moveVec * moveSpeed * Time.deltaTime;
+		rbody.MovePosition(rbody.position + velocity);
     }
+
+	public Vector2 Velocity
+	{
+		get
+		{
+			return new Vector2(velocity.x, velocity.y);
+		}
+	}
+
 }
