@@ -21,7 +21,7 @@ public class PathfindingGrid : MonoBehaviour
         gridSizeX = Mathf.RoundToInt(gridWrldSize.x / nodeDiam);
         gridSizeY = Mathf.RoundToInt(gridWrldSize.y / nodeDiam);
 
-        CreateGrid();
+        ReMapGrid();
     }
 
     public int MaxSize
@@ -32,7 +32,7 @@ public class PathfindingGrid : MonoBehaviour
         }
     }
 
-    private void CreateGrid()
+    public void ReMapGrid()
     {
         grid = new Node[gridSizeX, gridSizeY];
         Vector3 worldBottomLeft = transform.position - Vector3.right * gridWrldSize.x / 2 - Vector3.up * gridWrldSize.y / 2;
