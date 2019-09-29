@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spikes : Hazard
+public class Bomb : Hazard
 {
 	/// <summary>
 	/// The damage to deal to entity
@@ -11,36 +11,36 @@ public class Spikes : Hazard
 	[SerializeField]
 	protected bool drawGizmos = true;
 
-    // Start is called before the first frame update
-    void Awake()
+	// Start is called before the first frame update
+	void Awake()
     {
 		Initialize();
-		type = HazardTypes.SPIKES;
+		type = HazardTypes.BOMB;
     }
 
     // Update is called once per frame
     void Update()
     {
-		if (Landed) //if the hazard has landed
+        if (Landed)
 		{
-			foreach (string layerName in layersToAffect)
+			foreach(string layerName in layersToAffect)
 			{
 				if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit[] hits))
 				{
-					foreach (RaycastHit hit in hits)
+					foreach(RaycastHit hit in hits)
 					{
-						//deal damage by damageToDeal
-						Debug.Log("Yaboi!");
+						//damage player by damageToDeal
+						Debug.Log("KAAAAAAAAA-BOOOOOOOOOOOOOMMMMM!!!!!!!!!!!!!!!!");
 					}
 				}
+				Destroy(this.gameObject);
 			}
 		}
-		else //if the hazard is falling down
+		else
 		{
 			Falling();
 		}
-	}
-
+    }
 
 	public void OnDrawGizmos()
 	{

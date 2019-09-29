@@ -58,12 +58,7 @@ public class Projectile : MonoBehaviour
 			{
 				if (LayerMask.LayerToName(hit.collider.gameObject.layer) == layerName)
 				{
-					//Destoryable destoryable = hit.collider.gameObject.GetComponent<Destoryable>();
-					//if (destoryable != null)
-					//{
-					//	destoryable.DealDamage(damageToDeal);
-					//	destroy = true;
-					//}
+					//dealDamage to target by damageToDeal
 					Debug.Log("bang");
 				}
 			}

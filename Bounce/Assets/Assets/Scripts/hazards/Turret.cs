@@ -34,7 +34,6 @@ public class Turret : Hazard, IFirable
 			{
 				if (cooldown <= 0 && shots > 0 && ColInCircle(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit hit))
 				{
-					Debug.Log("fired");
 					Vector3 firDir = hit.transform.position - this.transform.position;
 					firDir.Normalize();
 

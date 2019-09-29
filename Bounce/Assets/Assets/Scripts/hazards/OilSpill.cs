@@ -82,7 +82,7 @@ public class OilSpill : Hazard
 	{
 		if (drawGizmos)
 		{
-			Gizmos.color = ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask("Player"), out RaycastHit[] hits) ? Color.yellow : Color.red;
+			Gizmos.color = Color.red;
 			Gizmos.DrawWireSphere(transform.position, targetRadius);
 		}
 	}
