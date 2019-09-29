@@ -29,25 +29,18 @@ public class PlayerMovement : MonoBehaviour
         {
             rBody.AddExplosionForce(boostSpeed, transform.position - moveVec, 5f, 0f, ForceMode.Impulse);
             isBoosting = true;
-            Invoke("StopBoosting", boostTimer);
         }
 
-        //if(isBoosting)
-        //{
-          //  boostTimerCounter -= Time.deltaTime;
-            //if(boostTimerCounter <= 0)
-            //{
-              //  boostTimerCounter = boostTimer;
-                //rBody.velocity = Vector3.zero;
-                //isBoosting = false;
-            //}
-        //}
-    }
-
-    public void StopBoosting()
-    {
-        rBody.velocity = Vector3.zero;
-        isBoosting = false;
+        if(isBoosting)
+        {
+            boostTimerCounter -= Time.deltaTime;
+            if(boostTimerCounter <= 0)
+            {
+                boostTimerCounter = boostTimer;
+                rBody.velocity = Vector3.zero;
+                isBoosting = false;
+            }
+        }
     }
 
     public bool PlayerIsBoosting()

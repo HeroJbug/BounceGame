@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.13854986, g: 0.11592548, b: 0.0923213, a: 1}
-=======
-  m_IndirectSpecularColor: {r: 0.13854995, g: 0.11592554, b: 0.092321254, a: 1}
->>>>>>> master
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -617,11 +613,7 @@ GameObject:
   - component: {fileID: 1052723836}
   - component: {fileID: 1052723837}
   - component: {fileID: 1052723838}
-<<<<<<< HEAD
   m_Layer: 11
-=======
-  m_Layer: 0
->>>>>>> master
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -731,11 +723,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-<<<<<<< HEAD
   m_Constraints: 112
-=======
-  m_Constraints: 120
->>>>>>> master
   m_CollisionDetection: 0
 --- !u!114 &1052723838
 MonoBehaviour:
