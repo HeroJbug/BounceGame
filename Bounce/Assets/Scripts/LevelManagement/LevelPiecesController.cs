@@ -6,10 +6,12 @@ public class LevelPiecesController : MonoBehaviour
 {
     PiecesGrid levelGrid;
     //TODO: Change to list so every new piece may be spawned
-    public GameObject barrier;
+    public List<GameObject> possibleHazards;
     public float timeBetweenSpawns;
+    public float timeBetweenRemovals;
     public PathfindingGrid pathGrid;
     float spawnTimerCount;
+    float removalTimerCount;
     int piecesCount;
     List<Vector2Int> occupiedGridLocations;
 
@@ -17,20 +19,23 @@ public class LevelPiecesController : MonoBehaviour
     {
         levelGrid = this.GetComponent<PiecesGrid>();
         spawnTimerCount = timeBetweenSpawns;
+        removalTimerCount = timeBetweenRemovals;
         occupiedGridLocations = new List<Vector2Int>();
     }
 
     private void Update()
     {
         spawnTimerCount -= Time.deltaTime;
+        removalTimerCount -= Time.deltaTime;
         if(spawnTimerCount <= 0)
         {
-            if(piecesCount > 5)
-            {
-                RemovePiece();
-            }
             SpawnNewPiece();
             spawnTimerCount = timeBetweenSpawns;
+        }
+        if(removalTimerCount <=0 && piecesCount > 7)
+        {
+            RemovePiece();
+            removalTimerCount = timeBetweenRemovals;
         }
     }
 
@@ -47,11 +52,19 @@ public class LevelPiecesController : MonoBehaviour
         }
 
         //spawn and update that that location is now occupied. Also update our pathfinding grid
-        GameObject newPiece = Instantiate(barrier, levelGrid.GetWorldPos(locX, locY), Quaternion.identity);
-        levelGrid.UpdateGridLocation(locX, locY, newPiece);
+        GameObject newPiece = ChooseNextPiece();
+        GameObject instantiatedPiece = Instantiate(newPiece, levelGrid.GetWorldPos(locX, locY), Quaternion.identity);
+        levelGrid.UpdateGridLocation(locX, locY, instantiatedPiece);
         occupiedGridLocations.Add(new Vector2Int(locX, locY));
-        pathGrid.ReMapGrid();
+        StartCoroutine(RemapPathfind());
         piecesCount++;
+    }
+
+    private GameObject ChooseNextPiece()
+    {
+        //can add weights later if we want
+        int randomSelect = Random.Range(0, possibleHazards.Count);
+        return possibleHazards[randomSelect];
     }
 
     private void RemovePiece()
@@ -60,6 +73,13 @@ public class LevelPiecesController : MonoBehaviour
         LevelNode toMod = levelGrid.GetNode(occupiedGridLocations[randomRemoveLoc]);
         Destroy(toMod.GetOccupant());
         toMod.occupied = false;
+        StartCoroutine(RemapPathfind());
         piecesCount--;
+    }
+
+    IEnumerator RemapPathfind()
+    {
+        pathGrid.MapGrid();
+        yield return null;
     }
 }

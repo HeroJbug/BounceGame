@@ -7,6 +7,7 @@ public class PathfindingGrid : MonoBehaviour
     public bool displayGridGizmos;
     public Transform playerPos;
     public LayerMask barrierMask;
+    public LayerMask hazardMask;
     Node[,] grid;
     public Vector2 gridWrldSize;
     public float nodeRadius;
@@ -21,7 +22,7 @@ public class PathfindingGrid : MonoBehaviour
         gridSizeX = Mathf.RoundToInt(gridWrldSize.x / nodeDiam);
         gridSizeY = Mathf.RoundToInt(gridWrldSize.y / nodeDiam);
 
-        ReMapGrid();
+        MapGrid();
     }
 
     public int MaxSize
@@ -32,7 +33,7 @@ public class PathfindingGrid : MonoBehaviour
         }
     }
 
-    public void ReMapGrid()
+    public void MapGrid()
     {
         grid = new Node[gridSizeX, gridSizeY];
         Vector3 worldBottomLeft = transform.position - Vector3.right * gridWrldSize.x / 2 - Vector3.up * gridWrldSize.y / 2;
@@ -42,7 +43,7 @@ public class PathfindingGrid : MonoBehaviour
             for(int y = 0; y < gridSizeY; y++)
             {
                 Vector3 worldPt = worldBottomLeft + Vector3.right * (x * nodeDiam + nodeRadius) + Vector3.up * (y * nodeDiam + nodeRadius);
-                bool canTraverse = !(Physics.CheckSphere(worldPt, nodeRadius, barrierMask));
+                bool canTraverse = !(Physics.CheckSphere(worldPt, nodeRadius, barrierMask | hazardMask));
                 grid[x, y] = new Node(canTraverse, worldPt, x, y);
             }
         }
@@ -72,6 +73,11 @@ public class PathfindingGrid : MonoBehaviour
         }
 
         return neighbors;
+    }
+
+    public void UpdateNodeWalkable(int x, int y)
+    {
+        grid[x, y].walkable = false;
     }
 
     public Node NodePosFromWorldPoint(Vector3 worldPos)

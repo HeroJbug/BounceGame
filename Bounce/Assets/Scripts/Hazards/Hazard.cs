@@ -54,7 +54,7 @@ public abstract class Hazard : MonoBehaviour
 	{
 		hit = new RaycastHit();
 		RaycastHit[] hits = Physics.SphereCastAll(origin, radius, Vector3.forward, 0, layer);
-		if (hits != null)
+		if (hits != null && hits.Length > 0)
 		{
 			hit = hits[0];
 			return true;
