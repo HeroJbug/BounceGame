@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ef350b7561b2741905a284891eed18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayGridGizmos: 1
+  displayGridGizmos: 0
   playerPos: {fileID: 1052723835}
   barrierMask:
     serializedVersion: 2
@@ -1314,6 +1314,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Placeholder
       objectReference: {fileID: 0}
+    - target: {fileID: 6131040470733025657, guid: c45e450044f8a2c43966e832f7ba3b72,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1052723835}
     - target: {fileID: 6131040470733025656, guid: c45e450044f8a2c43966e832f7ba3b72,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1369,10 +1374,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6131040470733025657, guid: c45e450044f8a2c43966e832f7ba3b72,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1052723835}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c45e450044f8a2c43966e832f7ba3b72, type: 3}

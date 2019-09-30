@@ -31,7 +31,18 @@ public class Spikes : Hazard
 					{
 						//deal damage by damageToDeal
 						Debug.Log("Yaboi!");
-					}
+                        //TODO: is there a cleaner way to do this?
+                        //damage player by damageToDeal
+                        if (hit.rigidbody.gameObject.GetComponent<PlayerCollision>() != null)
+                        {
+                            hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(damageToDeal);
+                        }
+                        //destroy enemies enemies
+                        if (hit.rigidbody.gameObject.GetComponent<EnemyCollision>() != null)
+                        {
+                            hit.rigidbody.gameObject.GetComponent<EnemyCollision>().TakeDamage(10f, hit.rigidbody.transform.position);
+                        }
+                    }
 				}
 			}
 		}

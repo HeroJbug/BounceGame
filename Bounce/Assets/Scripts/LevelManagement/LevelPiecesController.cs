@@ -14,6 +14,7 @@ public class LevelPiecesController : MonoBehaviour
     float removalTimerCount;
     int piecesCount;
     List<Vector2Int> occupiedGridLocations;
+    Vector2Int lastAdded;
 
     private void Awake()
     {
@@ -41,6 +42,12 @@ public class LevelPiecesController : MonoBehaviour
 
     private void SpawnNewPiece()
     {
+        if(lastAdded != null)
+        {
+            //this is here so that the thing that was just added is excluded from the random choice
+            occupiedGridLocations.Add(lastAdded);
+        }
+
         int locX = Random.Range(0, (int)levelGrid.GetGridSize().x);
         int locY = Random.Range(0, (int)levelGrid.GetGridSize().y);
 
@@ -55,7 +62,7 @@ public class LevelPiecesController : MonoBehaviour
         GameObject newPiece = ChooseNextPiece();
         GameObject instantiatedPiece = Instantiate(newPiece, levelGrid.GetWorldPos(locX, locY), Quaternion.identity);
         levelGrid.UpdateGridLocation(locX, locY, instantiatedPiece);
-        occupiedGridLocations.Add(new Vector2Int(locX, locY));
+        lastAdded = new Vector2Int(locX, locY);
         StartCoroutine(RemapPathfind());
         piecesCount++;
     }
@@ -64,6 +71,13 @@ public class LevelPiecesController : MonoBehaviour
     {
         //can add weights later if we want
         int randomSelect = Random.Range(0, possibleHazards.Count);
+        //if it's a bomb don't count it as an added piece, preemptivley decrement
+        Hazard newH = possibleHazards[randomSelect].GetComponent<Hazard>();
+        if (newH != null)
+        {
+            if (newH.Type == HazardTypes.BOMB)
+                piecesCount--;
+        }
         return possibleHazards[randomSelect];
     }
 

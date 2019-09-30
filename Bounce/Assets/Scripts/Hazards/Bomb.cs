@@ -8,6 +8,8 @@ public class Bomb : Hazard
 	/// The damage to deal to entity
 	/// </summary>
 	public float damageToDeal;
+    [SerializeField]
+    protected float countdownTimer;
 	[SerializeField]
 	protected bool drawGizmos = true;
 
@@ -23,18 +25,33 @@ public class Bomb : Hazard
     {
         if (Landed)
 		{
-			foreach(string layerName in layersToAffect)
-			{
-				if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit[] hits))
-				{
-					foreach(RaycastHit hit in hits)
-					{
-						//damage player by damageToDeal
-						Debug.Log("KAAAAAAAAA-BOOOOOOOOOOOOOMMMMM!!!!!!!!!!!!!!!!");
-					}
-				}
-				Destroy(this.gameObject);
-			}
+            countdownTimer -= Time.deltaTime;
+            if(countdownTimer <= 0)
+            {
+                foreach (string layerName in layersToAffect)
+                {
+                    if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit[] hits))
+                    {
+                        foreach (RaycastHit hit in hits)
+                        {
+                            //TODO: is there a cleaner way to do this?
+                            //damage player by damageToDeal
+                            Debug.Log("KAAAAAAAAA-BOOOOOOOOOOOOOMMMMM!!!!!!!!!!!!!!!!");
+                            if(hit.rigidbody.gameObject.GetComponent<PlayerCollision>() != null)
+                            {
+                                hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(damageToDeal);
+                            }
+                            //esplode enemies
+                            if(hit.rigidbody.gameObject.GetComponent<EnemyCollision>() != null)
+                            {
+                                print("boom enemy");
+                                hit.rigidbody.gameObject.GetComponent<EnemyCollision>().TakeDamage(10f, hit.rigidbody.transform.position);
+                            }
+                        }
+                    }
+                    Destroy(this.gameObject);
+                }
+            }	
 		}
 		else
 		{

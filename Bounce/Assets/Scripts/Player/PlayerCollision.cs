@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     public float enemyKnockBackForce = 25f;
+    public float enemyDamage = 1f;
 
     PlayerMovement moveRef;
     // Start is called before the first frame update
@@ -22,13 +23,13 @@ public class PlayerCollision : MonoBehaviour
                 collision.gameObject.GetComponent<Rigidbody>().AddExplosionForce(enemyKnockBackForce, transform.position - hitPoint.normal, 5f, 0f, ForceMode.Impulse);
             else
             {
-                TakeDamage();
+                TakeDamage(enemyDamage);
                 Destroy(collision.gameObject);
             }
         }
     }
 
-    private void TakeDamage()
+    public void TakeDamage(float amt)
     {
         //TODO: implement
         print("ouch");
