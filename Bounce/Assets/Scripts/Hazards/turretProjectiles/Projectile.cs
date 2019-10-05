@@ -58,8 +58,18 @@ public class Projectile : MonoBehaviour
 			{
 				if (LayerMask.LayerToName(hit.collider.gameObject.layer) == layerName)
 				{
-					//dealDamage to target by damageToDeal
-					Debug.Log("bang");
+					//damage player by damageToDeal
+					if (hit.rigidbody.gameObject.GetComponent<PlayerCollision>() != null)
+					{
+						hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(damageToDeal);
+						destroy = true;
+					}
+					//destroy enemies enemies
+					if (hit.rigidbody.gameObject.GetComponent<EnemyCollision>() != null)
+					{
+						hit.rigidbody.gameObject.GetComponent<EnemyCollision>().TakeDamage(10f, hit.rigidbody.transform.position);
+						destroy = true;
+					}
 				}
 			}
 

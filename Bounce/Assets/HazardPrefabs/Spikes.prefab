@@ -100,5 +100,5 @@ MonoBehaviour:
   - Enemy
   shadowObj: {fileID: 8489070424410074529, guid: 07197829c2163fe4d80c9f24de0dec1b,
     type: 3}
-  damageToDeal: 0
+  damageToDeal: 2
   drawGizmos: 1
