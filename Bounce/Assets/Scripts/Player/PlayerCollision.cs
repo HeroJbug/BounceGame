@@ -11,14 +11,14 @@ public class PlayerCollision : MonoBehaviour
 	public float maxInvincibilitTime = 3;
 	public float invinciblityTime;
 	public GameObject panel;
-	private MeshRenderer mr;
+	private SpriteRenderer mr;
 
     PlayerMovement moveRef;
     // Start is called before the first frame update
     void Start()
     {
         moveRef = this.GetComponent<PlayerMovement>();
-		mr = GetComponent<MeshRenderer>();
+		mr = GetComponent<SpriteRenderer>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -27,7 +27,9 @@ public class PlayerCollision : MonoBehaviour
         {
             ContactPoint hitPoint = collision.GetContact(0);
             if (moveRef.PlayerIsBoosting())
-                collision.gameObject.GetComponent<Rigidbody>().AddExplosionForce(enemyKnockBackForce, transform.position - hitPoint.normal, 5f, 0f, ForceMode.Impulse);
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(enemyKnockBackForce * transform.position - hitPoint.normal, ForceMode2D.Impulse);
+            }
             else
             {
                 TakeDamage(enemyDamage);
