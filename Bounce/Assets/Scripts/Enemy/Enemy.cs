@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        Physics.IgnoreLayerCollision(10,10);
+        Physics2D.IgnoreLayerCollision(10,10);
         EnemyPathRequestManager.RequestPath(transform.position, target.position, PathFound);
     }
 
@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour
         if (path.Length > 0)
         {
             Vector3 currentWP = path[0];
+            print(currentWP);
             while (true)
             {
                 if (transform.position == currentWP)

@@ -10,8 +10,9 @@ public class PlayerCollision : MonoBehaviour
 	public float hp = 3;
 	public float maxInvincibilitTime = 3;
 	public float invinciblityTime;
-	public GameObject panel;
+	//public GameObject panel;
 	private SpriteRenderer mr;
+    Rigidbody2D rbody;
 
     PlayerMovement moveRef;
     // Start is called before the first frame update
@@ -19,16 +20,17 @@ public class PlayerCollision : MonoBehaviour
     {
         moveRef = this.GetComponent<PlayerMovement>();
 		mr = GetComponent<SpriteRenderer>();
+        rbody = GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            ContactPoint hitPoint = collision.GetContact(0);
+            Vector2 moveDir = rbody.transform.position - collision.gameObject.GetComponent<Rigidbody2D>().transform.position;
             if (moveRef.PlayerIsBoosting())
             {
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(enemyKnockBackForce * transform.position - hitPoint.normal, ForceMode2D.Impulse);
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(enemyKnockBackForce * -moveDir, ForceMode2D.Impulse);
             }
             else
             {
@@ -42,7 +44,7 @@ public class PlayerCollision : MonoBehaviour
 	{
 		if (hp <= 0)
 		{
-			panel.SetActive(true);
+			//panel.SetActive(true);
 			this.gameObject.SetActive(false);
 			Time.timeScale = 0;
 		}

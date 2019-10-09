@@ -40,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
                 isBoosting = false;
             }
         }
-        print(isBoosting);
     }
 
     public bool PlayerIsBoosting()
