@@ -52,7 +52,7 @@ public class LevelPiecesController : MonoBehaviour
         int locY = Random.Range(0, (int)levelGrid.GetGridSize().y);
 
         //keep recalculating randoms if we find occupied locations
-        while(levelGrid.IsOccupied(locX, locY) || levelGrid.CheckForPlayer(locX, locY))
+        while(levelGrid.IsOccupied(locX, locY) || levelGrid.CheckForObstaclesAtLoc(locX, locY))
         {
             locX = Random.Range(0, (int)levelGrid.GetGridSize().x);
             locY = Random.Range(0, (int)levelGrid.GetGridSize().y);

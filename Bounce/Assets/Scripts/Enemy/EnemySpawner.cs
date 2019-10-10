@@ -29,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
 
     private bool CheckSpawnEnemies()
     {
-        if(Physics.CheckSphere(transform.position, checkRadius, playerMask))
+        if(Physics2D.OverlapCircle(transform.position, checkRadius, playerMask))
         {
             return false;
         }

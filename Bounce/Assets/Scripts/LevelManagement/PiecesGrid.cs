@@ -10,6 +10,7 @@ public class PiecesGrid : MonoBehaviour
     public LayerMask barrierMask;
     public LayerMask playerMask;
     public LayerMask enemyMask;
+    private EnemySpawner[] spawnerObjects;
 
     public float nodeRadius;
 
@@ -23,6 +24,8 @@ public class PiecesGrid : MonoBehaviour
         nodeDiam = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiam);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiam);
+
+        spawnerObjects = GameObject.FindObjectsOfType<EnemySpawner>();
 
         InitializeGrid();
     }
@@ -81,11 +84,28 @@ public class PiecesGrid : MonoBehaviour
         }
     }
 
-    public bool CheckForPlayer(int x, int y)
+    public bool CheckForObstaclesAtLoc(int x, int y)
+    {
+        return CheckForPlayer(x, y) && CheckForSpawner(x, y);
+    }
+
+    private bool CheckForSpawner(int x, int y)
+    {
+        foreach(EnemySpawner sp in spawnerObjects)
+        {
+            if(Mathf.RoundToInt(sp.gameObject.transform.position.x) == x && Mathf.RoundToInt(sp.gameObject.transform.position.y) == y)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool CheckForPlayer(int x, int y)
     {
         worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.up * gridWorldSize.y / 2;
         Vector3 worldPt = worldBottomLeft + Vector3.right * (x * nodeDiam + nodeRadius) + Vector3.up * (y * nodeDiam + nodeRadius);
-        return Physics.CheckSphere(worldPt, nodeRadius, playerMask);
+        return Physics2D.OverlapCircle(worldPt, nodeRadius, playerMask);
     }
 
     private void OnDrawGizmos()
