@@ -43,7 +43,7 @@ public class PathfindingGrid : MonoBehaviour
             for(int y = 0; y < gridSizeY; y++)
             {
                 Vector3 worldPt = worldBottomLeft + Vector3.right * (x * nodeDiam + nodeRadius) + Vector3.up * (y * nodeDiam + nodeRadius);
-                bool canTraverse = !(Physics.CheckSphere(worldPt, nodeRadius, barrierMask | hazardMask));
+                bool canTraverse = !(Physics2D.OverlapCircle(worldPt, nodeRadius, barrierMask | hazardMask));
                 grid[x, y] = new Node(canTraverse, worldPt, x, y);
             }
         }
