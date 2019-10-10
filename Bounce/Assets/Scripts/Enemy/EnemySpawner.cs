@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemies(int enemyCount)
     {
-        GameObject newEnemy = Instantiate(enemyTypes[0], transform.position, new Quaternion(-0.707f, 0, 0, 0.707f));
+        GameObject newEnemy = Instantiate(enemyTypes[0], transform.position, Quaternion.identity);
         newEnemy.GetComponent<Enemy>().target = player.transform;
     }
 }

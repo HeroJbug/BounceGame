@@ -26,9 +26,9 @@ public class Spikes : Hazard
 		{
 			foreach (string layerName in layersToAffect)
 			{
-				if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit[] hits))
+				if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit2D[] hits))
 				{
-					foreach (RaycastHit hit in hits)
+					foreach (RaycastHit2D hit in hits)
 					{
 						//damage player by damageToDeal
 						if (hit.rigidbody.gameObject.GetComponent<PlayerCollision>() != null)

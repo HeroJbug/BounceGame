@@ -8,11 +8,30 @@ public class Enemy : MonoBehaviour
     public float speed;
     Vector3[] path;
     int targetIdx;
-
+    [SerializeField]
+    private bool inKnockback;
     private float recalculatePathTimer = 0.5f;
+    private Rigidbody2D rbody;
+    Vector2 threshold;
+
+    private void Start()
+    {
+        EnemyPathRequestManager.RequestPath(transform.position, target.position, PathFound);
+        inKnockback = false;
+        rbody = GetComponent<Rigidbody2D>();
+        threshold = new Vector2(13f, 13f);
+    }
+
 
     private void Update()
     {
+        if(inKnockback)
+        {
+            if(Mathf.Abs(rbody.velocity.magnitude) < Mathf.Abs(threshold.magnitude))
+            {
+                inKnockback = false;
+            }
+        }
         if(recalculatePathTimer <= 0)
         {
             EnemyPathRequestManager.RequestPath(transform.position, target.position, PathFound);
@@ -22,12 +41,6 @@ public class Enemy : MonoBehaviour
         {
             recalculatePathTimer -= Time.deltaTime;
         }
-    }
-
-    private void Start()
-    {
-        Physics2D.IgnoreLayerCollision(10,10);
-        EnemyPathRequestManager.RequestPath(transform.position, target.position, PathFound);
     }
 
     public void PathFound(Vector3[] newPath, bool pathSuccess)
@@ -45,7 +58,6 @@ public class Enemy : MonoBehaviour
         if (path.Length > 0)
         {
             Vector3 currentWP = path[0];
-            print(currentWP);
             while (true)
             {
                 if (transform.position == currentWP)
@@ -62,5 +74,43 @@ public class Enemy : MonoBehaviour
                 yield return null;
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!inKnockback)
+        {
+            Physics2D.IgnoreLayerCollision(10, 10);
+        }
+        else
+        {
+            Physics2D.IgnoreLayerCollision(10, 10, false);
+        }
+    }
+
+    public void SetInKnockback(bool _ik)
+    {
+        inKnockback = _ik;
+    }
+
+    public bool GetInKnockback()
+    {
+        return inKnockback;
+    }
+
+    public float ApplyAdditiveKnockback(float modifierAmt, Vector2 moveDir)
+    {
+        if(modifierAmt > 0.1f)
+        {
+            rbody.AddForce(modifierAmt * -moveDir, ForceMode2D.Impulse);
+            inKnockback = true;
+            return modifierAmt * 0.5f;
+        }
+        return 0;
+    }
+
+    private float CalcDstToPlayer()
+    {
+        return Vector2.Distance(this.transform.position, target.transform.position);
     }
 }

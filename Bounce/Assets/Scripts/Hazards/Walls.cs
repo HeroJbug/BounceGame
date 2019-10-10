@@ -11,7 +11,7 @@ public class Walls : MonoBehaviour
         
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {

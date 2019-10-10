@@ -31,6 +31,7 @@ public class PlayerCollision : MonoBehaviour
             if (moveRef.PlayerIsBoosting())
             {
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(enemyKnockBackForce * -moveDir, ForceMode2D.Impulse);
+                collision.gameObject.GetComponent<Enemy>().SetInKnockback(true);
             }
             else
             {

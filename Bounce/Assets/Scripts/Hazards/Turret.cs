@@ -21,7 +21,7 @@ public class Turret : Hazard, IFirable
 	void Awake()
     {
 		Initialize();
-		type = HazardTypes.TURRENT;
+		type = HazardTypes.TURRET;
 		shots = maxShots;
     }
 
@@ -32,7 +32,7 @@ public class Turret : Hazard, IFirable
 		{
 			foreach (string layerName in layersToAffect)
 			{
-				if (cooldown <= 0 && shots > 0 && ColInCircle(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit hit))
+				if (cooldown <= 0 && shots > 0 && ColInCircle(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit2D hit))
 				{
 					Vector3 firDir = hit.transform.position - this.transform.position;
 					firDir.Normalize();

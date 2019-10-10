@@ -27,10 +27,10 @@ public class OilSpill : Hazard
 			foreach(string layerName in layersToAffect)
 			{
 				List<PlayerMovement> detectedPlayers = new List<PlayerMovement>();
-				if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit[] hits))
+				if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit2D[] hits))
 				{
 					Debug.Log("is in");
-					foreach (RaycastHit hit in hits)
+					foreach (RaycastHit2D hit in hits)
 					{
 						PlayerMovement player = hit.collider.gameObject.GetComponent<PlayerMovement>();
 						detectedPlayers.Add(player);
@@ -38,7 +38,7 @@ public class OilSpill : Hazard
 
 						player.speed += acceleration;
 
-						Vector2 distance = hit.point - transform.position;
+						Vector2 distance = hit.point - (Vector2)transform.position;
 						distance.Normalize();
 						distance *= -1;
 

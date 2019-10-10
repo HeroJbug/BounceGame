@@ -30,9 +30,9 @@ public class Bomb : Hazard
             {
                 foreach (string layerName in layersToAffect)
                 {
-                    if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit[] hits))
+                    if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit2D[] hits))
                     {
-                        foreach (RaycastHit hit in hits)
+                        foreach (RaycastHit2D hit in hits)
                         {
                             //TODO: is there a cleaner way to do this?
                             //damage player by damageToDeal

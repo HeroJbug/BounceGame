@@ -6,7 +6,7 @@ using UnityEngine;
 public enum HazardTypes : int
 {
 	SPIKES,
-	TURRENT,
+	TURRET,
 	OILSPILL,
 	BOMB
 }
@@ -44,16 +44,17 @@ public abstract class Hazard : MonoBehaviour
 		transform.position += Vector3.up * height; 
 	}
 
-	protected bool ColInCircleAll(Vector3 origin, float radius, int layer, out RaycastHit[] hits)
+	protected bool ColInCircleAll(Vector3 origin, float radius, int layer, out RaycastHit2D[] hits)
     {
-		hits = Physics.SphereCastAll(origin, radius, Vector3.forward, 0, layer);
+		hits = Physics2D.CircleCastAll(origin, radius, Vector2.right, 0, layer);
 		return (hits.Length > 0);
     }
 
-	protected bool ColInCircle(Vector3 origin, float radius, int layer, out RaycastHit hit)
+	protected bool ColInCircle(Vector3 origin, float radius, int layer, out RaycastHit2D hit)
 	{
-		hit = new RaycastHit();
-		RaycastHit[] hits = Physics.SphereCastAll(origin, radius, Vector3.forward, 0, layer);
+		hit = new RaycastHit2D();
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(origin, radius, Vector2.right, 0, layer);
+		//RaycastHit[] hits = Physics.SphereCastAll(origin, radius, Vector3.forward, 0, layer);
 		if (hits != null && hits.Length > 0)
 		{
 			hit = hits[0];

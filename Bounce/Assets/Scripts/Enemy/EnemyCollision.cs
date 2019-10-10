@@ -6,10 +6,13 @@ using UnityEngine;
 public class EnemyCollision : MonoBehaviour
 {
     public float health = 1f;
+    public float additiveKnockbackDef = 3.0f;
+    public float additiveKnockback;
     public ParticleSystem explosion;
 
     private void Start()
     {
+        additiveKnockback = additiveKnockbackDef;
     }
 
     public void TakeDamage(float amt, Vector3 colPoint)
@@ -25,6 +28,20 @@ public class EnemyCollision : MonoBehaviour
     {
         Instantiate(explosion, collidePt, Quaternion.identity).transform.Rotate(new Vector3(180, 0, 0));
         Destroy(this.gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            if(this.gameObject.GetComponentInParent<Enemy>().GetInKnockback())
+            {
+                Vector2 moveDir = this.transform.position - collision.gameObject.GetComponent<Rigidbody2D>().transform.position;
+                //assign to other's additive knockback so it keeps getting halved
+                //TODO: i'm a touch buggy atm
+                collision.gameObject.GetComponentInChildren<EnemyCollision>().additiveKnockback = collision.gameObject.GetComponent<Enemy>().ApplyAdditiveKnockback(additiveKnockbackDef, moveDir);
+            }
+        }
     }
 
 }
