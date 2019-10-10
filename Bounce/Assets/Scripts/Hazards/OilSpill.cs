@@ -42,7 +42,7 @@ public class OilSpill : Hazard
 						distance.Normalize();
 						distance *= -1;
 
-						player.GetComponent<Rigidbody>().MovePosition(player.transform.position + (Vector3)(distance * player.speed) * Time.deltaTime);
+						player.GetComponent<Rigidbody2D>().MovePosition(player.transform.position + (Vector3)(distance * player.speed) * Time.deltaTime);
 					}
 				}
 

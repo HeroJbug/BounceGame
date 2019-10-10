@@ -8,7 +8,8 @@ public enum HazardTypes : int
 	SPIKES,
 	TURRET,
 	OILSPILL,
-	BOMB
+	BOMB,
+    BARRIER
 }
 
 public abstract class Hazard : MonoBehaviour

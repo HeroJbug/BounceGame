@@ -73,16 +73,16 @@ public class PiecesGrid : MonoBehaviour
     }
 
     //FIXME
-    private void CheckForAndDestroyEnemies(int x, int y)
-    {
-        worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.up * gridWorldSize.y / 2;
-        Vector3 worldPt = worldBottomLeft + Vector3.right * (x * nodeDiam + nodeRadius) + Vector3.up * (y * nodeDiam + nodeRadius);
-        RaycastHit[] hits = Physics.SphereCastAll(worldPt, nodeRadius, Vector3.forward, enemyMask);
-        foreach(RaycastHit enemyHit in hits)
-        {
-            Destroy(enemyHit.rigidbody.gameObject);
-        }
-    }
+    //private void CheckForAndDestroyEnemies(int x, int y)
+    //{
+    //    worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.up * gridWorldSize.y / 2;
+    //    Vector3 worldPt = worldBottomLeft + Vector3.right * (x * nodeDiam + nodeRadius) + Vector3.up * (y * nodeDiam + nodeRadius);
+    //    RaycastHit[] hits = Physics.SphereCastAll(worldPt, nodeRadius, Vector3.forward, enemyMask);
+    //    foreach(RaycastHit enemyHit in hits)
+    //    {
+    //        Destroy(enemyHit.rigidbody.gameObject);
+    //    }
+    //}
 
     public bool CheckForObstaclesAtLoc(int x, int y)
     {

@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     int targetIdx;
     [SerializeField]
     private bool inKnockback;
-    private float recalculatePathTimer = 0.5f;
+    private float recalculatePathTimer = 0.2f;
     private Rigidbody2D rbody;
     Vector2 threshold;
 
