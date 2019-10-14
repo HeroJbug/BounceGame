@@ -37,7 +37,7 @@ public class Turret : Hazard, IFirable
 					Vector3 firDir = hit.transform.position - this.transform.position;
 					firDir.Normalize();
 
-					Projectile proj = Instantiate<Projectile>(projectilePrefab, transform.position + (Vector3)bulletOffset + Vector3.up * -1.57f, this.transform.rotation);
+					Projectile proj = Instantiate<Projectile>(projectilePrefab, transform.position + (Vector3)bulletOffset + Vector3.up * -1.57f, Quaternion.identity);
 					proj.Direction = firDir;
 					proj.Parent = this;
 

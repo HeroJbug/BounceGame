@@ -50,9 +50,9 @@ public class Projectile : MonoBehaviour
 
 	private void CollisionDetect()
 	{
-		RaycastHit[] hits = Physics.SphereCastAll(transform.position, hitRadius, Vector2.zero);
+		RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, hitRadius, Vector2.zero);
 		bool destroy = false;
-		foreach (RaycastHit hit in hits)
+		foreach (RaycastHit2D hit in hits)
 		{
 			foreach (string layerName in layersToHarm)
 			{
