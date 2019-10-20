@@ -10,7 +10,8 @@ public class PlayerCollision : MonoBehaviour
 	public float hp = 3;
 	public float maxInvincibilitTime = 3;
 	public float invinciblityTime;
-	//public GameObject panel;
+    //public GameObject panel;
+    public GameObject camera;
 	private SpriteRenderer mr;
     Rigidbody2D rbody;
 
@@ -21,6 +22,7 @@ public class PlayerCollision : MonoBehaviour
         moveRef = this.GetComponent<PlayerMovement>();
 		mr = GetComponent<SpriteRenderer>();
         rbody = GetComponent<Rigidbody2D>();
+        camera.transform.parent = transform;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -47,6 +49,7 @@ public class PlayerCollision : MonoBehaviour
 		{
 			//panel.SetActive(true);
 			this.gameObject.SetActive(false);
+            transform.DetachChildren();
 			Time.timeScale = 0;
 		}
 
