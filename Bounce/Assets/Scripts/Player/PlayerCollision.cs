@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class PlayerCollision : MonoBehaviour
     public GameObject camera;
 	private SpriteRenderer mr;
     Rigidbody2D rbody;
+    public UnityEvent onDeathEvent;
 
     PlayerMovement moveRef;
     // Start is called before the first frame update
@@ -48,10 +51,11 @@ public class PlayerCollision : MonoBehaviour
 		if (hp <= 0)
 		{
 			//panel.SetActive(true);
-			this.gameObject.SetActive(false);
             transform.DetachChildren();
 			Time.timeScale = 0;
-		}
+            onDeathEvent.Invoke();
+            this.gameObject.SetActive(false);
+        }
 
 		if (invinciblityTime > 0)
 		{
