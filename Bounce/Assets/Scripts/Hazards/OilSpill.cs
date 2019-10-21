@@ -29,7 +29,7 @@ public class OilSpill : Hazard
 				List<PlayerMovement> detectedPlayers = new List<PlayerMovement>();
 				if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit2D[] hits))
 				{
-					Debug.Log("is in");
+					//Debug.Log("is in");
 					foreach (RaycastHit2D hit in hits)
 					{
 						PlayerMovement player = hit.collider.gameObject.GetComponent<PlayerMovement>();

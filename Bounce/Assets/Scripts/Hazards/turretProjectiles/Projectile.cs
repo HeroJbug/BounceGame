@@ -65,9 +65,9 @@ public class Projectile : MonoBehaviour
 						destroy = true;
 					}
 					//destroy enemies enemies
-					if (hit.rigidbody.gameObject.GetComponent<EnemyCollision>() != null)
+					if (hit.rigidbody.gameObject.GetComponent<Enemy>() != null)
 					{
-						hit.rigidbody.gameObject.GetComponent<EnemyCollision>().TakeDamage(10f, hit.rigidbody.transform.position);
+						Destroy(hit.rigidbody.gameObject.GetComponent<Enemy>().gameObject);
 						destroy = true;
 					}
 				}

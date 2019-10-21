@@ -42,11 +42,11 @@ public class Bomb : Hazard
                                 hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(damageToDeal);
                             }
                             //esplode enemies
-                            if(hit.rigidbody.gameObject.GetComponent<EnemyCollision>() != null)
+                            if(hit.rigidbody.gameObject.GetComponent<Enemy>() != null)
                             {
                                 print("boom enemy");
-                                hit.rigidbody.gameObject.GetComponent<EnemyCollision>().TakeDamage(10f, hit.rigidbody.transform.position);
-                            }
+								Destroy(hit.rigidbody.gameObject.GetComponent<Enemy>().gameObject);
+							}
                         }
                     }
                     Destroy(this.gameObject);
