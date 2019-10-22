@@ -13,8 +13,9 @@ public class Enemy : MonoBehaviour
     private float recalculatePathTimer = 0.2f;
     private Rigidbody2D rbody;
     Vector2 threshold;
+	public ParticleSystem explosion;
 
-    private void Start()
+	private void Start()
     {
         EnemyPathRequestManager.RequestPath(transform.position, target.position, PathFound);
         inKnockback = false;
@@ -109,7 +110,18 @@ public class Enemy : MonoBehaviour
         return 0;
     }
 
-    private float CalcDstToPlayer()
+	public void OnCollisionDeath()
+	{
+		Instantiate(explosion, transform.position, Quaternion.identity).transform.Rotate(new Vector3(180, 0, 0));
+		Destroy(this.gameObject);
+	}
+
+	public void OnDestroy()
+	{
+		this.StopAllCoroutines();
+	}
+
+	private float CalcDstToPlayer()
     {
         return Vector2.Distance(this.transform.position, target.transform.position);
     }
