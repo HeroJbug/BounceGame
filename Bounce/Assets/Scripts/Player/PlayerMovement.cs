@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float boostTimer = 0.3f;
     float boostTimerCounter;
     bool isBoosting;
+    SpriteRenderer mr;
+    public Sprite up, down, left, right;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
         rBody = this.GetComponent<Rigidbody2D>();
         boostTimerCounter = boostTimer;
         isBoosting = false;
+        mr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -39,6 +42,19 @@ public class PlayerMovement : MonoBehaviour
                 rBody.velocity = Vector3.zero;
                 isBoosting = false;
             }
+        }
+        else
+        {
+
+        }
+        //Put this in the else block when we have boost animations
+        if(Mathf.Abs(moveVec.x)>Mathf.Abs(moveVec.y))
+        {
+            mr.sprite = moveVec.x >=0?right:left;
+        }
+        else
+        {
+            mr.sprite = moveVec.y > 0 ? up : down;
         }
     }
 
