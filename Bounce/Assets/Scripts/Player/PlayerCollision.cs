@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Events;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -13,10 +12,9 @@ public class PlayerCollision : MonoBehaviour
 	public float maxInvincibilitTime = 3;
 	public float invinciblityTime;
     //public GameObject panel;
-    public GameObject camera;
+    public GameObject mainCamera;
 	private SpriteRenderer mr;
     Rigidbody2D rbody;
-    public UnityEvent onDeathEvent;
 
     PlayerMovement moveRef;
     // Start is called before the first frame update
@@ -25,7 +23,7 @@ public class PlayerCollision : MonoBehaviour
         moveRef = this.GetComponent<PlayerMovement>();
 		mr = GetComponent<SpriteRenderer>();
         rbody = GetComponent<Rigidbody2D>();
-        camera.transform.parent = transform;
+        mainCamera.transform.parent = transform;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -52,9 +50,9 @@ public class PlayerCollision : MonoBehaviour
 		{
 			//panel.SetActive(true);
             transform.DetachChildren();
-			Time.timeScale = 0;
-            onDeathEvent.Invoke();
-            this.gameObject.SetActive(false);
+
+            //Invoke("GameOverScene", 2f);
+            Destroy(gameObject);
         }
 
 		if (invinciblityTime > 0)
@@ -77,6 +75,11 @@ public class PlayerCollision : MonoBehaviour
 			invinciblityTime = maxInvincibilitTime;
 		}
 		
+    }
+
+    public void OnDestroy()
+    {
+        SceneManager.LoadScene(2);
     }
 }
 
