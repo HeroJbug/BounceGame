@@ -35,7 +35,7 @@ public abstract class Hazard : MonoBehaviour
 	{
 		height = startingDistance;
 		pos = transform.position;
-		shadow = Instantiate(shadowObj, new Vector3(0, 0, this.transform.position.z), transform.rotation, transform);
+		shadow = Instantiate(shadowObj, new Vector3(0, 0, this.transform.position.z - 0.3f), transform.rotation, transform);
 		shadow.transform.position -= Vector3.up * (height + 0.6f);
 		//shadow.transform.localScale = new Vector3(1.7f, 0.8f);
 		var color = shadow.GetComponent<SpriteRenderer>().color;
@@ -79,7 +79,7 @@ public abstract class Hazard : MonoBehaviour
 		if (hasLanded)
 		{
 			transform.position = pos;
-			shadow.transform.position = new Vector3 (pos.x, pos.y - 0.6f, pos.z);
+			shadow.transform.position = new Vector3 (pos.x, pos.y - 0.6f, pos.z - 0.3f);
 		}
 	}
 

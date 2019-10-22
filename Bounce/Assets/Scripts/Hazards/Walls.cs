@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Walls : MonoBehaviour
 {
-    public ParticleSystem explosion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +15,8 @@ public class Walls : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            Vector3 hitPoint = collision.gameObject.transform.position;
-            Destroy(collision.gameObject);
-            Instantiate(explosion, hitPoint,Quaternion.identity).transform.Rotate(new Vector3(180,0,0));
+			//Vector3 hitPoint = collision.gameObject.transform.position;
+			collision.gameObject.GetComponent<Enemy>().OnCollisionDeath();
         }
     }
 }

@@ -38,7 +38,7 @@ public class Spikes : Hazard
 						//destroy enemies enemies
 						if (hit.rigidbody.gameObject.GetComponent<Enemy>() != null)
 						{
-							Destroy(hit.rigidbody.gameObject.GetComponent<Enemy>().gameObject);
+							hit.rigidbody.gameObject.GetComponent<Enemy>().OnCollisionDeath();
 						}
 					}
 				}

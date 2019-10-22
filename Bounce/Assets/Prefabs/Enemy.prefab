@@ -173,6 +173,8 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 10
   inKnockback: 0
+  explosion: {fileID: 2147660409176068684, guid: 9257fe6061f688f44b3e9bfba2a4f6f0,
+    type: 3}
 --- !u!50 &5300961001618834283
 Rigidbody2D:
   serializedVersion: 4
