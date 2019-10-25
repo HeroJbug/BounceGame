@@ -6,8 +6,12 @@ public class Enemy : MonoBehaviour
 {
     public Transform target;
     public float speed;
-    Vector3[] path;
-    int targetIdx;
+    public float turnSpeed = 3f;
+    public float turnDst = 5;
+    public bool debugPath;
+    Path path;
+    //Vector3[] path;
+    //int targetIdx;
     [SerializeField]
     private bool inKnockback;
     private float recalculatePathTimer = 0.2f;
@@ -44,11 +48,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void PathFound(Vector3[] newPath, bool pathSuccess)
+    public void PathFound(Vector3[] waypoints, bool pathSuccess)
     {
         if(pathSuccess)
         {
-            path = newPath;
+            path = new Path(waypoints, transform.position, turnDst);
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
         }
@@ -56,24 +60,47 @@ public class Enemy : MonoBehaviour
 
     IEnumerator FollowPath()
     {
-        if (path.Length > 0)
+        bool followingPath = true;
+        int pathIdx = 0;
+        Vector3 currentWP = path.lookPoints[0];
+        int targetIdx = 0;
+        transform.right = target.position - transform.position;
+        while (followingPath)
         {
-            Vector3 currentWP = path[0];
-            while (true)
+            if (transform.position == currentWP)
             {
-                if (transform.position == currentWP)
+                targetIdx++;
+                if (targetIdx >= path.lookPoints.Length)
                 {
-                    targetIdx++;
-                    if (targetIdx >= path.Length)
-                    {
-                        yield break;
-                    }
-                    currentWP = path[targetIdx];
+                    yield break;
                 }
-
-                transform.position = Vector3.MoveTowards(transform.position, currentWP, speed * Time.deltaTime);
-                yield return null;
+                currentWP = path.lookPoints[targetIdx];
             }
+
+            transform.position = Vector3.MoveTowards(transform.position, currentWP, speed * Time.deltaTime);
+
+            //SMMOTHED CALCULATION
+            //Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+            //if(path.turnBoundaries[pathIdx].HasCrossedLine(pos))
+            //{
+            //    if(pathIdx == path.finishLineIdx)
+            //    {
+            //        followingPath = false;
+            //    }
+            //    else
+            //    {
+            //        pathIdx++;
+            //    }
+            //}
+
+            //if(followingPath)
+            //{
+            //    Quaternion targetRot = Quaternion.LookRotation(path.lookPoints[pathIdx] - transform.position);
+            //    transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * turnSpeed);
+            //    transform.Translate(Vector3.forward * Time.deltaTime * speed, Space.Self);
+            //}
+            yield return null;
+
         }
     }
 
@@ -124,5 +151,13 @@ public class Enemy : MonoBehaviour
 	private float CalcDstToPlayer()
     {
         return Vector2.Distance(this.transform.position, target.transform.position);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(path != null && debugPath)
+        {
+            path.GizmoDebugger();
+        }
     }
 }
