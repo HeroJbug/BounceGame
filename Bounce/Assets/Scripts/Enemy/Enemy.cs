@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     }
 
 
-    private void Update()
+    public void Update()
     {
         if(inKnockback)
         {
@@ -62,14 +62,13 @@ public class Enemy : MonoBehaviour
     {
         bool followingPath = true;
         int pathIdx = 0;
-        Vector3 currentWP = path.lookPoints[0];
-        int targetIdx = 0;
+
         transform.right = target.position - transform.position;
         while (followingPath)
         {
             //SMOOTHED CALCULATION
             Vector2 pos = new Vector2(transform.position.x, transform.position.y);
-            if (path.turnBoundaries[pathIdx].HasCrossedLine(pos))
+            if (pathIdx < path.turnBoundaries.Length && path.turnBoundaries[pathIdx].HasCrossedLine(pos))
             {
                 if (pathIdx == path.finishLineIdx)
                 {
@@ -81,7 +80,7 @@ public class Enemy : MonoBehaviour
                 }
             }
 
-            if (followingPath)
+            if (followingPath && pathIdx < path.lookPoints.Length)
             {
                 float angle =Mathf.Atan2(path.lookPoints[pathIdx].y - transform.position.y, path.lookPoints[pathIdx].x - transform.position.x);
                 angle *= Mathf.Rad2Deg;
