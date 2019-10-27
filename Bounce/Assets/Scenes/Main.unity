@@ -634,6 +634,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1629687566}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &566293458
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566293457}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ee0a9a68c84bd0f4b8308f8853a6e51e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &566293463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5117352434602345496, guid: 688108fba00667d4fa38c6baff94505d,
@@ -840,6 +859,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5117352434602345497, guid: 688108fba00667d4fa38c6baff94505d,
         type: 3}
+      propertyPath: idleSpritesPlaceholder.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117352434602345497, guid: 688108fba00667d4fa38c6baff94505d,
+        type: 3}
       propertyPath: up
       value: 
       objectReference: {fileID: 21300000, guid: 0f4db5c7e579bf24f8e610ab167bde1e,
@@ -862,6 +886,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: c50da9b08f874e34cb1d0228911ea3da,
         type: 3}
+    - target: {fileID: 5117352434602345497, guid: 688108fba00667d4fa38c6baff94505d,
+        type: 3}
+      propertyPath: idleSpritesPlaceholder.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0f4db5c7e579bf24f8e610ab167bde1e,
+        type: 3}
+    - target: {fileID: 5117352434602345497, guid: 688108fba00667d4fa38c6baff94505d,
+        type: 3}
+      propertyPath: idleSpritesPlaceholder.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: c50da9b08f874e34cb1d0228911ea3da,
+        type: 3}
+    - target: {fileID: 5117352434602345497, guid: 688108fba00667d4fa38c6baff94505d,
+        type: 3}
+      propertyPath: idleSpritesPlaceholder.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e32cec8edca16e42ada309219e4bd55,
+        type: 3}
+    - target: {fileID: 5117352434602345497, guid: 688108fba00667d4fa38c6baff94505d,
+        type: 3}
+      propertyPath: idleSpritesPlaceholder.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 822da598e5dcc904fb9ba44c1811b39e,
+        type: 3}
+    - target: {fileID: 5117352434602345497, guid: 688108fba00667d4fa38c6baff94505d,
+        type: 3}
+      propertyPath: boostSpeed
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117352434602345497, guid: 688108fba00667d4fa38c6baff94505d,
+        type: 3}
+      propertyPath: speed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5117352435224238095, guid: 688108fba00667d4fa38c6baff94505d,
         type: 3}
       propertyPath: far clip plane

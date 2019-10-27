@@ -12,11 +12,12 @@ public class OilSlicker : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        base.InitializeSelf();
         oilSpawnTimerInternal = 0f;
     }
 
     // Update is called once per frame
-    void Update()
+    private new void Update()
     {
         base.Update();
         if(oilSpawnTimerInternal <= 0)

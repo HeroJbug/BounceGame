@@ -11,10 +11,12 @@ public class PlayerMovement : MonoBehaviour
     float boostTimerCounter;
     bool isBoosting;
     SpriteRenderer mr;
-    public Sprite up, down, left, right;
+    private Animator mainAnim;
+    private int dir;
     // Start is called before the first frame update
     void Start()
     {
+        mainAnim = GetComponent<Animator>();
         moveVec = new Vector3();
         rBody = this.GetComponent<Rigidbody2D>();
         boostTimerCounter = boostTimer;
@@ -27,7 +29,9 @@ public class PlayerMovement : MonoBehaviour
     {
         moveVec.x = Input.GetAxisRaw("Horizontal");
         moveVec.y = Input.GetAxisRaw("Vertical");
-        if(Input.GetKeyDown(KeyCode.Space))
+        int currentDir = GetDirThisFrame();
+        mainAnim.SetInteger("Direction", currentDir);
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             rBody.AddForce(boostSpeed * moveVec, ForceMode2D.Impulse);
             isBoosting = true;
@@ -42,20 +46,27 @@ public class PlayerMovement : MonoBehaviour
                 rBody.velocity = Vector3.zero;
                 isBoosting = false;
             }
+            mainAnim.SetBool("isDashing", true);
         }
         else
         {
+            if(mainAnim.GetBool("isDashing"))
+                mainAnim.SetBool("isDashing", false);
+        }
+    }
 
-        }
-        //Put this in the else block when we have boost animations
-        if(Mathf.Abs(moveVec.x)>Mathf.Abs(moveVec.y))
+    private int GetDirThisFrame()
+    {
+        int returnVal = 0;
+        if (Mathf.Abs(moveVec.x) > Mathf.Abs(moveVec.y))
         {
-            mr.sprite = moveVec.x >=0?right:left;
+            returnVal = moveVec.x >= 0 ? 1 : 3;
         }
         else
         {
-            mr.sprite = moveVec.y > 0 ? up : down;
+            returnVal = moveVec.y > 0 ? 0 : 2;
         }
+        return returnVal;
     }
 
     public bool PlayerIsBoosting()

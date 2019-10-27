@@ -21,6 +21,11 @@ public class Enemy : MonoBehaviour
 
 	private void Start()
     {
+        InitializeSelf();
+    }
+
+    public void InitializeSelf()
+    {
         EnemyPathRequestManager.RequestPath(transform.position, target.position, PathFound);
         inKnockback = false;
         rbody = GetComponent<Rigidbody2D>();
