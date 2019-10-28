@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float boostTimer = 0.3f;
     float boostTimerCounter;
     bool isBoosting;
+	public float boostCooldown;
+	private float boostCooldownCounter;
     SpriteRenderer mr;
     private Animator mainAnim;
     private int dir;
@@ -31,21 +33,24 @@ public class PlayerMovement : MonoBehaviour
         moveVec.y = Input.GetAxisRaw("Vertical");
         int currentDir = GetDirThisFrame();
         mainAnim.SetInteger("Direction", currentDir);
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && boostCooldownCounter <= 0)
         {
             rBody.AddForce(boostSpeed * moveVec, ForceMode2D.Impulse);
             isBoosting = true;
-        }
+			boostTimerCounter = boostTimer;
+		}
 
         if(isBoosting)
         {
             boostTimerCounter -= Time.deltaTime;
+			boostCooldownCounter = boostCooldown * (1 - (boostTimerCounter / boostTimer));
+
             if(boostTimerCounter <= 0)
             {
-                boostTimerCounter = boostTimer;
                 rBody.velocity = Vector3.zero;
                 isBoosting = false;
-            }
+				boostCooldownCounter = boostCooldown;
+			}
             mainAnim.SetBool("isDashing", true);
         }
         else
@@ -53,6 +58,15 @@ public class PlayerMovement : MonoBehaviour
             if(mainAnim.GetBool("isDashing"))
                 mainAnim.SetBool("isDashing", false);
         }
+
+		if (!isBoosting && boostCooldownCounter > 0)
+		{
+			boostCooldownCounter -= Time.deltaTime;
+			if (boostCooldownCounter <= 0)
+			{
+				boostCooldownCounter = 0;
+			}
+		}
     }
 
     private int GetDirThisFrame()
@@ -79,4 +93,12 @@ public class PlayerMovement : MonoBehaviour
         if(!isBoosting)
             rBody.MovePosition(rBody.position + new Vector2(moveVec.x, moveVec.y) * speed * Time.deltaTime);
     }
+
+	public float BoostCooldownCounter
+	{
+		get
+		{
+			return boostCooldownCounter;
+		}
+	}
 }
