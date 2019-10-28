@@ -21,6 +21,11 @@ public class Enemy : MonoBehaviour
 
 	private void Start()
     {
+        InitializeSelf();
+    }
+
+    public void InitializeSelf()
+    {
         EnemyPathRequestManager.RequestPath(transform.position, target.position, PathFound);
         inKnockback = false;
         rbody = GetComponent<Rigidbody2D>();
@@ -28,7 +33,7 @@ public class Enemy : MonoBehaviour
     }
 
 
-    private void Update()
+    public void Update()
     {
         if(inKnockback)
         {
@@ -62,43 +67,32 @@ public class Enemy : MonoBehaviour
     {
         bool followingPath = true;
         int pathIdx = 0;
-        Vector3 currentWP = path.lookPoints[0];
-        int targetIdx = 0;
+
         transform.right = target.position - transform.position;
         while (followingPath)
         {
-            if (transform.position == currentWP)
+            //SMOOTHED CALCULATION
+            Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+            if (pathIdx < path.turnBoundaries.Length && path.turnBoundaries[pathIdx].HasCrossedLine(pos))
             {
-                targetIdx++;
-                if (targetIdx >= path.lookPoints.Length)
+                if (pathIdx == path.finishLineIdx)
                 {
-                    yield break;
+                    followingPath = false;
                 }
-                currentWP = path.lookPoints[targetIdx];
+                else
+                {
+                    pathIdx++;
+                }
             }
 
-            transform.position = Vector3.MoveTowards(transform.position, currentWP, speed * Time.deltaTime);
-
-            //SMMOTHED CALCULATION
-            //Vector2 pos = new Vector2(transform.position.x, transform.position.y);
-            //if(path.turnBoundaries[pathIdx].HasCrossedLine(pos))
-            //{
-            //    if(pathIdx == path.finishLineIdx)
-            //    {
-            //        followingPath = false;
-            //    }
-            //    else
-            //    {
-            //        pathIdx++;
-            //    }
-            //}
-
-            //if(followingPath)
-            //{
-            //    Quaternion targetRot = Quaternion.LookRotation(path.lookPoints[pathIdx] - transform.position);
-            //    transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * turnSpeed);
-            //    transform.Translate(Vector3.forward * Time.deltaTime * speed, Space.Self);
-            //}
+            if (followingPath && pathIdx < path.lookPoints.Length)
+            {
+                float angle =Mathf.Atan2(path.lookPoints[pathIdx].y - transform.position.y, path.lookPoints[pathIdx].x - transform.position.x);
+                angle *= Mathf.Rad2Deg;
+                Quaternion targetRot = Quaternion.Euler(0f, 0f, angle);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * turnSpeed);
+                transform.Translate(Vector3.right * Time.deltaTime * speed, Space.Self);
+            }
             yield return null;
 
         }

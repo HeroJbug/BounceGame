@@ -172,6 +172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 5117352434602345496, guid: 688108fba00667d4fa38c6baff94505d, type: 3}
   speed: 10
+  turnSpeed: 3
+  turnDst: 5
+  debugPath: 0
   inKnockback: 0
   explosion: {fileID: 2147660409176068684, guid: 9257fe6061f688f44b3e9bfba2a4f6f0,
     type: 3}
