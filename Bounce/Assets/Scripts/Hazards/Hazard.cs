@@ -30,7 +30,6 @@ public abstract class Hazard : MonoBehaviour
 	private GameObject shadow;
 	private Vector3 pos;
 	private float shadowAlpha;
-	private Collider2D collider;
 
 	protected void Initialize()
 	{
@@ -43,13 +42,7 @@ public abstract class Hazard : MonoBehaviour
 		shadowAlpha = color.a;
 		color.a = 0;
 		shadow.GetComponent<SpriteRenderer>().color = color;
-		transform.position += Vector3.up * height;
-
-		collider = GetComponent<Collider2D>();
-		if (collider != null)
-		{
-			collider.enabled = false;
-		}
+		transform.position += Vector3.up * height; 
 	}
 
 	protected bool ColInCircleAll(Vector3 origin, float radius, int layer, out RaycastHit2D[] hits)
@@ -78,17 +71,13 @@ public abstract class Hazard : MonoBehaviour
 		transform.position = pos + Vector3.up * height;
 		shadow.transform.position = this.transform.position - Vector3.up * (height + 0.6f);
 
-		Color color = shadow.GetComponent<SpriteRenderer>().color;
+		var color = shadow.GetComponent<SpriteRenderer>().color;
 		color.a = shadowAlpha * (1 - height/startingDistance);
 		shadow.GetComponent<SpriteRenderer>().color = color;
 
 		hasLanded = (height <= 0);
 		if (hasLanded)
 		{
-			if (collider != null)
-			{
-				collider.enabled = true;
-			}
 			transform.position = pos;
 			shadow.transform.position = new Vector3 (pos.x, pos.y - 0.6f, pos.z - 0.3f);
 		}

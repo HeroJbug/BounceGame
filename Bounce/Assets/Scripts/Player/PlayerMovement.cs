@@ -9,8 +9,6 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rBody;
     public float boostTimer = 0.3f;
     float boostTimerCounter;
-	public float boostCooldown;
-	float boostCooldownCounter = 0;
     bool isBoosting;
     SpriteRenderer mr;
     public Sprite up, down, left, right;
@@ -19,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveVec = new Vector3();
         rBody = this.GetComponent<Rigidbody2D>();
+        boostTimerCounter = boostTimer;
         isBoosting = false;
         mr = GetComponent<SpriteRenderer>();
     }
@@ -28,27 +27,26 @@ public class PlayerMovement : MonoBehaviour
     {
         moveVec.x = Input.GetAxisRaw("Horizontal");
         moveVec.y = Input.GetAxisRaw("Vertical");
-        if(Input.GetKeyDown(KeyCode.Space) && boostCooldownCounter <= 0)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             rBody.AddForce(boostSpeed * moveVec, ForceMode2D.Impulse);
             isBoosting = true;
-			boostTimerCounter = boostTimer;
-		}
+        }
 
         if(isBoosting)
         {
             boostTimerCounter -= Time.deltaTime;
-
-			boostCooldownCounter = boostCooldown * (1 - (boostTimerCounter / boostTimer));
-
-			if (boostTimerCounter <= 0)
+            if(boostTimerCounter <= 0)
             {
+                boostTimerCounter = boostTimer;
                 rBody.velocity = Vector3.zero;
                 isBoosting = false;
-				boostCooldownCounter = boostCooldown;
             }
         }
+        else
+        {
 
+        }
         //Put this in the else block when we have boost animations
         if(Mathf.Abs(moveVec.x)>Mathf.Abs(moveVec.y))
         {
@@ -58,15 +56,6 @@ public class PlayerMovement : MonoBehaviour
         {
             mr.sprite = moveVec.y > 0 ? up : down;
         }
-
-		if (boostCooldownCounter > 0 && boostTimerCounter <= 0)
-		{
-			boostCooldownCounter -= Time.deltaTime;
-			if (boostCooldownCounter <= 0)
-			{
-				boostCooldownCounter = 0;
-			}
-		}
     }
 
     public bool PlayerIsBoosting()
@@ -79,12 +68,4 @@ public class PlayerMovement : MonoBehaviour
         if(!isBoosting)
             rBody.MovePosition(rBody.position + new Vector2(moveVec.x, moveVec.y) * speed * Time.deltaTime);
     }
-
-	public float BoostCooldownCounter
-	{
-		get
-		{
-			return boostCooldownCounter;
-		}
-	}
 }
