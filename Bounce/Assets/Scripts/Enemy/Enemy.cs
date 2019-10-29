@@ -14,26 +14,27 @@ public class Enemy : MonoBehaviour
     //int targetIdx;
     [SerializeField]
     private bool inKnockback;
-    private float recalculatePathTimer = 0.2f;
+    [SerializeField]
     private Rigidbody2D rbody;
     Vector2 threshold;
 	public ParticleSystem explosion;
 
-	private void Start()
+    private void Start()
     {
         InitializeSelf();
     }
 
     public void InitializeSelf()
     {
-        EnemyPathRequestManager.RequestPath(transform.position, target.position, PathFound);
+        if(target != null)
+            EnemyPathRequestManager.RequestPath(transform.position, target.position, PathFound);
         inKnockback = false;
         rbody = GetComponent<Rigidbody2D>();
         threshold = new Vector2(13f, 13f);
     }
 
 
-    public void Update()
+    public virtual void Update()
     {
         if(inKnockback)
         {
@@ -41,15 +42,6 @@ public class Enemy : MonoBehaviour
             {
                 inKnockback = false;
             }
-        }
-        if(recalculatePathTimer <= 0)
-        {
-            EnemyPathRequestManager.RequestPath(transform.position, target.position, PathFound);
-            recalculatePathTimer = 0.5f;
-        }
-        else
-        {
-            recalculatePathTimer -= Time.deltaTime;
         }
     }
 
@@ -67,7 +59,6 @@ public class Enemy : MonoBehaviour
     {
         bool followingPath = true;
         int pathIdx = 0;
-
         transform.right = target.position - transform.position;
         while (followingPath)
         {
@@ -96,6 +87,11 @@ public class Enemy : MonoBehaviour
             yield return null;
 
         }
+    }
+
+    protected void RequestNewPath()
+    {
+        EnemyPathRequestManager.RequestPath(transform.position, target.position, PathFound);
     }
 
     private void FixedUpdate()

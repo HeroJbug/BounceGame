@@ -12,12 +12,13 @@ public class OilSlicker : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        target = PickNewRandomTargetLocation();
         base.InitializeSelf();
-        oilSpawnTimerInternal = 0f;
+        oilSpawnTimerInternal = oilSlickSpawnTimer;
     }
 
     // Update is called once per frame
-    private new void Update()
+    public override void Update()
     {
         base.Update();
         if(oilSpawnTimerInternal <= 0)
@@ -25,6 +26,7 @@ public class OilSlicker : Enemy
             CreateOilSlick();
             oilSpawnTimerInternal = oilSlickSpawnTimer;
             target = PickNewRandomTargetLocation();
+            RequestNewPath();
         }
         else
         {
