@@ -49,7 +49,7 @@ public class PlayerCollision : MonoBehaviour
 		if (hp <= 0)
 		{
             transform.DetachChildren();
-            transform.position += new Vector3(0, 0, 10);
+            transform.position += new Vector3(0, 0, -10);
             Invoke("NextScene", 2f);
         }
 
