@@ -48,11 +48,9 @@ public class PlayerCollision : MonoBehaviour
 	{
 		if (hp <= 0)
 		{
-			//panel.SetActive(true);
             transform.DetachChildren();
-
-            //Invoke("GameOverScene", 2f);
-            Destroy(gameObject);
+            transform.position += new Vector3(0, 0, 10);
+            Invoke("NextScene", 2f);
         }
 
 		if (invinciblityTime > 0)
@@ -77,7 +75,7 @@ public class PlayerCollision : MonoBehaviour
 		
     }
 
-    public void OnDestroy()
+    public void NextScene()
     {
         SceneManager.LoadScene(2);
     }
