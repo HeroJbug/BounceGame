@@ -7,18 +7,17 @@ public class PauseButton : MonoBehaviour
 {
     public Image pauseScreen;
     private static bool paused = false;
-    private Image currentScreen;
     // Start is called before the first frame update
     void Start()
     {
         pauseScreen.enabled = false;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            print(transform.gameObject.name);
             if (!paused)
             {
                 pauseScreen.enabled = true;
