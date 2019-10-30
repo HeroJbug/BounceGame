@@ -104,7 +104,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6278266910289570268}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -179,7 +179,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6278266910289570268}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -343,8 +343,8 @@ RectTransform:
   - {fileID: 6278266910782769423}
   - {fileID: 6278266910110688609}
   - {fileID: 6278266911296707648}
-  - {fileID: 6278266909266335562}
   - {fileID: 6278266910064444943}
+  - {fileID: 6278266909266335562}
   - {fileID: 5364777936843061935}
   - {fileID: 5428875127743130077}
   - {fileID: 6802883718457114164}
@@ -743,11 +743,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6278266910289570268}
     m_Modifications:
-    - target: {fileID: 3073794871670245093, guid: ace94937d772aa2439cbeacfdb3273c9,
-        type: 3}
-      propertyPath: m_Name
-      value: QuitButton
-      objectReference: {fileID: 0}
     - target: {fileID: 3073794871670245090, guid: ace94937d772aa2439cbeacfdb3273c9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -852,6 +847,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073794871670245093, guid: ace94937d772aa2439cbeacfdb3273c9,
+        type: 3}
+      propertyPath: m_Name
+      value: QuitButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ace94937d772aa2439cbeacfdb3273c9, type: 3}

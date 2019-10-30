@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
     {
         bool followingPath = true;
         int pathIdx = 0;
-        transform.right = target.position - transform.position;
+        //transform.right = target.position - transform.position;
         while (followingPath)
         {
             //SMOOTHED CALCULATION
@@ -78,11 +78,12 @@ public class Enemy : MonoBehaviour
 
             if (followingPath && pathIdx < path.lookPoints.Length)
             {
-                float angle =Mathf.Atan2(path.lookPoints[pathIdx].y - transform.position.y, path.lookPoints[pathIdx].x - transform.position.x);
-                angle *= Mathf.Rad2Deg;
-                Quaternion targetRot = Quaternion.Euler(0f, 0f, angle);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * turnSpeed);
-                transform.Translate(Vector3.right * Time.deltaTime * speed, Space.Self);
+                //float angle =Mathf.Atan2(path.lookPoints[pathIdx].y - transform.position.y, path.lookPoints[pathIdx].x - transform.position.x);
+                //angle *= Mathf.Rad2Deg;
+                //Quaternion targetRot = Quaternion.Euler(0f, 0f, angle);
+                //transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * turnSpeed);
+                //transform.Translate(Vector3.right * Time.deltaTime * speed, Space.Self);
+                transform.position = Vector3.MoveTowards(transform.position, path.lookPoints[pathIdx], speed * Time.deltaTime);
             }
             yield return null;
 
