@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float turnSpeed = 3f;
     public float turnDst = 5;
+	public int scoreAmt;
     public bool debugPath;
     Path path;
     //Vector3[] path;
@@ -131,6 +132,7 @@ public class Enemy : MonoBehaviour
 	public void OnCollisionDeath()
 	{
 		Instantiate(explosion, transform.position, Quaternion.identity).transform.Rotate(new Vector3(180, 0, 0));
+		ScoreSystem.system.IncrementScore(scoreAmt);
 		Destroy(this.gameObject);
 	}
 

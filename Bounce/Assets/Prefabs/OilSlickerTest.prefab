@@ -211,6 +211,7 @@ MonoBehaviour:
   speed: 10
   turnSpeed: 3
   turnDst: 5
+  scoreAmt: 1
   debugPath: 0
   inKnockback: 0
   rbody: {fileID: 0}

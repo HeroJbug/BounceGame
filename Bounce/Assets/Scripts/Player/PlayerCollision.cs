@@ -16,8 +16,9 @@ public class PlayerCollision : MonoBehaviour
 	private SpriteRenderer mr;
     private Animator anim;
     Rigidbody2D rbody;
+	private ScreenShake ss;
 
-    PlayerMovement moveRef;
+	PlayerMovement moveRef;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,8 @@ public class PlayerCollision : MonoBehaviour
         rbody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         mainCamera.transform.parent = transform;
-    }
+		ss = GetComponentInChildren<ScreenShake>();
+	}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -42,6 +44,8 @@ public class PlayerCollision : MonoBehaviour
             {
                 TakeDamage(enemyDamage);
                 Destroy(collision.gameObject);
+				ScoreSystem.system.ResetScore();
+				ss.StartShake();
             }
         }
     }
