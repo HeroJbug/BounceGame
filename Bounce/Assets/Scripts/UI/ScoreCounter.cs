@@ -9,6 +9,9 @@ public class ScoreCounter : MonoBehaviour
 	private int currentScoreCounter;
 	private Image counterFG;
 	private Image counterBG;
+	private Image multSymbol;
+	[SerializeField]
+	private Sprite[] sprites;
 	
 	// Start is called before the first frame update
     void Start()
@@ -16,6 +19,7 @@ public class ScoreCounter : MonoBehaviour
 		Image[] images = GetComponentsInChildren<Image>();
 		counterFG = images[1];
 		counterBG = images[0];
+		multSymbol = images[2];
     }
 
     // Update is called once per frame
@@ -25,7 +29,9 @@ public class ScoreCounter : MonoBehaviour
 		{
 			counterFG.enabled = true;
 			counterBG.enabled = true;
+			multSymbol.enabled = true;
 			currentScoreCounter = (int)ScoreSystem.system.ScoreMultiplier;
+			counterFG.sprite = counterBG.sprite = sprites[currentScoreCounter];
 
 			float percentage = ScoreSystem.system.ScoreMultiplier % 1;
 
@@ -35,6 +41,7 @@ public class ScoreCounter : MonoBehaviour
 		{
 			counterFG.enabled = false;
 			counterBG.enabled = false;
+			multSymbol.enabled = false;
 		}
     }
 }

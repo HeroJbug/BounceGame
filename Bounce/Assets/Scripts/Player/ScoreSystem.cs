@@ -14,6 +14,8 @@ public class ScoreSystem : MonoBehaviour
 	private float scoreDecreaseSpeed;
 	[SerializeField]
 	private int scoreIncreaseAmt;
+	[SerializeField]
+	private float multLimit = 9;
 
 	public static ScoreSystem system;
 
@@ -47,7 +49,7 @@ public class ScoreSystem : MonoBehaviour
 
 	public void IncrementScore(int amt)
 	{
-		scoreMultiplier += multiplierIcr;
+		scoreMultiplier += Mathf.Clamp(scoreMultiplier + multiplierIcr, 0, multLimit);
 		int addToScore = Mathf.CeilToInt(amt * ScoreMultiplier);
 		score += addToScore * scoreIncreaseAmt;
 	}

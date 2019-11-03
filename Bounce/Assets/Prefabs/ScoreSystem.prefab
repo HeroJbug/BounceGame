@@ -93,7 +93,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreMultiplier: 0
-  multiplierIcr: 1
+  multiplierIcr: 0.25
   score: 0
-  scoreDecreaseSpeed: 0.02
+  scoreDecreaseSpeed: 0.2
   scoreIncreaseAmt: 100
+  multLimit: 9
