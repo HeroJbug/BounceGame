@@ -8,7 +8,6 @@ public class HealthBarHandler : MonoBehaviour
 	private PlayerCollision player;
 	private Image bar;
 	private float originalWidth;
-	private float originalXpos;
 	private float percentage;
 	private float maxHp;
 
@@ -18,7 +17,6 @@ public class HealthBarHandler : MonoBehaviour
 		player = FindObjectOfType<PlayerCollision>();
 		bar = GetComponent<Image>();
 		originalWidth = bar.rectTransform.rect.width;
-		originalXpos = bar.transform.position.x;
 		maxHp = player.hp;
     }
 
@@ -27,10 +25,6 @@ public class HealthBarHandler : MonoBehaviour
     {
 		percentage = player.hp / maxHp;
 
-		float width = originalWidth * percentage;
-
-		bar.transform.position = new Vector3(originalXpos - (originalWidth - width) / 2, bar.transform.position.y);
-
-		bar.rectTransform.sizeDelta = new Vector2(width, bar.rectTransform.rect.height);
+		bar.fillAmount = percentage;
 	}
 }

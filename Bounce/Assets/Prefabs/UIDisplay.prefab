@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5364777936843061935
 RectTransform:
   m_ObjectHideFlags: 0
@@ -108,7 +108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -412.19, y: 207.56}
+  m_AnchoredPosition: {x: -781.69006, y: 469.05997}
   m_SizeDelta: {x: 117.25, y: 48.625}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6278266909266335572
@@ -183,7 +183,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -413.19, y: 207.56}
+  m_AnchoredPosition: {x: -782.69006, y: 469.05997}
   m_SizeDelta: {x: 127, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6278266910064444937
@@ -269,7 +269,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -526.5, y: 226.5}
+  m_AnchoredPosition: {x: -896, y: 488}
   m_SizeDelta: {x: 96.375, y: 83.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6278266910110688611
@@ -389,10 +389,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -467,8 +467,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 181.4, y: -21.508}
-  m_SizeDelta: {x: 149.936, y: 25.057}
+  m_AnchoredPosition: {x: 198.81, y: -48.225006}
+  m_SizeDelta: {x: 149.93604, y: 25.057007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6278266910782769418
 CanvasRenderer:
@@ -498,11 +498,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 9440d2578d184124fa919430c3b5417c, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -553,7 +553,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -391.69, y: 247.25}
+  m_AnchoredPosition: {x: -761.19006, y: 508.74997}
   m_SizeDelta: {x: 158.25, y: 30.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6278266911296707650
@@ -605,12 +605,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartButton
       objectReference: {fileID: 0}
-    - target: {fileID: 687029784672183333, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+    - target: {fileID: 687029784672183328, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 2edd779c5b5ce3a4cae20375cf873d7c,
-        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 687029784672183335, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -716,6 +715,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 687029784672183333, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2edd779c5b5ce3a4cae20375cf873d7c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00e0c6e0b788e94ba016a8c88c0a7a6, type: 3}
 --- !u!224 &5428875127743130077 stripped
@@ -743,6 +748,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6278266910289570268}
     m_Modifications:
+    - target: {fileID: 3073794871670245093, guid: ace94937d772aa2439cbeacfdb3273c9,
+        type: 3}
+      propertyPath: m_Name
+      value: QuitButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073794871670245093, guid: ace94937d772aa2439cbeacfdb3273c9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3073794871670245090, guid: ace94937d772aa2439cbeacfdb3273c9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -847,11 +862,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3073794871670245093, guid: ace94937d772aa2439cbeacfdb3273c9,
-        type: 3}
-      propertyPath: m_Name
-      value: QuitButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ace94937d772aa2439cbeacfdb3273c9, type: 3}
