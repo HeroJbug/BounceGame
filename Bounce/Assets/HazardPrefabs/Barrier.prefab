@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81356e0c9a62e14d8acb1278b4649ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 45
   startingDistance: 100
   targetRadius: 4
   fallSpeed: 100

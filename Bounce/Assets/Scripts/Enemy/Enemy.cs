@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private bool inKnockback;
     [SerializeField]
-    private Rigidbody2D rbody;
+    protected Rigidbody2D rbody;
     Vector2 threshold;
 	public ParticleSystem explosion;
 
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     public void InitializeSelf()
     {
         if(target != null)
-            EnemyPathRequestManager.RequestPath(transform.position, target.position, PathFound);
+            EnemyPathRequestManager.RequestPath(new PathRequest(transform.position, target.position, PathFound));
         inKnockback = false;
         rbody = GetComponent<Rigidbody2D>();
         threshold = new Vector2(13f, 13f);
@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
 
     protected void RequestNewPath()
     {
-        EnemyPathRequestManager.RequestPath(transform.position, target.position, PathFound);
+        EnemyPathRequestManager.RequestPath(new PathRequest(transform.position, target.position, PathFound));
     }
 
     private void FixedUpdate()

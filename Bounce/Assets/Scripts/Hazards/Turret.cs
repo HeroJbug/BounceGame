@@ -30,7 +30,10 @@ public class Turret : Hazard, IFirable
     {
 		if (Landed)
 		{
-			foreach (string layerName in layersToAffect)
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+                Destroy(this.gameObject);
+            foreach (string layerName in layersToAffect)
 			{
 				if (cooldown <= 0 && shots > 0 && ColInCircle(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit2D hit))
 				{
