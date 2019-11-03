@@ -8,27 +8,25 @@ using System;
 
 public class AStarPathfinding : MonoBehaviour
 {
-    EnemyPathRequestManager reqManager;
     PathfindingGrid grid;
 
     private void Awake()
     {
         grid = this.GetComponent<PathfindingGrid>();
-        reqManager = GetComponent<EnemyPathRequestManager>();
     }
 
-    public void StartFindPath(Vector3 startPos, Vector3 targetPos)
-    {
-        StartCoroutine(FindPath(startPos, targetPos));
-    }
+    //public void StartFindPath(Vector3 startPos, Vector3 targetPos)
+    //{
+    //    StartCoroutine(FindPath(startPos, targetPos));
+    //}
 
-    IEnumerator FindPath(Vector3 startPos, Vector3 targetPos)
+    public void FindPath(PathRequest request, Action<PathResult> callback)
     {
         Vector3[] waypoints = new Vector3[0];
         bool pathFound = false;
 
-        Node startNode = grid.NodePosFromWorldPoint(startPos);
-        Node targetNode = grid.NodePosFromWorldPoint(targetPos);
+        Node startNode = grid.NodePosFromWorldPoint(request.pathStart);
+        Node targetNode = grid.NodePosFromWorldPoint(request.pathEnd);
 
         if (startNode.walkable && targetNode.walkable)
         {
@@ -66,12 +64,12 @@ public class AStarPathfinding : MonoBehaviour
                 }
             }
         }
-        yield return null;
         if(pathFound)
         {
             waypoints = TracePath(startNode, targetNode);
+            pathFound = waypoints.Length > 0;
         }
-        reqManager.FinishedProcessing(waypoints, pathFound);
+        callback(new PathResult(waypoints, pathFound, request.callback));
     }
 
     Vector3[] TracePath(Node startNode, Node endNode)
