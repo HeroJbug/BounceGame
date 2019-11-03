@@ -14,6 +14,7 @@ public enum HazardTypes : int
 
 public abstract class Hazard : MonoBehaviour
 {
+    public float timer;
 	[SerializeField]
 	protected float startingDistance = 100;
 	[SerializeField]

@@ -25,6 +25,9 @@ public class Bomb : Hazard
     {
         if (Landed)
 		{
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+                Destroy(this.gameObject);
             countdownTimer -= Time.deltaTime;
             if(countdownTimer <= 0)
             {

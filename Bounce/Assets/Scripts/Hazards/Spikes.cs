@@ -24,7 +24,10 @@ public class Spikes : Hazard
     {
 		if (Landed) //if the hazard has landed
 		{
-			foreach (string layerName in layersToAffect)
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+                Destroy(this.gameObject);
+            foreach (string layerName in layersToAffect)
 			{
 				if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit2D[] hits))
 				{

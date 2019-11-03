@@ -24,7 +24,10 @@ public class OilSpill : Hazard
     {
         if (Landed)
 		{
-			foreach(string layerName in layersToAffect)
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+                Destroy(this.gameObject);
+            foreach (string layerName in layersToAffect)
 			{
 				List<PlayerMovement> detectedPlayers = new List<PlayerMovement>();
 				if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit2D[] hits))
