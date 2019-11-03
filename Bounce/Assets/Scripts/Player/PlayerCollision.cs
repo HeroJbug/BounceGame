@@ -14,6 +14,7 @@ public class PlayerCollision : MonoBehaviour
     //public GameObject panel;
     public GameObject mainCamera;
 	private SpriteRenderer mr;
+    private Animator anim;
     Rigidbody2D rbody;
 
     PlayerMovement moveRef;
@@ -23,6 +24,7 @@ public class PlayerCollision : MonoBehaviour
         moveRef = this.GetComponent<PlayerMovement>();
 		mr = GetComponent<SpriteRenderer>();
         rbody = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         mainCamera.transform.parent = transform;
     }
 
@@ -48,12 +50,10 @@ public class PlayerCollision : MonoBehaviour
 	{
 		if (hp <= 0)
 		{
-            transform.DetachChildren();
-            transform.position += new Vector3(0, 0, -10);
-            Invoke("NextScene", 2f);
+            StartCoroutine(OnDeath());
         }
 
-		if (invinciblityTime > 0)
+		else if (invinciblityTime > 0)
 		{
 			mr.enabled = !mr.enabled;
 			invinciblityTime -= Time.deltaTime;
@@ -64,6 +64,15 @@ public class PlayerCollision : MonoBehaviour
 			}
 		}
 	}
+
+    IEnumerator OnDeath()
+    {
+        rbody.velocity = Vector2.zero;
+        anim.SetBool("OnDeath", true);
+        yield return new WaitForSeconds(1.3f);
+        transform.DetachChildren();
+        Invoke("NextScene", 2f);
+    }
 
 	public void TakeDamage(float amt)
     {

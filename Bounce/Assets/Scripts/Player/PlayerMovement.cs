@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f, boostSpeed = 40f;
     Vector3 moveVec;
     Rigidbody2D rBody;
-    public float boostTimer = 0.3f;
+    public float boostTimer = 0.4f;
     float boostTimerCounter;
     bool isBoosting;
 	public float boostCooldown;
@@ -32,6 +32,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if we're dead ignore the rest of the work
+        if(mainAnim.GetBool("OnDeath"))
+        {
+            return;
+        }
         moveVec.x = Input.GetAxisRaw("Horizontal");
         moveVec.y = Input.GetAxisRaw("Vertical");
         int currentDir = GetDirThisFrame();
@@ -143,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!isBoosting)
+        if(!mainAnim.GetBool("isBoosting") && !mainAnim.GetBool("OnDeath"))
             rBody.MovePosition(rBody.position + new Vector2(moveVec.x, moveVec.y) * speed * Time.deltaTime);
     }
 
