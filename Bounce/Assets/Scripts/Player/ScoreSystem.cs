@@ -49,7 +49,7 @@ public class ScoreSystem : MonoBehaviour
 
 	public void IncrementScore(int amt)
 	{
-		scoreMultiplier += Mathf.Clamp(scoreMultiplier + multiplierIcr, 0, multLimit);
+		scoreMultiplier += Mathf.Clamp(scoreMultiplier + multiplierIcr, 0, multLimit - 1);
 		int addToScore = Mathf.CeilToInt(amt * ScoreMultiplier);
 		score += addToScore * scoreIncreaseAmt;
 	}
