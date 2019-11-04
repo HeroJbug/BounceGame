@@ -52,6 +52,7 @@ public class Bomb : Hazard
 							}
                         }
                     }
+                    StartCoroutine(Explode());
                     Destroy(this.gameObject);
                 }
             }	
@@ -60,6 +61,12 @@ public class Bomb : Hazard
 		{
 			Falling();
 		}
+    }
+
+    IEnumerator Explode()
+    {
+        GetComponent<Animator>().SetTrigger("OnExplode");
+        yield return new WaitForSeconds(0.5f);
     }
 
 	public void OnDrawGizmos()

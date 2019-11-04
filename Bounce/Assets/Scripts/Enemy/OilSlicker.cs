@@ -42,7 +42,7 @@ public class OilSlicker : Enemy
         float x = Random.Range(-55, 55);
         float y = Random.Range(-55, 55);
 
-        GameObject temp = new GameObject("temp");
+        GameObject temp = new GameObject("OilSlickerTempTarget");
         temp.transform.position = new Vector3(x, y, 0);
 
         prevTarget = temp;

@@ -27,13 +27,14 @@ public class BombEnemy : Enemy
         }
         else
         {
-            Explode();
+            StartCoroutine(Explode());
         }
     }
 
-    private void Explode()
+    IEnumerator Explode()
     {
         rbody.velocity = Vector2.zero;
+        StopCoroutine("FollowPath");
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, radius, Vector2.right, 0, LayerMask.GetMask("Player"));
         if (hits.Length != 0)
         {
@@ -42,9 +43,13 @@ public class BombEnemy : Enemy
                     hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(damage);
         }
         //play animation here
+        GetComponent<Animator>().SetTrigger("OnExplode");
+        yield return new WaitForSeconds(0.5f);
 
         Destroy(gameObject);
     }
+
+
 
     private void TintSprite()
     {
