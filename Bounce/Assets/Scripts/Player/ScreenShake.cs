@@ -29,7 +29,7 @@ public class ScreenShake : MonoBehaviour
 			shakePos = Vector3.zero + Vector3.forward * transform.position.z;
 			if (shakeAmt > 0)
 			{
-				shakePos += new Vector3(Mathf.Lerp(-shakeAmt, shakeAmt, Random.value), Mathf.Lerp(-shakeAmt, shakeAmt, Random.value));
+				shakePos += new Vector3(Mathf.Lerp(-shakeAmt, shakeAmt, Mathf.Round(Random.value)), Mathf.Lerp(-shakeAmt, shakeAmt, Mathf.Round(Random.value)));
 
 				shakeAmt -= shakeDecreaseSpeed * Time.deltaTime;
 

@@ -54,7 +54,8 @@ public class PlayerCollision : MonoBehaviour
 	{
 		if (hp <= 0)
 		{
-            StartCoroutine(OnDeath());
+			GetComponent<PlayerMovement>().dashIndicator.SetActive(false);
+			StartCoroutine(OnDeath());
         }
 
 		else if (invinciblityTime > 0)

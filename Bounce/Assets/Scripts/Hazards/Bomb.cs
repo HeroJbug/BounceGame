@@ -39,7 +39,7 @@ public class Bomb : Hazard
                         {
                             //TODO: is there a cleaner way to do this?
                             //damage player by damageToDeal
-                            Debug.Log("KAAAAAAAAA-BOOOOOOOOOOOOOMMMMM!!!!!!!!!!!!!!!!");
+                            //Debug.Log("KAAAAAAAAA-BOOOOOOOOOOOOOMMMMM!!!!!!!!!!!!!!!!");
                             if(hit.rigidbody.gameObject.GetComponent<PlayerCollision>() != null)
                             {
                                 hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(damageToDeal);
