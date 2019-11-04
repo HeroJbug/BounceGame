@@ -15,6 +15,8 @@ public class Turret : Hazard, IFirable
 	protected int shots;
 	protected float cooldown;
 	[SerializeField]
+	protected GameObject turretBase;
+	[SerializeField]
 	protected bool drawGizmos = true;
 
 	// Start is called before the first frame update
@@ -40,6 +42,9 @@ public class Turret : Hazard, IFirable
 					Vector3 firDir = hit.transform.position - this.transform.position;
 					firDir.Normalize();
 
+					float newZrot = Vector2.SignedAngle(Vector2.right, firDir);
+					transform.eulerAngles = Vector3.forward * newZrot;
+
 					Projectile proj = Instantiate<Projectile>(projectilePrefab, transform.position + (Vector3)bulletOffset + Vector3.up * -1.57f, Quaternion.identity);
 					proj.Direction = firDir;
 					proj.Parent = this;
@@ -58,6 +63,8 @@ public class Turret : Hazard, IFirable
 		{
 			Falling();
 		}
+
+		turretBase.transform.eulerAngles = Vector3.zero;
 	}
 
 	public void OnDrawGizmos()
