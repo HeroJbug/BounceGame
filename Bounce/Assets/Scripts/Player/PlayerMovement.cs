@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         {
             aim.Normalize();
             aim *= 25f;
-            dashIndicator.transform.localPosition = Vector2.Lerp(dashIndicator.transform.localPosition, aim, 0.05f);
+            dashIndicator.transform.localPosition = Vector2.Lerp(dashIndicator.transform.localPosition, aim, 0.1f);
         }
     }
 

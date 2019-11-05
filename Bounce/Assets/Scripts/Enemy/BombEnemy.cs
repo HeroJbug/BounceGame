@@ -23,7 +23,8 @@ public class BombEnemy : Enemy
         {
             countdownTimer -= Time.deltaTime;
             TintSprite();
-            RequestNewPath();
+            if(!GetInKnockback())
+                RequestNewPath();
         }
         else
         {
