@@ -17,8 +17,9 @@ public class BasicEnemy : Enemy
         base.Update();
         if (recalculatePathTimer <= 0)
         {
-            RequestNewPath();
-            recalculatePathTimer = 0.5f;
+            if(!GetInKnockback())
+                RequestNewPath();
+            recalculatePathTimer = 0.2f;
         }
         else
         {

@@ -8,6 +8,7 @@ public class OilSlicker : Enemy
     public float oilSlickSpawnTimer = 5f;
     private float oilSpawnTimerInternal;
     private GameObject prevTarget;
+    private Queue<GameObject> last3Slicks;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class OilSlicker : Enemy
         target = PickNewRandomTargetLocation();
         base.InitializeSelf();
         oilSpawnTimerInternal = oilSlickSpawnTimer;
+        last3Slicks = new Queue<GameObject>();
     }
 
     // Update is called once per frame
@@ -51,7 +53,17 @@ public class OilSlicker : Enemy
 
     private void CreateOilSlick()
     {
-        Instantiate(oilSlick, transform.position, Quaternion.identity);
-        print("bloop");
+        GameObject newSlick = Instantiate(oilSlick, transform.position, Quaternion.identity);
+        last3Slicks.Enqueue(newSlick);
+        RemoveExtraneousSlicks();
+    }
+
+    private void RemoveExtraneousSlicks()
+    {
+        if(last3Slicks.Count > 3)
+        {
+            GameObject toRemove = last3Slicks.Dequeue();
+            Destroy(toRemove);
+        }
     }
 }

@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator FollowPath()
     {
-        bool followingPath = true;
+        bool followingPath = !inKnockback;
         int pathIdx = 0;
         //transform.right = target.position - transform.position;
         while (followingPath)
