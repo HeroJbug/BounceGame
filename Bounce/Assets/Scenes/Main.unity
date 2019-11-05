@@ -448,8 +448,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6278266910782769423, guid: 02d34a682e647cb45a3d8007b845c9bc,
         type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910782769423, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910782769423, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910782769423, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910782769423, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -761.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910782769423, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -30.100098
+      value: 415.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910782769417, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910782769417, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02d34a682e647cb45a3d8007b845c9bc, type: 3}
@@ -3136,6 +3171,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008086593049601000, guid: f576f5b8b036cce4887bead017189661,
+        type: 3}
+      propertyPath: scoreDecreaseSpeed
+      value: 0.04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f576f5b8b036cce4887bead017189661, type: 3}

@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -685, y: 461}
+  m_AnchoredPosition: {x: -685, y: 355}
   m_SizeDelta: {x: 59.1, y: 64.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &96525225213812901
@@ -108,7 +108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -626, y: 478.84995}
+  m_AnchoredPosition: {x: -626, y: 372.84985}
   m_SizeDelta: {x: 72.5, y: 65.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2119424251452733243
@@ -258,7 +258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27.55, y: 12.7}
+  m_AnchoredPosition: {x: 27.55, y: 25.599981}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2288659380979938104
@@ -318,7 +318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -781.69006, y: 469.05997}
+  m_AnchoredPosition: {x: -781.69006, y: 375.95987}
   m_SizeDelta: {x: 117.25, y: 48.625}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6278266909266335572
@@ -393,7 +393,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -782.69006, y: 469.05997}
+  m_AnchoredPosition: {x: -782.69006, y: 375.95987}
   m_SizeDelta: {x: 127, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6278266910064444937
@@ -479,7 +479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -896, y: 488}
+  m_AnchoredPosition: {x: -896, y: 394.89993}
   m_SizeDelta: {x: 96.375, y: 83.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6278266910110688611
@@ -679,7 +679,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 198.81, y: -48.225006}
+  m_AnchoredPosition: {x: 198.81, y: -32.5}
   m_SizeDelta: {x: 149.93604, y: 25.057007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6278266910782769418
@@ -765,7 +765,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -761.19006, y: 508.74997}
+  m_AnchoredPosition: {x: -761.19006, y: 415.64987}
   m_SizeDelta: {x: 158.25, y: 30.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6278266911296707650
@@ -840,7 +840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -872.9, y: 408.6}
+  m_AnchoredPosition: {x: -872.9, y: 322}
   m_SizeDelta: {x: 142.5, y: 55.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1692540312803655217
@@ -931,7 +931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -626, y: 478.85}
+  m_AnchoredPosition: {x: -626, y: 372.8499}
   m_SizeDelta: {x: 72.5, y: 65.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &629416046859899806
@@ -1126,16 +1126,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6278266910289570268}
     m_Modifications:
-    - target: {fileID: 3073794871670245093, guid: ace94937d772aa2439cbeacfdb3273c9,
-        type: 3}
-      propertyPath: m_Name
-      value: QuitButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 3073794871670245093, guid: ace94937d772aa2439cbeacfdb3273c9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3073794871670245090, guid: ace94937d772aa2439cbeacfdb3273c9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1240,6 +1230,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073794871670245093, guid: ace94937d772aa2439cbeacfdb3273c9,
+        type: 3}
+      propertyPath: m_Name
+      value: QuitButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073794871670245093, guid: ace94937d772aa2439cbeacfdb3273c9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ace94937d772aa2439cbeacfdb3273c9, type: 3}
