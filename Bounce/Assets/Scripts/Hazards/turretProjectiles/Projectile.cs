@@ -73,7 +73,7 @@ public class Projectile : MonoBehaviour
 				}
 			}
 
-			if (LayerMask.LayerToName(hit.collider.gameObject.layer) == "Wall")
+			if (LayerMask.LayerToName(hit.collider.gameObject.layer) == "Wall" || LayerMask.LayerToName(hit.collider.gameObject.layer) == "Hazard")
 			{
 				destroy = true;
 			}

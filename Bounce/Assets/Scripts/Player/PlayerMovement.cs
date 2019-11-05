@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f, boostSpeed = 40f;
+	[SerializeField]
     Vector3 moveVec;
     Rigidbody2D rBody;
     public float boostTimer = 0.4f;
@@ -17,7 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private int dir;
     private Camera cam;
     public GameObject dashIndicator;
-	public Vector2 SlipVec;
+	public Vector2 slipVec;
+	public float friction = 0.25f;
+	public float slipSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -99,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 boostVec = dashIndicator.transform.position - transform.position;
         boostVec.Normalize();
         ChooseCorrectBoostAnim(boostVec);
-        rBody.AddForce(boostSpeed * boostVec, ForceMode2D.Impulse);
+        rBody.AddForce((boostSpeed * boostVec) + (slipVec * slipSpeed), ForceMode2D.Impulse);
         isBoosting = true;
         boostTimerCounter = boostTimer;
     }
@@ -151,19 +154,25 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!mainAnim.GetBool("isBoosting") && !mainAnim.GetBool("OnDeath"))
 		{
-			rBody.MovePosition(rBody.position + SlipVec + new Vector2(moveVec.x, moveVec.y) * speed * Time.deltaTime);
+			rBody.MovePosition(rBody.position + slipVec * slipSpeed * Time.deltaTime + new Vector2(moveVec.x, moveVec.y) * speed * Time.deltaTime);
 		}
-		else if (mainAnim.GetBool("isBoosting") && SlipVec != Vector2.zero)
-		{
-			rBody.MovePosition(rBody.position + SlipVec);
-		}
-    }
+
+		slipSpeed = Mathf.Clamp(slipSpeed - friction * Time.deltaTime, 0, slipSpeed);
+	}
 
 	public float BoostCooldownCounter
 	{
 		get
 		{
 			return boostCooldownCounter;
+		}
+	}
+
+	public Vector3 MoveVector
+	{
+		get
+		{
+			return moveVec;
 		}
 	}
 }
