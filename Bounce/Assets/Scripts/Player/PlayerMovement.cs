@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private Camera cam;
     public GameObject dashIndicator;
 	public Vector2 slipVec;
-	public float friction = 0.25f;
+	public float frictionalAcceleration = 0.25f;
 	public float slipSpeed;
     // Start is called before the first frame update
     void Start()
@@ -157,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
 			rBody.MovePosition(rBody.position + slipVec * slipSpeed * Time.deltaTime + new Vector2(moveVec.x, moveVec.y) * speed * Time.deltaTime);
 		}
 
-		slipSpeed = Mathf.Clamp(slipSpeed - friction * Time.deltaTime, 0, slipSpeed);
+		slipSpeed = Mathf.Clamp(slipSpeed - frictionalAcceleration * Time.deltaTime, 0, slipSpeed);
 	}
 
 	public float BoostCooldownCounter
