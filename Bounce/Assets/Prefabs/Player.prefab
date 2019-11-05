@@ -195,11 +195,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3754600514c49478980a306b246fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
+  speed: 30
   boostSpeed: 80
+  moveVec: {x: 0, y: 0, z: 0}
   boostTimer: 0.4
   boostCooldown: 0.25
   dashIndicator: {fileID: 1965409512}
+  slipVec: {x: 0, y: 0}
+  frictionalAcceleration: 3.25
+  slipSpeed: 0
 --- !u!50 &5117352434602345500
 Rigidbody2D:
   serializedVersion: 4
@@ -363,5 +367,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeDecreaseSpeed: 18.75
-  shakeAmtMax: 25
+  shakeAmtMax: 20
   ShakeSpeed: 2.5

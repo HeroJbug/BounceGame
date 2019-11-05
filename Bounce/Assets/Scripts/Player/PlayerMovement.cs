@@ -21,8 +21,9 @@ public class PlayerMovement : MonoBehaviour
 	public Vector2 slipVec;
 	public float frictionalAcceleration = 0.25f;
 	public float slipSpeed;
-    // Start is called before the first frame update
-    void Start()
+	Vector2 boostVec;
+	// Start is called before the first frame update
+	void Start()
     {
         mainAnim = GetComponent<Animator>();
         moveVec = new Vector3();
@@ -99,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Boost()
     {
-        Vector2 boostVec = dashIndicator.transform.position - transform.position;
+        boostVec = dashIndicator.transform.position - transform.position;
         boostVec.Normalize();
         ChooseCorrectBoostAnim(boostVec);
         rBody.AddForce((boostSpeed * boostVec) + (slipVec * slipSpeed), ForceMode2D.Impulse);
