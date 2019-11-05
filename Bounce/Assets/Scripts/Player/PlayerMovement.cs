@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private int dir;
     private Camera cam;
     public GameObject dashIndicator;
+	public Vector2 SlipVec;
     // Start is called before the first frame update
     void Start()
     {
@@ -149,7 +150,13 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if(!mainAnim.GetBool("isBoosting") && !mainAnim.GetBool("OnDeath"))
-            rBody.MovePosition(rBody.position + new Vector2(moveVec.x, moveVec.y) * speed * Time.deltaTime);
+		{
+			rBody.MovePosition(rBody.position + SlipVec + new Vector2(moveVec.x, moveVec.y) * speed * Time.deltaTime);
+		}
+		else if (mainAnim.GetBool("isBoosting") && SlipVec != Vector2.zero)
+		{
+			rBody.MovePosition(rBody.position + SlipVec);
+		}
     }
 
 	public float BoostCooldownCounter

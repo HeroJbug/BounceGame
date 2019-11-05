@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToDeal: 1
-  speed: 5
+  speed: 10
   acceleration: 0
   lifeTime: 3
   hitRadius: 0.44

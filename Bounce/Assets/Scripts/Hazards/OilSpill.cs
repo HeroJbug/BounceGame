@@ -8,7 +8,8 @@ public class OilSpill : Hazard
 	protected float acceleration;
 	[SerializeField]
 	protected bool drawGizmos = true;
-	protected Dictionary<PlayerMovement, float> defaultSpeeds;
+	protected Dictionary<PlayerMovement, float> currentSlipSpeed;
+	protected Dictionary<PlayerMovement, Vector2> forceDirs;
 	protected List<PlayerMovement> lastDetectedPlayers;
 
 	// Start is called before the first frame update
@@ -16,7 +17,8 @@ public class OilSpill : Hazard
     {
 		Initialize();
 		type = HazardTypes.OILSPILL;
-		defaultSpeeds = new Dictionary<PlayerMovement, float>();
+		currentSlipSpeed = new Dictionary<PlayerMovement, float>();
+		forceDirs = new Dictionary<PlayerMovement, Vector2>();
     }
 
     // Update is called once per frame
@@ -37,15 +39,20 @@ public class OilSpill : Hazard
 					{
 						PlayerMovement player = hit.collider.gameObject.GetComponent<PlayerMovement>();
 						detectedPlayers.Add(player);
-						if (!defaultSpeeds.ContainsKey(player)) { defaultSpeeds.Add(player, player.speed); }
+						if (!currentSlipSpeed.ContainsKey(player))
+						{
+							currentSlipSpeed.Add(player, player.PlayerIsBoosting() ? player.speed : player.boostSpeed);
+							Vector2 distance = hit.point - (Vector2)transform.position;
+							distance.Normalize();
+							distance *= -1;
+							forceDirs.Add(player, distance);
+						}
 
-						player.speed += acceleration;
+						currentSlipSpeed[player] += acceleration;
 
-						Vector2 distance = hit.point - (Vector2)transform.position;
-						distance.Normalize();
-						distance *= -1;
+						player.SlipVec = (Vector3)(forceDirs[player] * acceleration);
 
-						player.GetComponent<Rigidbody2D>().MovePosition(player.transform.position + (Vector3)(distance * player.speed) * Time.deltaTime);
+						//player.GetComponent<Rigidbody2D>().AddForce(distance * (acceleration * player.GetComponent<Rigidbody2D>().mass));
 					}
 				}
 
@@ -55,8 +62,8 @@ public class OilSpill : Hazard
 					{
 						foreach (PlayerMovement player in lastDetectedPlayers)
 						{
-							player.speed = defaultSpeeds[player];
-							defaultSpeeds.Remove(player);
+							currentSlipSpeed.Remove(player);
+							player.SlipVec = Vector3.zero;
 						}
 					}
 					else
@@ -65,8 +72,9 @@ public class OilSpill : Hazard
 						{
 							if (!detectedPlayers.Contains(player))
 							{
-								player.speed = defaultSpeeds[player];
-								defaultSpeeds.Remove(player);
+								currentSlipSpeed.Remove(player);
+								forceDirs.Remove(player);
+								player.SlipVec = Vector3.zero;
 							}
 						}
 					}
