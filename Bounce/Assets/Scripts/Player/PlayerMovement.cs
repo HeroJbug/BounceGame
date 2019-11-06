@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f, boostSpeed = 40f;
+	public int joyPadIndex;
+	public float speed = 5f, boostSpeed = 40f;
 	[SerializeField]
     Vector3 moveVec;
     Rigidbody2D rBody;
@@ -22,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
 	public float frictionalAcceleration = 0.25f;
 	public float slipSpeed;
 	Vector2 boostVec;
+	Vector2 aim;
+
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -32,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         isBoosting = false;
         mr = GetComponent<SpriteRenderer>();
         cam = GetComponentInChildren<Camera>();
+		aim = Vector2.up;
     }
 
     // Update is called once per frame
@@ -46,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
         moveVec.y = Input.GetAxisRaw("Vertical");
         int currentDir = GetDirThisFrame();
         mainAnim.SetInteger("Direction", currentDir);
-        UpdateAimPos();
         if (Input.GetButtonDown("Dash") && boostCooldownCounter <= 0)
         {
             Boost();
@@ -83,19 +87,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateAimPos()
     {
-        //calculate based on mouse first then controller so that controller overrides if necessary
-        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 aim = mousePos - (Vector2)transform.position;
-        Vector2 lookDir = mousePos - rBody.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        if(Mathf.Abs(Input.GetAxisRaw("Aim_Horizontal")) > 0.1 || Mathf.Abs(Input.GetAxisRaw("Aim_Vertical")) > 0.1)
-            aim = new Vector2(Input.GetAxis("Aim_Horizontal"), Input.GetAxis("Aim_Vertical"));
-        if(aim.magnitude > 0.0f)
-        {
-            aim.Normalize();
-            aim *= 25f;
-            dashIndicator.transform.localPosition = Vector2.Lerp(dashIndicator.transform.localPosition, aim, 0.1f);
-        }
+		if (Input.GetJoystickNames().Length == 0)
+		{
+			//calculate aim based on mouse
+			Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+			aim = mousePos - (Vector2)transform.position;
+			aim.Normalize();
+			//Vector2 lookDir = mousePos - rBody.position;
+			//lookDir.Normalize();
+			//float angle = Vector2.Angle(Vector2.right, lookDir);//Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+		}
+		else 
+		{
+			float joypadX = Input.GetAxis("Aim_Horizontal");
+			float joypadY = Input.GetAxis("Aim_Vertical");
+
+			aim = new Vector2(joypadX == 0 ? aim.x : joypadX, joypadY == 0 ? aim.y : joypadY);
+			aim.Normalize();
+		}
+
+		dashIndicator.transform.localPosition = aim * 25;
     }
 
     private void Boost()
@@ -153,9 +164,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!mainAnim.GetBool("isBoosting") && !mainAnim.GetBool("OnDeath"))
+		UpdateAimPos();
+
+		if (!mainAnim.GetBool("isBoosting") && !mainAnim.GetBool("OnDeath"))
 		{
-			rBody.MovePosition(rBody.position + slipVec * slipSpeed * Time.deltaTime + new Vector2(moveVec.x, moveVec.y) * speed * Time.deltaTime);
+			rBody.MovePosition(rBody.position + slipVec * slipSpeed * Time.deltaTime + (Vector2)moveVec * speed * Time.deltaTime);
 		}
 
 		slipSpeed = Mathf.Clamp(slipSpeed - frictionalAcceleration * Time.deltaTime, 0, slipSpeed);
@@ -175,5 +188,12 @@ public class PlayerMovement : MonoBehaviour
 		{
 			return moveVec;
 		}
+	}
+
+	public void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+
+		Gizmos.DrawLine(transform.position, transform.position + (Vector3)aim * 25);
 	}
 }
