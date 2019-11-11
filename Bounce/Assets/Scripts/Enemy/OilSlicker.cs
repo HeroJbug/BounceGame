@@ -23,7 +23,7 @@ public class OilSlicker : Enemy
     public override void Update()
     {
         base.Update();
-        if(oilSpawnTimerInternal <= 0)
+        if(oilSpawnTimerInternal <= 0 && !GetInKnockback())
         {
             CreateOilSlick();
             oilSpawnTimerInternal = oilSlickSpawnTimer;

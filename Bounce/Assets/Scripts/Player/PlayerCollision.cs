@@ -42,10 +42,20 @@ public class PlayerCollision : MonoBehaviour
             }
             else
             {
-                TakeDamage(enemyDamage);
-                Destroy(collision.gameObject);
-				ScoreSystem.system.ResetScore();
-				ss.StartShake();
+                //kinda inefficient but meh
+                if (!collision.gameObject.GetComponent<TurtleEnemy>())
+                {
+                    TakeDamage(enemyDamage);
+                    Destroy(collision.gameObject);
+                }
+                else
+                {
+                    if(!collision.gameObject.GetComponent<TurtleEnemy>().inHazardMode)
+                    {
+                        TakeDamage(enemyDamage);
+                        Destroy(collision.gameObject);
+                    }
+                }
             }
         }
     }
@@ -81,7 +91,9 @@ public class PlayerCollision : MonoBehaviour
 
 	public void TakeDamage(float amt)
     {
-		if (invinciblityTime <= 0)
+        ScoreSystem.system.ResetScore();
+        ss.StartShake();
+        if (invinciblityTime <= 0)
 		{
 			hp -= amt;
 			invinciblityTime = maxInvincibilitTime;

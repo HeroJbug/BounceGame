@@ -1293,6 +1293,7 @@ MonoBehaviour:
   - {fileID: 5300961001618834294, guid: 13b1e3e5996cb174ab47feca911e405f, type: 3}
   - {fileID: 9156914789500585972, guid: e6e7f2d1ae0da5d4083216dc4e31d2bf, type: 3}
   - {fileID: 3305244991801049529, guid: 062e61edcb02d514180a4f1aa00e82f8, type: 3}
+  - {fileID: 1465668882968339555, guid: 4687b07a4c6d84c47b612372d58474ed, type: 3}
   player: {fileID: 566293457}
   playerMask:
     serializedVersion: 2
@@ -1332,6 +1333,7 @@ MonoBehaviour:
   - {fileID: 5300961001618834294, guid: 13b1e3e5996cb174ab47feca911e405f, type: 3}
   - {fileID: 9156914789500585972, guid: e6e7f2d1ae0da5d4083216dc4e31d2bf, type: 3}
   - {fileID: 3305244991801049529, guid: 062e61edcb02d514180a4f1aa00e82f8, type: 3}
+  - {fileID: 1465668882968339555, guid: 4687b07a4c6d84c47b612372d58474ed, type: 3}
   player: {fileID: 566293457}
   playerMask:
     serializedVersion: 2
