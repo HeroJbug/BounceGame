@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f5ea6eb80172c42b627d7e9018a9e3, type: 3}
+  m_Name: BasicAndOilSlickers
+  m_EditorClassIdentifier: 
+  enemyTypesToCounts:
+  - enemyType: {fileID: 5300961001618834294, guid: 13b1e3e5996cb174ab47feca911e405f,
+      type: 3}
+    enemyCount: 15
+  - enemyType: {fileID: 9156914789500585972, guid: e6e7f2d1ae0da5d4083216dc4e31d2bf,
+      type: 3}
+    enemyCount: 5
