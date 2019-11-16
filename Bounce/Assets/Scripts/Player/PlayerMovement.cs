@@ -114,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
         boostVec = dashIndicator.transform.position - transform.position;
         boostVec.Normalize();
         ChooseCorrectBoostAnim(boostVec);
-        rBody.AddForce((boostSpeed * boostVec) + (slipVec * slipSpeed), ForceMode2D.Impulse);
+        rBody.AddForce((boostSpeed * boostVec), ForceMode2D.Impulse);
         isBoosting = true;
         boostTimerCounter = boostTimer;
     }
@@ -170,6 +170,12 @@ public class PlayerMovement : MonoBehaviour
 		{
 			rBody.MovePosition(rBody.position + slipVec * slipSpeed * Time.deltaTime + (Vector2)moveVec * speed * Time.deltaTime);
 		}
+		else if (mainAnim.GetBool("isBoosting"))
+		{
+			rBody.AddForce(slipVec * slipSpeed);
+		}
+
+		//Debug.Log(rBody.velocity);
 
 		slipSpeed = Mathf.Clamp(slipSpeed - frictionalAcceleration * Time.deltaTime, 0, slipSpeed);
 	}

@@ -91,14 +91,16 @@ public class PlayerCollision : MonoBehaviour
 
 	public void TakeDamage(float amt)
     {
-        ScoreSystem.system.ResetScore();
-        ss.StartShake();
-        if (invinciblityTime <= 0)
+		if (hp > 0)
 		{
-			hp -= amt;
-			invinciblityTime = maxInvincibilitTime;
+			ScoreSystem.system.ResetScore();
+			ss.StartShake();
+			if (invinciblityTime <= 0)
+			{
+				hp -= amt;
+				invinciblityTime = maxInvincibilitTime;
+			}
 		}
-		
     }
 
     public void NextScene()

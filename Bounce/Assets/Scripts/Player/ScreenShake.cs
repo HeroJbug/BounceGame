@@ -5,14 +5,12 @@ using UnityEngine;
 public class ScreenShake : MonoBehaviour
 {
 	[SerializeField]
-	private float shakeDecreaseSpeed = 0.35f;
-	[SerializeField]
 	private float shakeAmtMax = 5;
-	private float shakeAmt;
-	private PlayerCollision player;
 	[SerializeField]
-	private float ShakeSpeed = 2.5f;
-	private Vector3 shakePos;
+	private float shakeTime = 0.5f;
+	private float shakeAmt;
+	private float time;
+	private PlayerCollision player;
 
 	// Start is called before the first frame update
 	void Start()
@@ -24,27 +22,20 @@ public class ScreenShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (player.hp > 0)
+		if (time > 0)
 		{
-			shakePos = Vector3.zero + Vector3.forward * transform.position.z;
-			if (shakeAmt > 0)
-			{
-				shakePos += new Vector3(Mathf.Lerp(-shakeAmt, shakeAmt, Mathf.Round(Random.value)), Mathf.Lerp(-shakeAmt, shakeAmt, Mathf.Round(Random.value)));
+			time -= Time.deltaTime;
 
-				shakeAmt -= shakeDecreaseSpeed * Time.deltaTime;
-
-			}
-			else
-			{
-				shakePos = Vector3.zero + Vector3.forward * transform.position.z;
-			}
-
-			transform.localPosition = shakePos;
+			time = time < 0 ? 0 : time;
 		}
-    }
+
+		shakeAmt = shakeAmtMax * (time / shakeTime);
+
+		transform.localPosition = (Vector3)(Random.insideUnitCircle * shakeAmt) + Vector3.forward * transform.position.z;
+	}
 
 	public void StartShake()
 	{
-		shakeAmt = shakeAmtMax;
+		time = shakeTime;
 	}
 }

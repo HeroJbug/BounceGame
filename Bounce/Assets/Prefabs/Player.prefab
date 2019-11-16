@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3754600514c49478980a306b246fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joyPadIndex: 0
   speed: 30
   boostSpeed: 80
   moveVec: {x: 0, y: 0, z: 0}
@@ -366,6 +367,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20c5c2fc5ecf9949a4c47ee750caf72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeDecreaseSpeed: 18.75
   shakeAmtMax: 20
-  ShakeSpeed: 2.5
+  shakeTime: 0.5
