@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class DashInFromRight : MonoBehaviour
 {
-    public float duration,startX,endX;
+    public float startDelay,duration,startX,endX;
     bool finished = true;
     float timePassed = 0f;
 
     private void Start()
     {
         transform.position = new Vector3(startX, transform.position.y, transform.position.z);
-        Invoke("StartTimer", 0.5f);
+        Invoke("StartTimer", startDelay);
     }
 
     public void StartTimer()
