@@ -17,22 +17,9 @@ public class SpawnerManager : MonoBehaviour
     public float spawnTime = 5f;
     float spawnTimeCounter;
     private Stack<GameObject> enemiesStack;
-    //can make this a hashset later for more efficiency if need be
-    private List<GameObject> currentWaveEnemies;
 
     private bool waveFinished = true;
-    public GameObject nextWaveApproachingUI;
-
-    private void OnEnable()
-    {
-        Enemy.EnemyDeathEvent += RemoveDeadEnemies;
-    }
-
-    private void OnDisable()
-    {
-        Enemy.EnemyDeathEvent -= RemoveDeadEnemies;
-    }
-
+    //private bool roundFinished = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,29 +70,22 @@ public class SpawnerManager : MonoBehaviour
             if(enemiesStack.Count > 0)
             {
                 GameObject toSpawn = enemiesStack.Pop();
-                GameObject spawned = s.SpawnEnemy(toSpawn, player);
-                currentWaveEnemies.Add(spawned);
+                s.SpawnEnemy(toSpawn, player);
             }
-        }
-    }
-
-    private void RemoveDeadEnemies(GameObject e)
-    {
-        if(currentWaveEnemies.Count > 1)
-            currentWaveEnemies.Remove(e);
-        else
-        {
-            currentWaveEnemies.Remove(e);
-            StartCoroutine(StartNextWave());
+            //otherwise Start the next wave
+            else
+            {
+                waveFinished = true;
+                StartCoroutine(StartNextWave());
+            }
         }
     }
 
     private IEnumerator StartNextRound()
     {
         print("NEXT ROUND STARTED");
-        //turn on UI element
         yield return new WaitForSeconds(timeBetweenRounds);
-        //turn off UI element
+        //Link UI update here
 
         currRound = rounds[roundIdx];
         waveIdx = 0;
@@ -118,11 +98,11 @@ public class SpawnerManager : MonoBehaviour
 
     private IEnumerator StartNextWave()
     {
-        nextWaveApproachingUI.SetActive(true);
+        print("NEXT WAVE STARTED");
         yield return new WaitForSeconds(timeBetweenWaves);
         if(waveIdx < currRound.wavesInRound.Count)
         {
-            nextWaveApproachingUI.SetActive(false);
+            //link UI update here
 
             currWaveInRound = currRound.wavesInRound[waveIdx];
             waveIdx++;
@@ -138,7 +118,6 @@ public class SpawnerManager : MonoBehaviour
     private void FillEnemyStack()
     {
         enemiesStack = new Stack<GameObject>();
-        currentWaveEnemies = new List<GameObject>();
         foreach(TypeToCount e in currWaveInRound.enemyTypesToCounts)
         {
             for(int i = 0; i < e.enemyCount; i++)

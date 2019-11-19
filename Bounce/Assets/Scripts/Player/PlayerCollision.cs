@@ -46,14 +46,14 @@ public class PlayerCollision : MonoBehaviour
                 if (!collision.gameObject.GetComponent<TurtleEnemy>())
                 {
                     TakeDamage(enemyDamage);
-                    collision.gameObject.GetComponent<Enemy>().OnCollisionDeath();
+                    Destroy(collision.gameObject);
                 }
                 else
                 {
                     if(!collision.gameObject.GetComponent<TurtleEnemy>().inHazardMode)
                     {
                         TakeDamage(enemyDamage);
-                        collision.gameObject.GetComponent<Enemy>().OnCollisionDeath();
+                        Destroy(collision.gameObject);
                     }
                 }
             }

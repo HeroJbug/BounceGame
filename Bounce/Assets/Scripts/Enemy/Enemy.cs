@@ -20,9 +20,6 @@ public class Enemy : MonoBehaviour
     Vector2 threshold;
 	public ParticleSystem explosion;
 
-    public delegate void OnEnemyDeath(GameObject e);
-    public static event OnEnemyDeath EnemyDeathEvent;
-
     private void Start()
     {
         InitializeSelf();
@@ -136,8 +133,7 @@ public class Enemy : MonoBehaviour
 	{
 		Instantiate(explosion, transform.position, Quaternion.identity).transform.Rotate(new Vector3(180, 0, 0));
 		ScoreSystem.system.IncrementScore(scoreAmt);
-        EnemyDeathEvent(this.gameObject);
-        Destroy(this.gameObject);
+		Destroy(this.gameObject);
 	}
 
 	public void OnDestroy()

@@ -29,7 +29,7 @@ public class EnemyCollision : MonoBehaviour
         Instantiate(explosion, collidePt, Quaternion.identity).transform.Rotate(new Vector3(180, 0, 0));
 		//ScoreSystem.system.IncrementScore();
 		Debug.Log("OnDeath");
-        Destroy(this.gameObject);
+		Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
