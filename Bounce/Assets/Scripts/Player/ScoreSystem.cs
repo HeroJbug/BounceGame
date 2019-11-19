@@ -9,7 +9,7 @@ public class ScoreSystem : MonoBehaviour
 	[SerializeField]
 	private float multiplierIcr;
 	[SerializeField]
-	private int score;
+	private static int score;
 	[SerializeField]
 	private float scoreDecreaseSpeed;
 	[SerializeField]
@@ -74,4 +74,5 @@ public class ScoreSystem : MonoBehaviour
 			return score;
 		}
 	}
+    public static int GetScore() => score;
 }
