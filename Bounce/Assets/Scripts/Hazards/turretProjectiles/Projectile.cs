@@ -61,7 +61,7 @@ public class Projectile : MonoBehaviour
 					//damage player by damageToDeal
 					if (hit.rigidbody.gameObject.GetComponent<PlayerCollision>() != null)
 					{
-						hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(damageToDeal);
+						hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(damageToDeal, false);
 						destroy = true;
 					}
 					//destroy enemies enemies

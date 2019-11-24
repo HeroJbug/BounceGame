@@ -41,7 +41,7 @@ public class BombEnemy : Enemy
         {
             foreach(RaycastHit2D hit in hits)
                 if(hit.rigidbody.gameObject.GetComponent<PlayerCollision>() != null)
-                    hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(damage);
+                    hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(damage, false);
         }
         //play animation here
         GetComponent<Animator>().SetTrigger("OnExplode");

@@ -36,7 +36,7 @@ public class Spikes : Hazard
 						//damage player by damageToDeal
 						if (hit.rigidbody.gameObject.GetComponent<PlayerCollision>() != null)
 						{
-							hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(damageToDeal);
+							hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(damageToDeal, false);
 						}
 						//destroy enemies enemies
 						if (hit.rigidbody.gameObject.GetComponent<Enemy>() != null)
