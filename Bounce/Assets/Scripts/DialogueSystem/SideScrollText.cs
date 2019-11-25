@@ -15,11 +15,16 @@ public class SideScrollText : MonoBehaviour
 	public float TimeTillProgess { get; set; }
 	private float ttp_counter;
 	private bool canProgress = false;
+	public bool playTalkSound;
+	public string talkSoundName;
+	private AudioSource parentSource;
 	
 	// Start is called before the first frame update
     void Start()
     {
 		textObj = GetComponent<Text>();
+
+		parentSource = GetComponentInParent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,12 +39,18 @@ public class SideScrollText : MonoBehaviour
 
 		if (Mathf.RoundToInt(charsToDisplay) != textToPlace.Length)
 		{
+			if (playTalkSound && !parentSource.isPlaying)
+			{
+				SoundSystem.system.PlaySFXLooped(parentSource, talkSoundName);
+			}
+
 			charsToDisplay = Mathf.Clamp(charsToDisplay + (textSpeed * Time.deltaTime), 0, textToPlace.Length);
 			textObj.text = textToPlace.Substring(0, Mathf.RoundToInt(charsToDisplay));
 
 			if (ProgressDialogue && Mathf.RoundToInt(charsToDisplay) == textToPlace.Length)
 			{
 				ttp_counter = TimeTillProgess;
+				SoundSystem.system.StopSFXLooped(parentSource);
 				canProgress = true;
 			}
 		}

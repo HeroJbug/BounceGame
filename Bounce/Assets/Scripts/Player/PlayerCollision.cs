@@ -89,7 +89,7 @@ public class PlayerCollision : MonoBehaviour
         yield return new WaitForSeconds(1.3f);
         transform.DetachChildren();
 		SoundSystem.system.StopMusic();
-		SoundSystem.system.PlaySFXStopLooped(source);
+		SoundSystem.system.StopSFXLooped(source);
 		SoundSystem.system.PlaySFX(source, "PlayerDeath", 1);
         Invoke("NextScene", 2f);
     }

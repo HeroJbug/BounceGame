@@ -49,7 +49,6 @@ public class SoundSystem : MonoBehaviour
 
 	public void PlayMusic(string name)
 	{
-		source.volume = 1;
 		source.clip = musicClips[name];
 
 		source.loop = true;
@@ -112,7 +111,7 @@ public class SoundSystem : MonoBehaviour
 		_as.loop = true;
 	}
 
-	public void PlaySFXStopLooped(AudioSource _as)
+	public void StopSFXLooped(AudioSource _as)
 	{
 		_as.Stop();
 	}
@@ -121,6 +120,7 @@ public class SoundSystem : MonoBehaviour
 	{
 		float percentage = Mathf.Clamp01(effectTime / effectTimeMax);
 
+
 		switch (state)
 		{
 			case SoundState.FADEIN: //fade music in
@@ -128,6 +128,7 @@ public class SoundSystem : MonoBehaviour
 
 				if (effectTime <= 0)
 				{
+					source.volume = prevVolume;
 					state = SoundState.NONE;
 				}
 
@@ -140,13 +141,12 @@ public class SoundSystem : MonoBehaviour
 				{
 					state = SoundState.NONE;
 					source.Stop();
+					source.volume = prevVolume;
 				}
 
 				effectTime -= Time.deltaTime;
 				break;
 		}
-
-		source.volume = 1;
 	}
 
 	public bool IsPlaying()
@@ -154,18 +154,8 @@ public class SoundSystem : MonoBehaviour
 		return source.isPlaying;
 	}
 
-	public bool IsPlaying(AudioSource _as)
-	{
-		return _as.isPlaying;
-	}
-
 	public float PlaybackTime()
 	{
 		return source.time;
-	}
-
-	public float PlaybackTime(AudioSource _as)
-	{
-		return _as.time;
 	}
 }

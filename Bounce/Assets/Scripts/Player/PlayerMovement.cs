@@ -173,14 +173,14 @@ public class PlayerMovement : MonoBehaviour
 		{
 			rBody.MovePosition(rBody.position + slipVec * slipSpeed * Time.deltaTime + (Vector2)moveVec * speed * Time.deltaTime);
 
-			if (!SoundSystem.system.IsPlaying(source))
+			if (!source.isPlaying)
 			{
 				SoundSystem.system.PlaySFXLooped(source, "JetpackIdle");
 			}
 		}
 		else if (mainAnim.GetBool("isBoosting"))
 		{
-			SoundSystem.system.PlaySFXStopLooped(source);
+			SoundSystem.system.StopSFXLooped(source);
 
 			rBody.AddForce(slipVec * slipSpeed);
 		}
