@@ -29,7 +29,7 @@ public class Barrier : Hazard
                         //damage player by some giant number to make sure they real dead
                         if (hit.rigidbody.gameObject.GetComponent<PlayerCollision>() != null)
                         {
-                            hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(1000000000f);
+                            hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(1000000000f, false);
                         }
                         //destroy enemies
                         if (hit.rigidbody.gameObject.GetComponent<Enemy>() != null)

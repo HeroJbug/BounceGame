@@ -39,7 +39,7 @@ public class TurtleEnemy : Enemy
             {
                 foreach (RaycastHit2D hit in hits)
                     if (hit.rigidbody.gameObject.GetComponent<PlayerCollision>() != null)
-                        hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(hazardModeDamage);
+                        hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(hazardModeDamage, false);
             }
         }
 

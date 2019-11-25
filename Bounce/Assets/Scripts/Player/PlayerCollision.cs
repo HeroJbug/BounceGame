@@ -45,14 +45,14 @@ public class PlayerCollision : MonoBehaviour
                 //kinda inefficient but meh
                 if (!collision.gameObject.GetComponent<TurtleEnemy>())
                 {
-                    TakeDamage(enemyDamage);
+                    TakeDamage(enemyDamage, false);
                     collision.gameObject.GetComponent<Enemy>().OnCollisionDeath();
                 }
                 else
                 {
                     if(!collision.gameObject.GetComponent<TurtleEnemy>().inHazardMode)
                     {
-                        TakeDamage(enemyDamage);
+                        TakeDamage(enemyDamage, false);
                         collision.gameObject.GetComponent<Enemy>().OnCollisionDeath();
                     }
                 }
@@ -92,7 +92,7 @@ public class PlayerCollision : MonoBehaviour
         Invoke("NextScene", 2f);
     }
 
-	public void TakeDamage(float amt)
+	public void TakeDamage(float amt, bool electric)
     {
 		if (hp > 0)
 		{
@@ -100,6 +100,8 @@ public class PlayerCollision : MonoBehaviour
 			ss.StartShake();
 			if (invinciblityTime <= 0)
 			{
+                if (electric)
+                    anim.SetTrigger("ElectricDamage");
 				hp -= amt;
 				invinciblityTime = maxInvincibilitTime;
 			}
