@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 410414062}
   - component: {fileID: 410414061}
   - component: {fileID: 410414060}
+  - component: {fileID: 410414064}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -322,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -379,6 +380,88 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &410414064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410414059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1760cdeb65b15ab49bf61b141daebcce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SongToPlay: GreatLittleChallenge
+--- !u!1001 &633191233
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8653970552713133307, guid: df059d2682e46a749b29e1caaa6b435b,
+        type: 3}
+      propertyPath: m_Name
+      value: SoundSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834341572401758005, guid: df059d2682e46a749b29e1caaa6b435b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.654952
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834341572401758005, guid: df059d2682e46a749b29e1caaa6b435b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -52.014645
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834341572401758005, guid: df059d2682e46a749b29e1caaa6b435b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -27.65897
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834341572401758005, guid: df059d2682e46a749b29e1caaa6b435b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834341572401758005, guid: df059d2682e46a749b29e1caaa6b435b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834341572401758005, guid: df059d2682e46a749b29e1caaa6b435b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834341572401758005, guid: df059d2682e46a749b29e1caaa6b435b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834341572401758005, guid: df059d2682e46a749b29e1caaa6b435b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834341572401758005, guid: df059d2682e46a749b29e1caaa6b435b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834341572401758005, guid: df059d2682e46a749b29e1caaa6b435b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834341572401758005, guid: df059d2682e46a749b29e1caaa6b435b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df059d2682e46a749b29e1caaa6b435b, type: 3}
 --- !u!1 &662325402 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 687029784672183328, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
@@ -1509,6 +1592,11 @@ PrefabInstance:
         type: 3}
       propertyPath: timeDelay
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3885456003136148052, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: musicFadeOutTime
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00e0c6e0b788e94ba016a8c88c0a7a6, type: 3}

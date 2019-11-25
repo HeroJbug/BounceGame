@@ -86,6 +86,9 @@ public class PlayerCollision : MonoBehaviour
         anim.SetBool("OnDeath", true);
         yield return new WaitForSeconds(1.3f);
         transform.DetachChildren();
+		SoundSystem.system.StopMusic();
+		SoundSystem.system.PlaySFXStopLooped();
+		SoundSystem.system.PlaySFX("PlayerDeath", 1);
         Invoke("NextScene", 2f);
     }
 

@@ -135,7 +135,10 @@ public class Enemy : MonoBehaviour
 	public void OnCollisionDeath()
 	{
 		Instantiate(explosion, transform.position, Quaternion.identity).transform.Rotate(new Vector3(180, 0, 0));
-		ScoreSystem.system.IncrementScore(scoreAmt);
+		if (GetInKnockback())
+		{
+			ScoreSystem.system.IncrementScore(scoreAmt);
+		}
         EnemyDeathEvent(this.gameObject);
         Destroy(this.gameObject);
 	}

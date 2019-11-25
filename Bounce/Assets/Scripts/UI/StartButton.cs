@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 public class StartButton : MonoBehaviour
 {
     public float timeDelay;
+	public float musicFadeOutTime;
     public byte sceneNumber;
     public void LoadNewScene()
     {
-        Invoke("LoadNextScene", timeDelay);   
+		SoundSystem.system.StopMusicFadeOut(musicFadeOutTime);
+
+		Invoke("LoadNextScene", timeDelay);   
     }
 
     private void LoadNextScene()

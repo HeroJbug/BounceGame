@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 	public Vector2 slipVec;
 	public float frictionalAcceleration = 0.25f;
 	public float slipSpeed;
+	private float playIdleSoundTimeDuration;
 	Vector2 boostVec;
 	Vector2 aim;
 
@@ -169,9 +170,16 @@ public class PlayerMovement : MonoBehaviour
 		if (!mainAnim.GetBool("isBoosting") && !mainAnim.GetBool("OnDeath"))
 		{
 			rBody.MovePosition(rBody.position + slipVec * slipSpeed * Time.deltaTime + (Vector2)moveVec * speed * Time.deltaTime);
+
+			if (!SoundSystem.system.IsPlaying(1))
+			{
+				SoundSystem.system.PlaySFXLooped("JetpackIdle");
+			}
 		}
 		else if (mainAnim.GetBool("isBoosting"))
 		{
+			SoundSystem.system.PlaySFXStopLooped();
+
 			rBody.AddForce(slipVec * slipSpeed);
 		}
 
