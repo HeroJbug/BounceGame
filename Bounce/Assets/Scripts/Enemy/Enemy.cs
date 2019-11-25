@@ -139,6 +139,7 @@ public class Enemy : MonoBehaviour
 		{
 			ScoreSystem.system.IncrementScore(scoreAmt);
 		}
+		SoundSystem.system.PlaySFXMain("EnemyBoom1", 1);
         EnemyDeathEvent(this.gameObject);
         Destroy(this.gameObject);
 	}
