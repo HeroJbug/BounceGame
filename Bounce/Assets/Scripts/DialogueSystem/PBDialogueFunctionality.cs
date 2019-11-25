@@ -4,16 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using DialogueFunctionality;
 
-public class PBDialogueFunctionality : IDialogueFunctionality
+public class PBDialogueFunctionality : MonoBehaviour, IDialogueFunctionality
 {
 	public Color normalButtonColor;
 	public Color highlightedButtonColor;
 	public Color pressedButtonColor;
-	public Sprite SelectedImage;
-	public Sprite DeselectedImage;
 	private Vector2 dialogueBoxPos;
-	public float DialogueBoxChangeSizeTime;
+	public float BoxChangeSizeTime;
 	private int callbacks = 0;
+	[SerializeField]
+	private bool autoProgress;
+	[SerializeField]
+	private bool ShowDialogueOnce;
 
 	public void MainOnDeselectChoiceBox()
 	{
@@ -52,17 +54,26 @@ public class PBDialogueFunctionality : IDialogueFunctionality
 		string dialogue = packet.dialogueItems[packet.index].text;
 		dialogue = DialogueManager.manager.PlaceKeywords(dialogue);
 		packet.textObjects[0].text = dialogue;
+
+		if (autoProgress)
+		{
+			packet.textObjects[0].GetComponent<SideScrollText>().ProgressDialogue = true;
+			packet.textObjects[0].GetComponent<SideScrollText>().TimeTillProgess = 1.5f;
+			packet.textObjects[0].GetComponent<SideScrollText>().EndDialogue = ShowDialogueOnce;
+		}
+		
 	}
 
 	private void PBSetActive(DialoguePacket packet, bool status)
 	{
-		foreach (Image image in packet.images)
-		{
-			image.gameObject.SetActive(true);
-			image.rectTransform.sizeDelta = status ? Vector2.zero : image.rectTransform.sizeDelta;
-			image.gameObject.GetComponent<ResizeBox>().StartResize(this, status ? 0 : 1, DialogueBoxChangeSizeTime);
-			callbacks++;
-		}
+		packet.images[0].gameObject.SetActive(true);
+		packet.images[0].rectTransform.sizeDelta = status ? Vector2.zero : packet.images[0].rectTransform.sizeDelta;
+		packet.images[0].gameObject.GetComponent<ResizeBox>().StartResize(this, status ? 0 : 1, BoxChangeSizeTime);
+
+		packet.images[1].gameObject.SetActive(true);
+		packet.images[1].rectTransform.sizeDelta = status ? Vector2.zero : packet.images[0].rectTransform.sizeDelta;
+		packet.images[1].gameObject.GetComponent<ResizeCharacterProtrait>().PrepareResize(this, status ? 0 : 1, BoxChangeSizeTime / 8);
+		callbacks = 2;
 
 		foreach (Text textObj in packet.textObjects)
 		{

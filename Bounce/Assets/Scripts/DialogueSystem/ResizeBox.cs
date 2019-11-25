@@ -6,13 +6,10 @@ using DialogueFunctionality;
 
 public class ResizeBox : MonoBehaviour
 {
-	[SerializeField]
 	private float changeSizeTime;
 	private float changeSizeCounter;
-	[SerializeField]
 	private float percentage;
 	private Image image;
-	[SerializeField]
 	private Vector2 imageSize;
 	private bool completedResize = true;
 	private bool increasing;
@@ -63,5 +60,13 @@ public class ResizeBox : MonoBehaviour
 		image.rectTransform.sizeDelta = Vector2.one * pc;
 
 		completedResize = false;
+	}
+
+	public bool CompletedResize
+	{
+		get
+		{
+			return completedResize;
+		}
 	}
 }

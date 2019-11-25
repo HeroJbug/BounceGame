@@ -17,6 +17,7 @@ public class PlayerCollision : MonoBehaviour
     private Animator anim;
     Rigidbody2D rbody;
 	private ScreenShake ss;
+	private AudioSource source;
 
 	PlayerMovement moveRef;
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class PlayerCollision : MonoBehaviour
         anim = GetComponent<Animator>();
         mainCamera.transform.parent = transform;
 		ss = GetComponentInChildren<ScreenShake>();
+		source = GetComponent<AudioSource>();
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -87,8 +89,8 @@ public class PlayerCollision : MonoBehaviour
         yield return new WaitForSeconds(1.3f);
         transform.DetachChildren();
 		SoundSystem.system.StopMusic();
-		SoundSystem.system.PlaySFXStopLooped();
-		SoundSystem.system.PlaySFX("PlayerDeath", 1);
+		SoundSystem.system.PlaySFXStopLooped(source);
+		SoundSystem.system.PlaySFX(source, "PlayerDeath", 1);
         Invoke("NextScene", 2f);
     }
 

@@ -52,11 +52,11 @@ public class ScoreSystem : MonoBehaviour
 		float newScoreMultiplier = Mathf.Clamp(scoreMultiplier + multiplierIcr, 0, multLimit - 1);
 		if (Mathf.CeilToInt(newScoreMultiplier) - Mathf.CeilToInt(scoreMultiplier) != 0)
 		{
-			SoundSystem.system.PlaySFX("ComboSound1", 1);
+			SoundSystem.system.PlaySFXMain("ComboSound1", 1);
 		}
 		else
 		{
-			SoundSystem.system.PlaySFX("ComboSound2", 1);
+			SoundSystem.system.PlaySFXMain("ComboSound2", 1);
 		}
 		scoreMultiplier = newScoreMultiplier;
 		int addToScore = Mathf.CeilToInt(amt * ScoreMultiplier);

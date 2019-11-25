@@ -50,7 +50,6 @@ public class DialogueManager : MonoBehaviour {
 	/// <summary>
 	/// states whether or not the dialogue relating to the packet is 
 	/// </summary>
-	[SerializeField]
 	private bool isActive;
 	/// <summary>
 	/// States whether or not the use can press the Enter key
@@ -204,7 +203,10 @@ public class DialogueManager : MonoBehaviour {
 						MainDialoguePacket.updateImages(MainDialoguePacket);
 						choiceOptions = MainDialoguePacket.dialogueItems[MainDialoguePacket.index].dialogueButtons;
 						CreateOptions();
-						ChangeSelectedChoiceBox(buttons[SelectIndex].GetComponent<ChoiceBox>());
+						if (buttons != null)
+						{
+							ChangeSelectedChoiceBox(buttons[SelectIndex].GetComponent<ChoiceBox>());
+						}
 						MainDialoguePacket.hasCreatedDialogue = true;
 					}
 				}
@@ -323,12 +325,15 @@ public class DialogueManager : MonoBehaviour {
 	/// </summary>
 	private void CloseChoiceBoxes()
 	{
-		foreach (GameObject g in buttons)
+		if (buttons != null)
 		{
-			Destroy(g);
+			foreach (GameObject g in buttons)
+			{
+				Destroy(g);
+			}
+			buttons = null;
+			SelectedChoiceBox = null;
 		}
-		buttons = null;
-		SelectedChoiceBox = null;
 	}
 
 	/// <summary>

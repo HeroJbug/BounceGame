@@ -22,7 +22,7 @@ public class SoundSystem : MonoBehaviour
 	[SerializeField]
 	private SoundDictionary SFXClips;
 
-	private AudioSource[] sources;
+	private AudioSource source;
 
 	private SoundState state = SoundState.NONE;
 	private float effectTimeMax;
@@ -44,28 +44,26 @@ public class SoundSystem : MonoBehaviour
 			Destroy(this.gameObject);
 		}
 
-		sources = GetComponents<AudioSource>();
-		sources[0].priority = 0;
-		sources[1].priority = 1;
+		source = GetComponent<AudioSource>();
 	}
 
 	public void PlayMusic(string name)
 	{
-		sources[0].volume = 1;
-		sources[0].clip = musicClips[name];
+		source.volume = 1;
+		source.clip = musicClips[name];
 
-		sources[0].loop = true;
-		sources[0].Play();
+		source.loop = true;
+		source.Play();
 	}
 
 	public void PlayMusicFadeIn(string name, float time)
 	{
-		sources[0].clip = musicClips[name];
+		source.clip = musicClips[name];
 
-		sources[0].loop = true;
-		sources[0].Play();
-		prevVolume = sources[0].volume;
-		sources[0].volume = 0;
+		source.loop = true;
+		source.Play();
+		prevVolume = source.volume;
+		source.volume = 0;
 
 		effectTime = effectTimeMax = time;
 
@@ -74,17 +72,17 @@ public class SoundSystem : MonoBehaviour
 
 	public void PauseMusic()
 	{
-		sources[0].Pause();
+		source.Pause();
 	}
 
 	public void ResumeMusic()
 	{
-		sources[0].UnPause();
+		source.UnPause();
 	}
 
 	public void StopMusicFadeOut(float time)
 	{
-		prevVolume = sources[0].volume;
+		prevVolume = source.volume;
 
 		effectTime = effectTimeMax = time;
 
@@ -93,25 +91,30 @@ public class SoundSystem : MonoBehaviour
 
 	public void StopMusic()
 	{
-		sources[0].Stop();
+		source.Stop();
 	}
 
-    public void PlaySFX(string name, float volume)
+    public void PlaySFXMain(string name, float volume)
 	{
-		sources[1].PlayOneShot(SFXClips[name], volume);
+		source.PlayOneShot(SFXClips[name], volume);
 	}
 
-	public void PlaySFXLooped(string name)
+	public void PlaySFX(AudioSource _as, string name, float volume)
 	{
-		sources[1].clip = SFXClips[name];
-
-		sources[1].Play();
-		sources[1].loop = true;
+		_as.PlayOneShot(SFXClips[name], volume);
 	}
 
-	public void PlaySFXStopLooped()
+	public void PlaySFXLooped(AudioSource _as, string name)
 	{
-		sources[1].Stop();
+		_as.clip = SFXClips[name];
+
+		_as.Play();
+		_as.loop = true;
+	}
+
+	public void PlaySFXStopLooped(AudioSource _as)
+	{
+		_as.Stop();
 	}
 
 	private void Update()
@@ -121,7 +124,7 @@ public class SoundSystem : MonoBehaviour
 		switch (state)
 		{
 			case SoundState.FADEIN: //fade music in
-				sources[0].volume = prevVolume * (1 - percentage);
+				source.volume = prevVolume * (1 - percentage);
 
 				if (effectTime <= 0)
 				{
@@ -131,31 +134,38 @@ public class SoundSystem : MonoBehaviour
 				effectTime -= Time.deltaTime;
 				break;
 			case SoundState.FADEOUT: //fade music out
-				sources[0].volume = prevVolume * percentage;
+				source.volume = prevVolume * percentage;
 
 				if (effectTime <= 0)
 				{
 					state = SoundState.NONE;
-					sources[0].Stop();
+					source.Stop();
 				}
 
 				effectTime -= Time.deltaTime;
 				break;
 		}
 
-		sources[1].volume = 1;
+		source.volume = 1;
 	}
 
-	public bool IsPlaying(int idx)
+	public bool IsPlaying()
 	{
-		return sources[idx].isPlaying;
+		return source.isPlaying;
 	}
 
-	public float PlaybackTime
+	public bool IsPlaying(AudioSource _as)
 	{
-		get
-		{
-			return sources[0].time;
-		}
+		return _as.isPlaying;
+	}
+
+	public float PlaybackTime()
+	{
+		return source.time;
+	}
+
+	public float PlaybackTime(AudioSource _as)
+	{
+		return _as.time;
 	}
 }

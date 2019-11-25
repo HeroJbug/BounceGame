@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 	private float playIdleSoundTimeDuration;
 	Vector2 boostVec;
 	Vector2 aim;
+	private AudioSource source;
 
 
 	// Start is called before the first frame update
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         mr = GetComponent<SpriteRenderer>();
         cam = GetComponentInChildren<Camera>();
 		aim = Vector2.up;
+		source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -171,14 +173,14 @@ public class PlayerMovement : MonoBehaviour
 		{
 			rBody.MovePosition(rBody.position + slipVec * slipSpeed * Time.deltaTime + (Vector2)moveVec * speed * Time.deltaTime);
 
-			if (!SoundSystem.system.IsPlaying(1))
+			if (!SoundSystem.system.IsPlaying(source))
 			{
-				SoundSystem.system.PlaySFXLooped("JetpackIdle");
+				SoundSystem.system.PlaySFXLooped(source, "JetpackIdle");
 			}
 		}
 		else if (mainAnim.GetBool("isBoosting"))
 		{
-			SoundSystem.system.PlaySFXStopLooped();
+			SoundSystem.system.PlaySFXStopLooped(source);
 
 			rBody.AddForce(slipVec * slipSpeed);
 		}

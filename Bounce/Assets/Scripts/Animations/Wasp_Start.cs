@@ -20,7 +20,7 @@ public class Wasp_Start : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-		SoundSystem.system.PlaySFX("EnemyBoom1", 1);
+		SoundSystem.system.PlaySFXMain("EnemyBoom1", 1);
 		waspBody.AddRelativeForce(knockback * new Vector2(1, 0), ForceMode2D.Impulse);
         Invoke("Finish", 1f);
     }
