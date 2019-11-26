@@ -24,6 +24,7 @@ public class HighScores : MonoBehaviour
         foreach (GameObject x in noHighScoreObjects)
             x.SetActive(false);
         bf = new BinaryFormatter();
+
         if(File.Exists(Application.persistentDataPath + "/highScores.gd"))
         {
             file = File.Open(Application.persistentDataPath + "/highScores.gd",FileMode.Open);

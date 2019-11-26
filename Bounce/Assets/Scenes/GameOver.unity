@@ -2610,11 +2610,9 @@ MonoBehaviour:
   - {fileID: 70499660}
   - {fileID: 1483411750}
   - {fileID: 1847428147}
-  - {fileID: 2077462240}
   - {fileID: 1835148778}
-  - {fileID: 1846035693811775010}
-  - {fileID: 517564267}
   - {fileID: 2042390176}
+  - {fileID: 517564267}
   nameBox: {fileID: 834562819}
   ScoreLines: {fileID: 2042390176}
 --- !u!1 &2042390176
@@ -2776,12 +2774,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1dceaf96de731f4db914034e84bfbfa, type: 3}
---- !u!1 &2077462240 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1835231626189726545, guid: c1dceaf96de731f4db914034e84bfbfa,
-    type: 3}
-  m_PrefabInstance: {fileID: 2077462239}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1846035693811775009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2856,9 +2848,3 @@ PrefabInstance:
       objectReference: {fileID: 241413151}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df08725bc080398408d8deeb83e0e28a, type: 3}
---- !u!1 &1846035693811775010 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8650170892626181853, guid: df08725bc080398408d8deeb83e0e28a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1846035693811775009}
-  m_PrefabAsset: {fileID: 0}

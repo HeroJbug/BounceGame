@@ -18,6 +18,7 @@ public class PlayerCollision : MonoBehaviour
     Rigidbody2D rbody;
 	private ScreenShake ss;
 	private AudioSource source;
+	private bool preppedMusic = false;
 
 	PlayerMovement moveRef;
     // Start is called before the first frame update
@@ -66,6 +67,14 @@ public class PlayerCollision : MonoBehaviour
 	{
 		if (hp <= 0)
 		{
+			if (!preppedMusic)
+			{
+				SoundSystem.system.StopMusic();
+				SoundSystem.system.StopSFXLooped(source);
+				SoundSystem.system.PlaySFX(source, "PlayerDeath", 1);
+				preppedMusic = true;
+			}
+
 			GetComponent<PlayerMovement>().dashIndicator.SetActive(false);
 			StartCoroutine(OnDeath());
         }
@@ -88,9 +97,6 @@ public class PlayerCollision : MonoBehaviour
         anim.SetBool("OnDeath", true);
         yield return new WaitForSeconds(1.3f);
         transform.DetachChildren();
-		SoundSystem.system.StopMusic();
-		SoundSystem.system.StopSFXLooped(source);
-		SoundSystem.system.PlaySFX(source, "PlayerDeath", 1);
         Invoke("NextScene", 2f);
     }
 
