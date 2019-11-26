@@ -9,11 +9,13 @@ public class HighScores : MonoBehaviour
 {
     public List<GameObject> highScoreObjects, noHighScoreObjects;
     public InputField nameBox;
-    public byte scoreNumber = 10;
+    public GameObject ScoreLines;
 
     BinaryFormatter bf;
     FileStream file;
-    SortedDictionary<int,List<string>> scores;
+    SortedDictionary<int,LinkedList<string>> scores;
+    //newScore is negative so while sorting, the highest scores come first
+    readonly int newScore = -1*ScoreSystem.GetScore();
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +27,11 @@ public class HighScores : MonoBehaviour
         if(File.Exists(Application.persistentDataPath + "/highScores.gd"))
         {
             file = File.Open(Application.persistentDataPath + "/highScores.gd",FileMode.Open);
-            scores = (SortedDictionary<int, List<string>>)bf.Deserialize(file);
+            scores = (SortedDictionary<int, LinkedList<string>>)bf.Deserialize(file);
             int numOfBetterScores = 0;
-            foreach(KeyValuePair<int,List<string>> x in scores)
+            foreach(KeyValuePair<int,LinkedList<string>> x in scores)
             {
-                if (x.Key <= ScoreSystem.GetScore())
+                if (x.Key <= newScore)
                     break;
                 numOfBetterScores+=x.Value.Count;
                 if (numOfBetterScores >= 10)
@@ -43,7 +45,7 @@ public class HighScores : MonoBehaviour
         else
         {
             file = File.Create(Application.persistentDataPath + "/highScores.gd");
-            scores = new SortedDictionary<int, List<string>>();
+            scores = new SortedDictionary<int, LinkedList<string>>();
             EnterScore();
         }
     }
@@ -56,11 +58,12 @@ public class HighScores : MonoBehaviour
 
     public void EnterName()
     {
-        if (scores.ContainsKey(ScoreSystem.GetScore()));
-            scores[ScoreSystem.GetScore()].Add(nameBox.text);
+        if (scores.ContainsKey(newScore))
+            scores[newScore].AddFirst(nameBox.text);
         else
         {
-            scores.Add(ScoreSystem.GetScore(), nameBox.text);
+            scores.Add(newScore, new LinkedList<string>());
+            scores[newScore].AddFirst(nameBox.text);
         }
         SaveScores();
     }
@@ -72,16 +75,33 @@ public class HighScores : MonoBehaviour
         foreach (GameObject x in noHighScoreObjects)
             x.SetActive(true);
         int numOfBetterScores = 0;
-        foreach (KeyValuePair<int, List<string>> x in scores)
+
+        //Use for debugging
+        //print(file.Name);
+
+        foreach (KeyValuePair<int, LinkedList<string>> x in scores)
         {
-            print(x.Key+","+x.Value);
             if (numOfBetterScores >= 10)
             {
                 scores.Remove(x.Key);
                 continue;
             }
-            numOfBetterScores++;
+            foreach (string s in x.Value)
+            {
+                if (numOfBetterScores >= 10)
+                    break;
+
+                //Do something with the values here for display purposes
+                //print(x.Key + "," + s);
+                string currentLine = s + ": " + (-1*x.Key);
+                ScoreLines.transform.GetChild(numOfBetterScores).GetComponent<Text>().text = currentLine;
+                //
+
+                numOfBetterScores++;
+            }
         }
+        for (; numOfBetterScores < 10; numOfBetterScores++)
+            ScoreLines.transform.GetChild(numOfBetterScores).GetComponent<Text>().text = "..........";
         bf.Serialize(file, scores);
         file.Close();
     }
