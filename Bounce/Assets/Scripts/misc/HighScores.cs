@@ -55,6 +55,7 @@ public class HighScores : MonoBehaviour
     {
         foreach (GameObject x in highScoreObjects)
             x.SetActive(true);
+        file.Close();
     }
 
     public void EnterName()
@@ -66,6 +67,7 @@ public class HighScores : MonoBehaviour
             scores.Add(newScore, new LinkedList<string>());
             scores[newScore].AddFirst(nameBox.text);
         }
+        file = File.Open(Application.persistentDataPath + "/highScores.gd", FileMode.Create);
         SaveScores();
     }
 
