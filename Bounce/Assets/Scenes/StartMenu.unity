@@ -237,6 +237,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 687029784672183333, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ea7569626517f5f4d863eb4bf3314749,
+        type: 3}
     - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
         type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
@@ -261,12 +267,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: ea7569626517f5f4d863eb4bf3314749,
         type: 3}
-    - target: {fileID: 687029784672183333, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+    - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
         type: 3}
-      propertyPath: m_Sprite
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 21300000, guid: ea7569626517f5f4d863eb4bf3314749,
-        type: 3}
+      objectReference: {fileID: 1390455765}
     - target: {fileID: 3885456003136148052, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
         type: 3}
       propertyPath: sceneNumber
@@ -274,6 +284,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00e0c6e0b788e94ba016a8c88c0a7a6, type: 3}
+--- !u!114 &199627998 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 199627997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371182426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &410414059
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +770,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 687029784672183333, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2b3e2a762d6296f4faef0b6ecc3c1cbc,
+        type: 3}
     - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
         type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
@@ -772,12 +800,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 2b3e2a762d6296f4faef0b6ecc3c1cbc,
         type: 3}
-    - target: {fileID: 687029784672183333, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 2b3e2a762d6296f4faef0b6ecc3c1cbc,
-        type: 3}
     - target: {fileID: 3885456003136148052, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
         type: 3}
       propertyPath: sceneNumber
@@ -785,6 +807,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00e0c6e0b788e94ba016a8c88c0a7a6, type: 3}
+--- !u!114 &1098424722 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1098424721}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929869253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1137967216
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,6 +1030,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 687029784672183333, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 88e83af63761cc643be1df2fa9bda4d5,
+        type: 3}
     - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
         type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
@@ -1020,12 +1060,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 88e83af63761cc643be1df2fa9bda4d5,
         type: 3}
-    - target: {fileID: 687029784672183333, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+    - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
         type: 3}
-      propertyPath: m_Sprite
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
       value: 
-      objectReference: {fileID: 21300000, guid: 88e83af63761cc643be1df2fa9bda4d5,
+      objectReference: {fileID: 1098424722}
+    - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
         type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 687029783945012462}
+    - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 199627998}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00e0c6e0b788e94ba016a8c88c0a7a6, type: 3}
 --- !u!224 &1390455764 stripped
@@ -1034,6 +1088,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1390455763}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1390455765 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1390455763}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662325402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1586479429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1587,6 +1653,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: f8b1aee44f863c64f89b228e33f13402,
         type: 3}
+    - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1390455765}
     - target: {fileID: 3885456003136148052, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
         type: 3}
       propertyPath: sceneNumber
@@ -1620,6 +1696,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a74e30b06b537ab4085ef750687589cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &687029783945012462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 687029783945012459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687029783945012460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &687029783945012465

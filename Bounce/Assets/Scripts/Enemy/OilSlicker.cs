@@ -9,6 +9,7 @@ public class OilSlicker : Enemy
     private float oilSpawnTimerInternal;
     private GameObject prevTarget;
     private Queue<GameObject> last3Slicks;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class OilSlicker : Enemy
         base.InitializeSelf();
         oilSpawnTimerInternal = oilSlickSpawnTimer;
         last3Slicks = new Queue<GameObject>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -53,6 +55,7 @@ public class OilSlicker : Enemy
 
     private void CreateOilSlick()
     {
+        anim.SetTrigger("DropOil");
         GameObject newSlick = Instantiate(oilSlick, transform.position, Quaternion.identity);
         last3Slicks.Enqueue(newSlick);
         RemoveExtraneousSlicks();

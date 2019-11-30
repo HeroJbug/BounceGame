@@ -4,38 +4,45 @@ using UnityEngine;
 
 public class BombEnemy : Enemy
 {
-    public float countdownTimer = 5f;
-    private SpriteRenderer renderer;
+    private Animator anim;
     public float radius = 10f;
     public float damage = 2f;
     public bool drawGizmos;
+    private float countdown = 1f;
+    private bool startCountdown = false;
 
     private void Start()
     {
         base.InitializeSelf();
-        renderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     public override void Update()
     {
         base.Update();
-        if(countdownTimer > 0)
+        if(!CheckForExplodeTrigger() && !startCountdown)
         {
-            countdownTimer -= Time.deltaTime;
-            TintSprite();
             if(!GetInKnockback())
                 RequestNewPath();
         }
         else
         {
-            StartCoroutine(Explode());
+            startCountdown = true;
+            StopCoroutine("FollowPath");
+            anim.SetTrigger("StartFuse");
+        }
+
+        if(startCountdown)
+        {
+            countdown -= Time.deltaTime;
+            if(countdown <= 0)
+                StartCoroutine(Explode());
         }
     }
 
     IEnumerator Explode()
     {
         rbody.velocity = Vector2.zero;
-        StopCoroutine("FollowPath");
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, radius, Vector2.right, 0, LayerMask.GetMask("Player"));
         if (hits.Length != 0)
         {
@@ -44,17 +51,22 @@ public class BombEnemy : Enemy
                     hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(damage, false);
         }
         //play animation here
-        GetComponent<Animator>().SetTrigger("OnExplode");
+        anim.SetTrigger("OnExplode");
         yield return new WaitForSeconds(0.5f);
 
-        Destroy(gameObject);
+        base.OnCollisionDeath();
     }
 
-
-
-    private void TintSprite()
+    private bool CheckForExplodeTrigger()
     {
-        renderer.color = new Color(1f, countdownTimer / 5f, countdownTimer / 5f);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, radius, Vector2.right, 0, LayerMask.GetMask("Player"));
+        if (hits.Length != 0)
+        {
+            foreach (RaycastHit2D hit in hits)
+                if (hit.rigidbody.gameObject.GetComponent<PlayerCollision>() != null)
+                    return true;
+        }
+        return false;
     }
 
     public void OnDrawGizmos()
