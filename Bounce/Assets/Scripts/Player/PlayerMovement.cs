@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
 	public int joyPadIndex;
 	public float speed = 5f, boostSpeed = 40f;
+    public AudioSource dashSound;
 	[SerializeField]
     Vector3 moveVec;
     Rigidbody2D rBody;
@@ -114,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Boost()
     {
+        dashSound.Play(0);
         boostVec = dashIndicator.transform.position - transform.position;
         boostVec.Normalize();
         ChooseCorrectBoostAnim(boostVec);
