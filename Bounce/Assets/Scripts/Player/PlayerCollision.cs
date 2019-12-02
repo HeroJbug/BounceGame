@@ -118,7 +118,7 @@ public class PlayerCollision : MonoBehaviour
 
     public void NextScene()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(5);
     }
 }
 

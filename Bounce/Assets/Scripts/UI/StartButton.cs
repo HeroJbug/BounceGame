@@ -16,7 +16,8 @@ public class StartButton : MonoBehaviour
 
     private void LoadNextScene()
     {
-        SceneManager.LoadScene(sceneNumber);
+        if(sceneNumber>0)
+           SceneManager.LoadScene(sceneNumber);
     }
 
     public void QuitGame()
