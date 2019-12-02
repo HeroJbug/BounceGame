@@ -78,8 +78,6 @@ public class TutorialScreenTrigger : MonoBehaviour
 							trig.InitiateDialogue(28);
 							state++;
 							firedMessage = true;
-							tutorialEnemy = spawner.SpawnEnemy(tutorialEnemyPrefab, player).GetComponent<Enemy>();
-							tutorialEnemy.enabled = false;
 						}
 						break;
 
@@ -106,6 +104,17 @@ public class TutorialScreenTrigger : MonoBehaviour
 		{
 			button.gameObject.SetActive(true);
 			firedMessage = false;
+
+			if (state == 2 && tutorialEnemy == null)
+			{
+				Vector2 dirFromTheOrigin = player.transform.position;
+				dirFromTheOrigin.Normalize();
+
+				spawner.transform.position = dirFromTheOrigin * -50;
+
+				tutorialEnemy = spawner.SpawnEnemy(tutorialEnemyPrefab, player).GetComponent<Enemy>();
+				tutorialEnemy.enabled = false;
+			}
 		}
     }
 

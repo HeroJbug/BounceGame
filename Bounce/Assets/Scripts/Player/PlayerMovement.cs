@@ -191,6 +191,7 @@ public class PlayerMovement : MonoBehaviour
     {
 		if (!isInTutorialMode || !DialogueManager.manager.DialogueBoxActive)
 		{
+			mainAnim.enabled = true;
 			UpdateAimPos();
 
 			if (!mainAnim.GetBool("isBoosting") && !mainAnim.GetBool("OnDeath"))
@@ -215,6 +216,7 @@ public class PlayerMovement : MonoBehaviour
 		else
 		{
 			SoundSystem.system.StopSFXLooped(source);
+			mainAnim.enabled = false;
 		}
 	}
 

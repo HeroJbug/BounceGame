@@ -15,7 +15,9 @@ public enum HazardTypes : int
 
 public abstract class Hazard : MonoBehaviour
 {
-    public float timer;
+	[SerializeField]
+	protected string fallSound = "HazardLand";
+	public float timer;
 	[SerializeField]
 	protected float startingDistance = 100;
 	[SerializeField]
@@ -80,6 +82,7 @@ public abstract class Hazard : MonoBehaviour
 		hasLanded = (height <= 0);
 		if (hasLanded)
 		{
+			SoundSystem.system.PlaySFXMain(fallSound, 1);
 			transform.position = pos;
 			shadow.transform.position = new Vector3 (pos.x, pos.y - 0.6f, pos.z - 0.3f);
 		}
