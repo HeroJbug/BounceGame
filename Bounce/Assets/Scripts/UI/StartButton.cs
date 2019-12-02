@@ -16,7 +16,7 @@ public class StartButton : MonoBehaviour
 
     private void LoadNextScene()
     {
-        if(sceneNumber>0)
+        if(sceneNumber>=0)
            SceneManager.LoadScene(sceneNumber);
     }
 

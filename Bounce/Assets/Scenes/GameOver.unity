@@ -316,7 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeDelay: 0
   musicFadeOutTime: 0
-  sceneNumber: 5
+  sceneNumber: 0
 --- !u!223 &241413151 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 8630220788224443094, guid: c1dceaf96de731f4db914034e84bfbfa,

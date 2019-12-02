@@ -98,7 +98,7 @@ public class HighScoreEntry : MonoBehaviour
             Display[numOfBetterScores] = "..........";
         file = File.Open(Application.persistentDataPath + "/highScores.gd", FileMode.Create);
         //Use for debugging
-        print(file.Name);
+        //print(file.Name);
         bf.Serialize(file, scores);
         file.Close();
         SceneManager.LoadScene(2);
