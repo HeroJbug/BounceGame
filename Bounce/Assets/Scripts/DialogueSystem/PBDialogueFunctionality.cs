@@ -9,8 +9,9 @@ public class PBDialogueFunctionality : MonoBehaviour, IDialogueFunctionality
 	public Color normalButtonColor;
 	public Color highlightedButtonColor;
 	public Color pressedButtonColor;
-	private Vector2 dialogueBoxPos;
 	public float BoxChangeSizeTime;
+	[SerializeField]
+	private float buttonPadding;
 	private int callbacks = 0;
 	[SerializeField]
 	private bool autoProgress;
@@ -31,18 +32,10 @@ public class PBDialogueFunctionality : MonoBehaviour, IDialogueFunctionality
 
 	public void MainPositionButtons(DialoguePacket packet, GameObject[] buttons, int idx)
 	{
-		float xOffset = dialogueBoxPos.x;
+		float x = packet.images[0].transform.position.x + (packet.images[0].rectTransform.rect.width / 2) - (buttons[idx].GetComponent<Image>().rectTransform.rect.width / 2) - buttonPadding;
+		float y = packet.images[0].transform.position.y - (packet.images[0].rectTransform.rect.height / 2) * DialogueManager.manager.dialogueCanvas.GetComponent<Canvas>().scaleFactor + buttonPadding;
 
-		if (buttons.Length % 2 == 0)
-		{
-			xOffset = (xOffset - 100) - (200 * ((buttons.Length / 2) - 1));
-		}
-		else
-		{
-			xOffset -= 200 * (buttons.Length / 2);
-		}
-
-		buttons[idx].transform.position = new Vector3(xOffset + (200 * idx), packet.images[0].transform.position.y - (packet.images[0].rectTransform.rect.height / 2) * DialogueManager.manager.dialogueCanvas.GetComponent<Canvas>().scaleFactor, DialogueManager.manager.dialogueCanvas.transform.position.z);
+		buttons[idx].transform.position = new Vector3(x, y, DialogueManager.manager.dialogueCanvas.transform.position.z);
 	}
 
 	public void MainUpdateImages(DialoguePacket packet)
@@ -96,8 +89,6 @@ public class PBDialogueFunctionality : MonoBehaviour, IDialogueFunctionality
 
 	public void Start()
 	{
-		dialogueBoxPos = DialogueManager.manager.dialogueCanvas.transform.position;
-
 		DialogueManager.manager.SetActive = PBSetActive;
 	}
 }

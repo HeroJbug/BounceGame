@@ -51,6 +51,7 @@ MonoBehaviour:
     keywords:
       keys: []
       values: []
+  isActive: 0
   speakers:
   - Dr. Lightning
   notificationDuration: 0
@@ -70,5 +71,7 @@ MonoBehaviour:
   highlightedButtonColor: {r: 1, g: 1, b: 1, a: 1}
   pressedButtonColor: {r: 1, g: 1, b: 1, a: 1}
   BoxChangeSizeTime: 0.5
+  imagePadding: 0
   autoProgress: 1
   ShowDialogueOnce: 1
+  charProtraits: []

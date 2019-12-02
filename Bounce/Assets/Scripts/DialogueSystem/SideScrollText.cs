@@ -30,50 +30,61 @@ public class SideScrollText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.RoundToInt(charsToDisplay) != textObj.text.Length || (textToPlace.Length == textObj.text.Length && textObj.text != textToPlace))
+		if (DialogueManager.manager.DialogueBoxActive)
 		{
-			textToPlace = textObj.text;
-			textObj.text = "";
-			charsToDisplay = 0;
-		}
-
-		if (Mathf.RoundToInt(charsToDisplay) != textToPlace.Length)
-		{
-			if (playTalkSound && !parentSource.isPlaying)
+			if (Mathf.RoundToInt(charsToDisplay) != textObj.text.Length || (textToPlace.Length == textObj.text.Length && textObj.text != textToPlace))
 			{
-				SoundSystem.system.PlaySFXLooped(parentSource, talkSoundName);
+				textToPlace = textObj.text;
+				textObj.text = "";
+				charsToDisplay = 0;
 			}
 
-			charsToDisplay = Mathf.Clamp(charsToDisplay + (textSpeed * Time.deltaTime), 0, textToPlace.Length);
-			textObj.text = textToPlace.Substring(0, Mathf.RoundToInt(charsToDisplay));
-
-			if (ProgressDialogue && Mathf.RoundToInt(charsToDisplay) == textToPlace.Length)
+			if (Mathf.RoundToInt(charsToDisplay) != textToPlace.Length)
 			{
-				ttp_counter = TimeTillProgess;
-				SoundSystem.system.StopSFXLooped(parentSource);
-				canProgress = true;
-			}
-		}
-
-		if (canProgress)
-		{
-			if (ttp_counter <= 0)
-			{
-				canProgress = false;
-				ttp_counter = TimeTillProgess;
-				if (!EndDialogue)
+				if (playTalkSound && !parentSource.isPlaying)
 				{
-					DialogueManager.manager.NextIndex();
+					SoundSystem.system.PlaySFXLooped(parentSource, talkSoundName);
+				}
+
+				charsToDisplay = Mathf.Clamp(charsToDisplay + (textSpeed * Time.deltaTime), 0, textToPlace.Length);
+				textObj.text = textToPlace.Substring(0, Mathf.RoundToInt(charsToDisplay));
+
+				if (Mathf.RoundToInt(charsToDisplay) == textToPlace.Length)
+				{
+					ttp_counter = TimeTillProgess;
+					SoundSystem.system.StopSFXLooped(parentSource);
+					canProgress = true;
+				}
+			}
+
+			if (ProgressDialogue && canProgress)
+			{
+				if (ttp_counter <= 0)
+				{
+					canProgress = false;
+					ttp_counter = TimeTillProgess;
+					if (!EndDialogue)
+					{
+						DialogueManager.manager.NextIndex();
+					}
+					else
+					{
+						DialogueManager.manager.EndDialogue();
+					}
 				}
 				else
 				{
-					DialogueManager.manager.EndDialogue();
+					ttp_counter -= Time.deltaTime;
 				}
 			}
-			else
-			{
-				ttp_counter -= Time.deltaTime;
-			}
+		}
+	}
+
+	public void OnDisable()
+	{
+		if (parentSource != null)
+		{
+			SoundSystem.system.StopSFXLooped(parentSource);
 		}
 	}
 }

@@ -408,6 +408,21 @@ PrefabInstance:
       propertyPath: dialogueCanvas
       value: 
       objectReference: {fileID: 1478237654}
+    - target: {fileID: 419182419571690797, guid: df08725bc080398408d8deeb83e0e28a,
+        type: 3}
+      propertyPath: autoProgress
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419182419571690797, guid: df08725bc080398408d8deeb83e0e28a,
+        type: 3}
+      propertyPath: imagePadding
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 419182419571690797, guid: df08725bc080398408d8deeb83e0e28a,
+        type: 3}
+      propertyPath: buttonPadding
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df08725bc080398408d8deeb83e0e28a, type: 3}
 --- !u!1001 &315683277
@@ -1559,6 +1574,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &858653755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 858653757}
+  - component: {fileID: 858653756}
+  m_Layer: 0
+  m_Name: TutorialSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &858653756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858653755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e8c1f1384d47a4ca337ee19893ddc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &858653757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858653755}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 50, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &879142585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1790,6 +1848,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1530014677425776192, guid: c1dceaf96de731f4db914034e84bfbfa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1dceaf96de731f4db914034e84bfbfa, type: 3}
 --- !u!224 &991599555 stripped
@@ -1897,6 +1960,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1018062605 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 717562364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1028048163
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,136 +2105,182 @@ MonoBehaviour:
     createDummyButtons: 1
     dialogueItems:
     - speakerID: 0
+      charPortraitID: 0
       text: Well, hello there Agent 67! Nice to see you functioning and up-to-date!
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: "My name is Dr.Lightning, your creator, and you don\u2019t know how long\u2026"
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: I have waited for you to finally be online!
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: Finally, my ticket to World Domination is made!
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: You were invented by yours truly to be the best fighting robot ever created!
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: "Now, I know you may have questions, and I assure you\u2026"
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: "They will all be answered in due time\u2026"
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: '*cough* probably *cough*...'
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: "But for now\u2026 All you need to know\u2026"
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: "Is that you are my magnum opus\u2026 My last chance at success\u2026"
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: "So don\u2019t you dare fail me!!!"
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: "\u2026\u2026\u2026\u2026.."
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: No pressure! No pressure at all!
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: "Anyways\u2026 So since you are still new, I need to see how well you
         do compared to my previous creations."
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: I will be monitoring and scoring your skills in combat until I feel you
         are sufficiently competent enough to be shown to the world!
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: I will be scoring you on how many of your fellow brothers and sisters
         you destroy! Fun, RIGHT!?!?!?
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: "The more you ruthlessly murder in quick succession, the better I\u2019ll
         rate you! They will come in waves, so you\u2019ll get a brief rest per encounter."
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: The test is over when you survive all the rounds or are shut down from
         sustaining to many injuries.
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: '...And by shut down...I mean, explode...'
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: You should know that everything I invent explodes.
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: And...
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: I.
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: MEAN.
       dialogueButtons: []
     - speakerID: 0
-      text: 
-      dialogueButtons: []
-    - speakerID: 0
+      charPortraitID: 0
       text: EVERYTHING!!!!!!!!!!!!!
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: '......................'
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: '...Well then, now to basic controls.'
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: Go ahead and try moving around the battlefield. It should be WASD or the
         left stick.
-      dialogueButtons: []
+      dialogueButtons:
+      - action: 2
+        line: 0
+        altLine: 0
+        buttonText: Got it, boss!
     - speakerID: 0
-      text: "Good. Now try Dashing. It\u2019s either mouse 1 or the right bumper."
-      dialogueButtons: []
+      charPortraitID: 0
+      text: "Good. Now try Dashing. It\x19s either mouse 1 or the right bumper."
+      dialogueButtons:
+      - action: 2
+        line: 0
+        altLine: 0
+        buttonText: Dashing away!
     - speakerID: 0
+      charPortraitID: 0
       text: Great! Notice it is on a short cooldown, as you only have so much fuel.
         Be conservative!
       dialogueButtons: []
     - speakerID: 0
-      text: "Now, let\u2019s go ahead and spawn on an enemy."
+      charPortraitID: 0
+      text: "Now, let\x19s go ahead and spawn on an enemy."
       dialogueButtons: []
     - speakerID: 0
-      text: This is the Waspotronic 3000! Failed experiment 46. Feel free to dash
-        into him!
+      charPortraitID: 0
+      text: This is the Waspotronic 3000! Failed experiment 46.
       dialogueButtons: []
     - speakerID: 0
-      text: Great! Notice how 46 moves back after impact! Try bashing him into the
-        sawblades!
-      dialogueButtons: []
+      charPortraitID: 0
+      text: I don't care too much about him anymore...Try bashing him into the sawblades!
+      dialogueButtons:
+      - action: 2
+        line: 0
+        altLine: 0
+        buttonText: On it!
     - speakerID: 0
+      charPortraitID: 0
       text: Superb! This is how you destroy enemies!
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: Now, since you know your primary functions, lets go ahead and get you
         out in the arena and have you fight!
       dialogueButtons: []
     - speakerID: 0
-      text: "Also, if you happen to notice another bot in the arena that looks like
-        you\u2026"
+      charPortraitID: 0
+      text: Also, if you happen to notice another bot in the arena that looks like
+        you&
       dialogueButtons: []
     - speakerID: 0
-      text: "Except she\u2019s blue, thats Specimen 67.5. You will be working together
+      charPortraitID: 0
+      text: "Except she\x19s blue, thats Specimen 67.5. You will be working together
         and be graded on your overall cooperation as a single unit."
       dialogueButtons: []
     - speakerID: 0
-      text: "Otherwise, the process will continue as planned. Have fun Specimen 67!
-        And remember\u2026"
+      charPortraitID: 0
+      text: Otherwise, the process will continue as planned. Have fun Specimen 67!
+        And remember...
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: DO. NOT. FAIL. ME.
       dialogueButtons: []
     - speakerID: 0
+      charPortraitID: 0
       text: See you in the arena!
       dialogueButtons: []
 --- !u!4 &1099814368
@@ -2188,8 +2309,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d52178787319b646bbbc5b3a8551a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialEnemyPrefab: {fileID: 0}
-  tutorialEnemySpawnPoint: {x: 0, y: 0}
+  tutorialEnemyPrefab: {fileID: 5300961001618834294, guid: 13b1e3e5996cb174ab47feca911e405f,
+    type: 3}
+  state: 0
+  button: {fileID: 1018062605}
 --- !u!1 &1102851030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2695,6 +2818,85 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 50, y: 10}
   m_EdgeRadius: 0
+--- !u!1 &1334949947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1334949951}
+  - component: {fileID: 1334949950}
+  - component: {fileID: 1334949949}
+  - component: {fileID: 1334949948}
+  m_Layer: 0
+  m_Name: EnemyPathfinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1334949948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334949947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4737d99a5916b654999083e19b59d14b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1334949949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334949947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1b42bb6b7895748965be19af347aac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1334949950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334949947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ef350b7561b2741905a284891eed18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayGridGizmos: 0
+  playerPos: {fileID: 0}
+  barrierMask:
+    serializedVersion: 2
+    m_Bits: 512
+  hazardMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  gridWrldSize: {x: 200, y: 200}
+  nodeRadius: 1
+--- !u!4 &1334949951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334949947}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1352592904
 GameObject:
   m_ObjectHideFlags: 0
@@ -2968,6 +3170,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1409693359
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6174926684962372198, guid: f576f5b8b036cce4887bead017189661,
+        type: 3}
+      propertyPath: m_Name
+      value: ScoreSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449544903278499608, guid: f576f5b8b036cce4887bead017189661,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 141.81381
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449544903278499608, guid: f576f5b8b036cce4887bead017189661,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 391.8043
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449544903278499608, guid: f576f5b8b036cce4887bead017189661,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -228.41045
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449544903278499608, guid: f576f5b8b036cce4887bead017189661,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449544903278499608, guid: f576f5b8b036cce4887bead017189661,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449544903278499608, guid: f576f5b8b036cce4887bead017189661,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449544903278499608, guid: f576f5b8b036cce4887bead017189661,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449544903278499608, guid: f576f5b8b036cce4887bead017189661,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449544903278499608, guid: f576f5b8b036cce4887bead017189661,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449544903278499608, guid: f576f5b8b036cce4887bead017189661,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449544903278499608, guid: f576f5b8b036cce4887bead017189661,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f576f5b8b036cce4887bead017189661, type: 3}
 --- !u!1 &1434143799
 GameObject:
   m_ObjectHideFlags: 0
@@ -3903,11 +4174,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5117352434602345478, guid: 688108fba00667d4fa38c6baff94505d,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 5117352434602345496, guid: 688108fba00667d4fa38c6baff94505d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3962,6 +4228,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117352434602345478, guid: 688108fba00667d4fa38c6baff94505d,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117352434602345497, guid: 688108fba00667d4fa38c6baff94505d,
+        type: 3}
+      propertyPath: isInTutorialMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 688108fba00667d4fa38c6baff94505d, type: 3}

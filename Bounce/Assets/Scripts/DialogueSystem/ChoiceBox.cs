@@ -38,7 +38,7 @@ public class ChoiceBox : MonoBehaviour {
 		button = GetComponent<Button>();
 		text = button.GetComponentInChildren<Text>();
         button.onClick.AddListener(TaskOnClick);
-		button.gameObject.GetComponent<EventTrigger>().triggers.Add(mouseOverBox);
+		GetComponent<EventTrigger>().triggers.Add(mouseOverBox);
 
 		size = button.image.rectTransform.sizeDelta;
     }

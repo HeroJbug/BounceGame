@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
 	private float playIdleSoundTimeDuration;
 	Vector2 boostVec;
 	Vector2 aim;
+	public bool isInTutorialMode = false;
 	private AudioSource source;
 
 
@@ -53,54 +54,57 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if we're dead ignore the rest of the work
-        if(mainAnim.GetBool("OnDeath"))
-        {
-			if (deathAnimCounter >= deathAnimTime)
+        if (!isInTutorialMode || !DialogueManager.manager.DialogueBoxActive)
+		{
+			//if we're dead ignore the rest of the work
+			if (mainAnim.GetBool("OnDeath"))
 			{
-				GetComponent<SpriteRenderer>().enabled = false;
+				if (deathAnimCounter >= deathAnimTime)
+				{
+					GetComponent<SpriteRenderer>().enabled = false;
+				}
+				else
+				{
+					deathAnimCounter += Time.deltaTime;
+				}
+
+				return;
+			}
+			moveVec.x = Input.GetAxisRaw("Horizontal");
+			moveVec.y = Input.GetAxisRaw("Vertical");
+			int currentDir = GetDirThisFrame();
+			mainAnim.SetInteger("Direction", currentDir);
+			if (Input.GetButtonDown("Dash") && boostCooldownCounter <= 0)
+			{
+				Boost();
+			}
+
+			if (isBoosting)
+			{
+				boostTimerCounter -= Time.deltaTime;
+				boostCooldownCounter = boostCooldown * (1 - (boostTimerCounter / boostTimer));
+
+				if (boostTimerCounter <= 0)
+				{
+					rBody.velocity = Vector3.zero;
+					isBoosting = false;
+					boostCooldownCounter = boostCooldown;
+				}
+				mainAnim.SetBool("isBoosting", true);
 			}
 			else
 			{
-				deathAnimCounter += Time.deltaTime;
+				if (mainAnim.GetBool("isBoosting"))
+					mainAnim.SetBool("isBoosting", false);
 			}
 
-			return;
-        }
-        moveVec.x = Input.GetAxisRaw("Horizontal");
-        moveVec.y = Input.GetAxisRaw("Vertical");
-        int currentDir = GetDirThisFrame();
-        mainAnim.SetInteger("Direction", currentDir);
-        if (Input.GetButtonDown("Dash") && boostCooldownCounter <= 0)
-        {
-            Boost();
-		}
-
-        if(isBoosting)
-        {
-            boostTimerCounter -= Time.deltaTime;
-			boostCooldownCounter = boostCooldown * (1 - (boostTimerCounter / boostTimer));
-
-            if(boostTimerCounter <= 0)
-            {
-                rBody.velocity = Vector3.zero;
-                isBoosting = false;
-				boostCooldownCounter = boostCooldown;
-			}
-            mainAnim.SetBool("isBoosting", true);
-        }
-        else
-        {
-            if(mainAnim.GetBool("isBoosting"))
-                mainAnim.SetBool("isBoosting", false);
-        }
-
-		if (!isBoosting && boostCooldownCounter > 0)
-		{
-			boostCooldownCounter -= Time.deltaTime;
-			if (boostCooldownCounter <= 0)
+			if (!isBoosting && boostCooldownCounter > 0)
 			{
-				boostCooldownCounter = 0;
+				boostCooldownCounter -= Time.deltaTime;
+				if (boostCooldownCounter <= 0)
+				{
+					boostCooldownCounter = 0;
+				}
 			}
 		}
     }
@@ -185,26 +189,33 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-		UpdateAimPos();
-
-		if (!mainAnim.GetBool("isBoosting") && !mainAnim.GetBool("OnDeath"))
+		if (!isInTutorialMode || !DialogueManager.manager.DialogueBoxActive)
 		{
-			rBody.MovePosition(rBody.position + slipVec * slipSpeed * Time.deltaTime + (Vector2)moveVec * speed * Time.deltaTime);
+			UpdateAimPos();
 
-			if (!source.isPlaying)
+			if (!mainAnim.GetBool("isBoosting") && !mainAnim.GetBool("OnDeath"))
 			{
-				SoundSystem.system.PlaySFXLooped(source, "JetpackIdle");
+				rBody.MovePosition(rBody.position + slipVec * slipSpeed * Time.deltaTime + (Vector2)moveVec * speed * Time.deltaTime);
+
+				if (!source.isPlaying)
+				{
+					SoundSystem.system.PlaySFXLooped(source, "JetpackIdle");
+				}
 			}
+			else if (mainAnim.GetBool("isBoosting"))
+			{
+				//rBody.AddForce(slipVec * slipSpeed);
+				rBody.MovePosition(rBody.position + slipVec * slipSpeed * Time.deltaTime + (Vector2)boostDir * boostSpeed * Time.deltaTime);
+
+				boostSpeed += boostAcceleration;
+			}
+
+			slipSpeed = Mathf.Clamp(slipSpeed - frictionalAcceleration * Time.deltaTime, 0, slipSpeed);
 		}
-		else if (mainAnim.GetBool("isBoosting"))
+		else
 		{
-			//rBody.AddForce(slipVec * slipSpeed);
-			rBody.MovePosition(rBody.position + slipVec * slipSpeed * Time.deltaTime + (Vector2)boostDir * boostSpeed * Time.deltaTime);
-
-			boostSpeed += boostAcceleration;
+			SoundSystem.system.StopSFXLooped(source);
 		}
-
-		slipSpeed = Mathf.Clamp(slipSpeed - frictionalAcceleration * Time.deltaTime, 0, slipSpeed);
 	}
 
 	public float BoostCooldownCounter

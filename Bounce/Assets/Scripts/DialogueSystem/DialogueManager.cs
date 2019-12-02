@@ -50,6 +50,7 @@ public class DialogueManager : MonoBehaviour {
 	/// <summary>
 	/// states whether or not the dialogue relating to the packet is 
 	/// </summary>
+	[SerializeField]
 	private bool isActive;
 	/// <summary>
 	/// States whether or not the use can press the Enter key
@@ -243,7 +244,7 @@ public class DialogueManager : MonoBehaviour {
 			DialogueButtonData dbd = new DialogueButtonData();
 			//sets up button data
 			dbd.action = DialogueAction.NextLine;
-			dbd.buttonText = "Okay.";
+			dbd.buttonText = "Next";
 			BuildChoiceBox(dbd, 0);
         }
     }
@@ -341,11 +342,13 @@ public class DialogueManager : MonoBehaviour {
 	/// </summary>
 	private void KeyboardInput()
 	{
+		float inputX = Input.GetAxisRaw("Horizontal");
+
 		//if the player presses left or right
-		if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+		if (inputX != 0)
 		{
 			//if the player presses "left"
-			if (Input.GetKeyDown(KeyCode.A))
+			if (inputX < 0)
 			{
 				SelectIndex--;
 				if (SelectIndex < 0)
@@ -354,7 +357,7 @@ public class DialogueManager : MonoBehaviour {
 				}
 			}
 			//if the player presses "right"
-			if (Input.GetKeyDown(KeyCode.D))
+			if (inputX > 0)
 			{
 				SelectIndex++;
 				if (SelectIndex >= buttons.Length)
@@ -403,7 +406,7 @@ public class DialogueManager : MonoBehaviour {
 	/// <returns></returns>
 	public bool PressEnter()
 	{
-		if (Input.GetKeyDown(KeyCode.Return) && canPress)
+		if (Input.GetButtonDown("Dash") && canPress) //TODO: change to whatever the accept button is
 		{
 			canPress = false;
 			return true;
