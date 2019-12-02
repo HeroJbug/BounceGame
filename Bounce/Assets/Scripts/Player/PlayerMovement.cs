@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	public int joyPadIndex;
+
 	public float speed = 5f, boostSpeed = 40f, initialBoostSpeed = 80f;
 	public float boostAcceleration = 40f;
     Vector3 moveVec;
@@ -27,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 	[HideInInspector]
 	public Vector2 slipVec;
 	public float frictionalAcceleration = 0.25f;
-	//[HideInInspector]
+	[HideInInspector]
 	public float slipSpeed;
 	private float playIdleSoundTimeDuration;
 	Vector2 boostVec;

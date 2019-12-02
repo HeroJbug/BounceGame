@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3305244991801049531}
   - component: {fileID: 3305244991801049535}
   - component: {fileID: 1711399832871103523}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BombEnemy(WIP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1831478547
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1ca9b7c75b611ec4a8e17a36f31f0ad5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9240f20c7aae01c48b00e230257bed8e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,7 +106,6 @@ MonoBehaviour:
   rbody: {fileID: 0}
   explosion: {fileID: 2147660409176068684, guid: 9257fe6061f688f44b3e9bfba2a4f6f0,
     type: 3}
-  countdownTimer: 5
   radius: 6
   damage: 2
   drawGizmos: 0
@@ -173,7 +172,7 @@ Animator:
   m_GameObject: {fileID: 3305244991801049529}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1401d12559504204b949c984a698376a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9ddea99598331844a81d110faa6f6b45, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

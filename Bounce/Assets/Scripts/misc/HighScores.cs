@@ -25,6 +25,8 @@ public class HighScores : MonoBehaviour
             x.SetActive(false);
         bf = new BinaryFormatter();
 
+		Debug.Log("path: " + Application.persistentDataPath);
+
         if(File.Exists(Application.persistentDataPath + "/highScores.gd"))
         {
             file = File.Open(Application.persistentDataPath + "/highScores.gd",FileMode.Open);
