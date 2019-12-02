@@ -16,6 +16,8 @@ public class PBDialogueFunctionality : MonoBehaviour, IDialogueFunctionality
 	private bool autoProgress;
 	[SerializeField]
 	private bool ShowDialogueOnce;
+	[SerializeField]
+	private Image[] charProtraits;
 
 	public void MainOnDeselectChoiceBox()
 	{

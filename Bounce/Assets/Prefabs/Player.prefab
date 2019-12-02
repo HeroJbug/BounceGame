@@ -181,8 +181,7 @@ MonoBehaviour:
   enemyKnockBackForce: 10
   enemyDamage: 1
   hp: 5
-  maxInvincibilitTime: 3
-  invinciblityTime: 0
+  maxInvincibilityTime: 3
   mainCamera: {fileID: 5117352435224238093}
 --- !u!114 &5117352434602345497
 MonoBehaviour:
@@ -199,10 +198,13 @@ MonoBehaviour:
   joyPadIndex: 0
   speed: 30
   boostSpeed: 80
-  moveVec: {x: 0, y: 0, z: 0}
+  initialBoostSpeed: 80
+  boostAcceleration: 5
   boostTimer: 0.4
   boostCooldown: 0.25
+  boostDir: {x: 0, y: 0}
   dashIndicator: {fileID: 1965409512}
+  deathAnimTime: 1.5
   slipVec: {x: 0, y: 0}
   frictionalAcceleration: 3.25
   slipSpeed: 0
@@ -395,7 +397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5117352435224238093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -25}
+  m_LocalPosition: {x: 0, y: 1, z: -50}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 5117352434602345496}
@@ -428,7 +430,7 @@ Camera:
   far clip plane: 100
   field of view: 60
   orthographic: 1
-  orthographic size: 30
+  orthographic size: 40
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

@@ -20,7 +20,7 @@ public class ScoreCounter : MonoBehaviour
 		counterFG = images[1];
 		counterBG = images[0];
 		multSymbol = images[2];
-    }
+	}
 
     // Update is called once per frame
     void Update()

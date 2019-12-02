@@ -69,6 +69,10 @@ MonoBehaviour:
     - EnemyBoom2
     - ComboSound1
     - ComboSound2
+    - DashSound
+    - ShockSound
+    - HazardLand
+    - GameOver
     values:
     - {fileID: 8300000, guid: 2c7669b76a1811448a2dc6fbe189bc3a, type: 3}
     - {fileID: 8300000, guid: 497c5b98e26bd4a48a356590351c044d, type: 3}
@@ -78,6 +82,10 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 3bbce1d44e477fc41a62e11d912df7f6, type: 3}
     - {fileID: 8300000, guid: 15170ae5bf7514446a3d279430f8de7d, type: 3}
     - {fileID: 8300000, guid: bc86849a78651fe489ef6dee3c00a32c, type: 3}
+    - {fileID: 8300000, guid: 3b74097f2b95e85478dc36270c4a1201, type: 3}
+    - {fileID: 8300000, guid: b196c5bcb7361034fa5e598bfff1998c, type: 3}
+    - {fileID: 8300000, guid: 5c0eae29644304743a118d94478de640, type: 3}
+    - {fileID: 8300000, guid: 2de2e14c7cfc6fb4784bfb5bf9a14ea3, type: 3}
 --- !u!82 &143175369
 AudioSource:
   m_ObjectHideFlags: 0

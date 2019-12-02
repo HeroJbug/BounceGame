@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 30
   startingDistance: 100
-  targetRadius: 1.03
+  targetRadius: 1.46
   fallSpeed: 100
   layersToAffect:
   - Player

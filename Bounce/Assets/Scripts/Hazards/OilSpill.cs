@@ -38,20 +38,32 @@ public class OilSpill : Hazard
 					{
 						PlayerMovement player = hit.collider.gameObject.GetComponent<PlayerMovement>();
 						detectedPlayers.Add(player);
-						Vector2 dir = player.MoveVector;
-						dir.Normalize();
+						Vector2 dir;
 
 						if (!forceDirs.ContainsKey(player))
 						{
 							forceDirs.Add(player, Vector3.zero);
 						}
 
-						if (player.MoveVector != Vector3.zero)
+						if (!player.PlayerIsBoosting() && player.MoveVector != Vector3.zero)
 						{
+							dir = player.MoveVector;
+							dir.Normalize();
+
 							forceDirs[player] += dir;
 							forceDirs[player].Normalize();
 							player.slipVec = (Vector3)(forceDirs[player]);
 							player.slipSpeed += acceleration;
+						}
+						else if (player.PlayerIsBoosting())
+						{
+							dir = player.boostDir;
+							dir.Normalize();
+
+							forceDirs[player] += dir;
+							forceDirs[player].Normalize();
+							player.slipVec = (Vector3)(forceDirs[player]);
+							player.slipSpeed += 4 * acceleration;
 						}
 					}
 				}

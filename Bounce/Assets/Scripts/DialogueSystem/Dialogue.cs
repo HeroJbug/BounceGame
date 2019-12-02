@@ -22,6 +22,7 @@ public struct DialogueButtonData
 public struct DialogueItem
 {
 	public int speakerID;
+	public int charPortraitID;
 	[TextArea(1, 10)]
 	public string text;
 	public DialogueButtonData[] dialogueButtons;

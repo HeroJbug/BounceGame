@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	public int joyPadIndex;
-	public float speed = 5f, boostSpeed = 40f;
-	[SerializeField]
+	public float speed = 5f, boostSpeed = 40f, initialBoostSpeed = 80f;
+	public float boostAcceleration = 40f;
     Vector3 moveVec;
     Rigidbody2D rBody;
     public float boostTimer = 0.4f;
@@ -17,10 +17,17 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer mr;
     private Animator mainAnim;
     private int dir;
+	[HideInInspector]
+	public Vector2 boostDir;
     private Camera cam;
     public GameObject dashIndicator;
+	[SerializeField]
+	private float deathAnimTime;
+	private float deathAnimCounter = 0;
+	[HideInInspector]
 	public Vector2 slipVec;
 	public float frictionalAcceleration = 0.25f;
+	//[HideInInspector]
 	public float slipSpeed;
 	private float playIdleSoundTimeDuration;
 	Vector2 boostVec;
@@ -48,7 +55,16 @@ public class PlayerMovement : MonoBehaviour
         //if we're dead ignore the rest of the work
         if(mainAnim.GetBool("OnDeath"))
         {
-            return;
+			if (deathAnimCounter >= deathAnimTime)
+			{
+				GetComponent<SpriteRenderer>().enabled = false;
+			}
+			else
+			{
+				deathAnimCounter += Time.deltaTime;
+			}
+
+			return;
         }
         moveVec.x = Input.GetAxisRaw("Horizontal");
         moveVec.y = Input.GetAxisRaw("Vertical");
@@ -95,10 +111,6 @@ public class PlayerMovement : MonoBehaviour
 			//calculate aim based on mouse
 			Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 			aim = mousePos - (Vector2)transform.position;
-			aim.Normalize();
-			//Vector2 lookDir = mousePos - rBody.position;
-			//lookDir.Normalize();
-			//float angle = Vector2.Angle(Vector2.right, lookDir);//Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 		}
 		else 
 		{
@@ -106,8 +118,9 @@ public class PlayerMovement : MonoBehaviour
 			float joypadY = Input.GetAxis("Aim_Vertical");
 
 			aim = new Vector2(joypadX == 0 ? aim.x : joypadX, joypadY == 0 ? aim.y : joypadY);
-			aim.Normalize();
 		}
+
+		aim.Normalize();
 
 		dashIndicator.transform.localPosition = aim * 25;
     }
@@ -117,7 +130,11 @@ public class PlayerMovement : MonoBehaviour
         boostVec = dashIndicator.transform.position - transform.position;
         boostVec.Normalize();
         ChooseCorrectBoostAnim(boostVec);
-        rBody.AddForce((boostSpeed * boostVec), ForceMode2D.Impulse);
+		//rBody.AddForce((boostSpeed * boostVec), ForceMode2D.Impulse);
+		boostDir = aim;
+		boostSpeed = initialBoostSpeed;
+		SoundSystem.system.StopSFXLooped(source);
+		SoundSystem.system.PlaySFX(source, "DashSound", 1);
         isBoosting = true;
         boostTimerCounter = boostTimer;
     }
@@ -180,12 +197,11 @@ public class PlayerMovement : MonoBehaviour
 		}
 		else if (mainAnim.GetBool("isBoosting"))
 		{
-			SoundSystem.system.StopSFXLooped(source);
+			//rBody.AddForce(slipVec * slipSpeed);
+			rBody.MovePosition(rBody.position + slipVec * slipSpeed * Time.deltaTime + (Vector2)boostDir * boostSpeed * Time.deltaTime);
 
-			rBody.AddForce(slipVec * slipSpeed);
+			boostSpeed += boostAcceleration;
 		}
-
-		//Debug.Log(rBody.velocity);
 
 		slipSpeed = Mathf.Clamp(slipSpeed - frictionalAcceleration * Time.deltaTime, 0, slipSpeed);
 	}

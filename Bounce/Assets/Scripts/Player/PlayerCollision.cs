@@ -9,8 +9,9 @@ public class PlayerCollision : MonoBehaviour
     public float enemyKnockBackForce = 25f;
     public float enemyDamage = 1f;
 	public float hp = 3;
-	public float maxInvincibilitTime = 3;
-	public float invinciblityTime;
+	[SerializeField]
+	private float maxInvincibilityTime = 3;
+	private float invinciblityTime;
     //public GameObject panel;
     public GameObject mainCamera;
 	private SpriteRenderer mr;
@@ -77,8 +78,7 @@ public class PlayerCollision : MonoBehaviour
 
 			GetComponent<PlayerMovement>().dashIndicator.SetActive(false);
 			StartCoroutine(OnDeath());
-        }
-
+		}
 		else if (invinciblityTime > 0)
 		{
 			mr.enabled = !mr.enabled;
@@ -96,7 +96,7 @@ public class PlayerCollision : MonoBehaviour
         rbody.velocity = Vector2.zero;
         anim.SetBool("OnDeath", true);
         yield return new WaitForSeconds(1.3f);
-        transform.DetachChildren();
+        //transform.DetachChildren();
         Invoke("NextScene", 2f);
     }
 
@@ -104,14 +104,14 @@ public class PlayerCollision : MonoBehaviour
     {
 		if (hp > 0)
 		{
-			ScoreSystem.system.ResetScore();
-			ss.StartShake();
 			if (invinciblityTime <= 0)
 			{
-                if (electric)
+				ss.StartShake();
+				ScoreSystem.system.ResetScore();
+				if (electric)
                     anim.SetTrigger("ElectricDamage");
 				hp -= amt;
-				invinciblityTime = maxInvincibilitTime;
+				invinciblityTime = maxInvincibilityTime;
 			}
 		}
     }
