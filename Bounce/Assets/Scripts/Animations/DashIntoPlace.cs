@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashInFromRight : MonoBehaviour
+public class DashIntoPlace : MonoBehaviour
 {
-    public float startDelay,duration,startX,endX;
+    public float startDelay,duration;
+    public GameObject startPoint, endPoint;
+    Vector3 startPos, endPos;
     bool finished = true;
     float timePassed = 0f;
 
     private void Start()
     {
-        transform.position = new Vector3(startX, transform.position.y, transform.position.z);
+        startPos = startPoint.transform.position;
+        endPos = endPoint.transform.position;
+        transform.position = startPos;
         Invoke("StartTimer", startDelay);
     }
 
@@ -27,9 +31,9 @@ public class DashInFromRight : MonoBehaviour
         if (timePassed >= duration)
         {
             finished = true;
-            transform.position = new Vector3(endX, transform.position.y, transform.position.z);
+            transform.position = endPos;
         }
-        if(!finished)
-            transform.position = new Vector3(endX + ((startX-endX)*(timePassed-duration)*(timePassed-duration))/(duration*duration), transform.position.y, transform.position.z);
+        if (!finished)
+            transform.position = (startPos - endPos) * ((timePassed - duration) * (timePassed - duration) / (duration * duration)) + endPos;
     }
 }
