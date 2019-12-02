@@ -286,6 +286,7 @@ public class DialogueManager : MonoBehaviour {
 		pf.GetComponent<ChoiceBox>().txt = PlaceKeywords(buttonData.buttonText);
 		pf.GetComponent<ChoiceBox>().buttonData = buttonData;
 		pf.transform.SetParent(dialogueCanvas.transform);
+		pf.transform.localScale *= dialogueCanvas.scaleFactor;
 		buttons[idx] = pf;
 
 		SelectedChoiceBox = pf.GetComponent<ChoiceBox>();

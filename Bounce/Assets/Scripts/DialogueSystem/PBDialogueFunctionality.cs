@@ -18,7 +18,7 @@ public class PBDialogueFunctionality : MonoBehaviour, IDialogueFunctionality
 	[SerializeField]
 	private bool ShowDialogueOnce;
 	[SerializeField]
-	private Image[] charProtraits;
+	private Sprite[] charProtraits;
 
 	public void MainOnDeselectChoiceBox()
 	{
@@ -32,15 +32,17 @@ public class PBDialogueFunctionality : MonoBehaviour, IDialogueFunctionality
 
 	public void MainPositionButtons(DialoguePacket packet, GameObject[] buttons, int idx)
 	{
-		float x = packet.images[0].transform.position.x + (packet.images[0].rectTransform.rect.width / 2) - (buttons[idx].GetComponent<Image>().rectTransform.rect.width / 2) - buttonPadding;
-		float y = packet.images[0].transform.position.y - (packet.images[0].rectTransform.rect.height / 2) * DialogueManager.manager.dialogueCanvas.GetComponent<Canvas>().scaleFactor + buttonPadding;
-
-		buttons[idx].transform.position = new Vector3(x, y, DialogueManager.manager.dialogueCanvas.transform.position.z);
+		float x = packet.images[0].transform.localPosition.x + (packet.images[0].rectTransform.rect.width / 2) - (buttons[idx].GetComponent<Image>().rectTransform.rect.width / 2) - buttonPadding;
+		float y = packet.images[0].transform.localPosition.y - (packet.images[0].rectTransform.rect.height / 2) + (buttons[idx].GetComponent<Image>().rectTransform.rect.height / 2) + buttonPadding;
+		
+		buttons[idx].transform.localPosition = new Vector2(x, y);
 	}
 
 	public void MainUpdateImages(DialoguePacket packet)
 	{
-		//nothing
+		int currentProtraitIndex = packet.dialogueItems[packet.index].charPortraitID;
+
+		packet.images[1].sprite = charProtraits[currentProtraitIndex];
 	}
 
 	public void MainUpdateText(DialoguePacket packet)

@@ -19,10 +19,6 @@ namespace DialogueFunctionality
 		/// </summary>
 		public int index;
 		/// <summary>
-		/// the speakerID of the currentSpeaker
-		/// </summary>
-		public int currentSpeaker;
-		/// <summary>
 		/// the items used in dialogue
 		/// </summary>
 		public DialogueItem[] dialogueItems;
