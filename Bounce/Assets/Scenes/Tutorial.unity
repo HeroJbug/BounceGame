@@ -1257,6 +1257,26 @@ PrefabInstance:
       propertyPath: m_Type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00e0c6e0b788e94ba016a8c88c0a7a6, type: 3}
 --- !u!224 &717562365 stripped
@@ -4312,6 +4332,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5117352434602345478, guid: 688108fba00667d4fa38c6baff94505d,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5117352434602345496, guid: 688108fba00667d4fa38c6baff94505d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4366,11 +4391,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5117352434602345478, guid: 688108fba00667d4fa38c6baff94505d,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5117352434602345497, guid: 688108fba00667d4fa38c6baff94505d,
         type: 3}
