@@ -1336,6 +1336,11 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 199627998}
+    - target: {fileID: 3885456003136148052, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: sceneNumber
+      value: 255
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00e0c6e0b788e94ba016a8c88c0a7a6, type: 3}
 --- !u!224 &1390455764 stripped
