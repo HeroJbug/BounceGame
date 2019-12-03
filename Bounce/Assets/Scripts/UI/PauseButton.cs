@@ -23,6 +23,7 @@ public class PauseButton : MonoBehaviour
             {
                 foreach(Image x in pauseScreen)
                     x.enabled = true;
+                print("Images enabled");
                 Time.timeScale = 0f;
                 paused = true;
             }
@@ -32,28 +33,6 @@ public class PauseButton : MonoBehaviour
                     x.enabled = false;
                 Time.timeScale = 1f;
                 paused = false;
-            }
-        }
-        if(Input.GetMouseButtonDown(0))
-        {
-            if(paused)
-            {
-                float mX = Input.mousePosition.x, mY = Input.mousePosition.y;
-                if (Mathf.Abs(mX - 573f) <= 75f && Mathf.Abs(mY - 183.5f) <= 15f)
-                {
-                    Time.timeScale = 1f;
-                    SceneManager.LoadScene(0);
-                }
-                if (Mathf.Abs(mX - 573f) <= 75f && Mathf.Abs(mY - 134.5f) <= 15f)
-                {
-                    Time.timeScale = 1f;
-                    Application.Quit();
-                }
-                //print(Input.mousePosition);
-                //foreach(Image x in pauseScreen)
-                //{
-                //    print(x.transform.position);
-                //}
             }
         }
     }
