@@ -195,6 +195,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 50, y: 10}
   m_EdgeRadius: 0
+--- !u!1 &16807891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6278266910289570256, guid: 02d34a682e647cb45a3d8007b845c9bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1239638257}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &16807892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16807891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2314377cc1e4bf14cbde5bc4cec62293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keepDisabled: {fileID: 1395802375}
 --- !u!1 &67678598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,12 +1866,46 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1824141335125707182, guid: c1dceaf96de731f4db914034e84bfbfa,
+    - target: {fileID: 1346731480973930728, guid: c1dceaf96de731f4db914034e84bfbfa,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 6f2f951787887394daa4faa5a07d47a3,
+      propertyPath: m_AnchoredPosition.x
+      value: 51.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346731480973930728, guid: c1dceaf96de731f4db914034e84bfbfa,
         type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -184.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346731480973930728, guid: c1dceaf96de731f4db914034e84bfbfa,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 68.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346731480973930728, guid: c1dceaf96de731f4db914034e84bfbfa,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 677.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680361925721592370, guid: c1dceaf96de731f4db914034e84bfbfa,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -140.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680361925721592370, guid: c1dceaf96de731f4db914034e84bfbfa,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 222.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680361925721592370, guid: c1dceaf96de731f4db914034e84bfbfa,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 15.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680361925721592370, guid: c1dceaf96de731f4db914034e84bfbfa,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -179.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1dceaf96de731f4db914034e84bfbfa, type: 3}
 --- !u!224 &991599555 stripped
@@ -2105,7 +2158,7 @@ MonoBehaviour:
     createDummyButtons: 1
     dialogueItems:
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: Well, hello there Agent 67! Nice to see you functioning and up-to-date!
       dialogueButtons: []
     - speakerID: 0
@@ -2113,19 +2166,19 @@ MonoBehaviour:
       text: "My name is Dr.Lightning, your creator, and you don\u2019t know how long\u2026"
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: I have waited for you to finally be online!
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 2
       text: Finally, my ticket to World Domination is made!
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: You were invented by yours truly to be the best fighting robot ever created!
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 2
       text: "Now, I know you may have questions, and I assure you\u2026"
       dialogueButtons: []
     - speakerID: 0
@@ -2133,7 +2186,7 @@ MonoBehaviour:
       text: "They will all be answered in due time\u2026"
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 3
       text: '*cough* probably *cough*...'
       dialogueButtons: []
     - speakerID: 0
@@ -2141,23 +2194,23 @@ MonoBehaviour:
       text: "But for now\u2026 All you need to know\u2026"
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 3
       text: "Is that you are my magnum opus\u2026 My last chance at success\u2026"
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 4
       text: "So don\u2019t you dare fail me!!!"
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 4
       text: "\u2026\u2026\u2026\u2026.."
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: No pressure! No pressure at all!
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: "Anyways\u2026 So since you are still new, I need to see how well you
         do compared to my previous creations."
       dialogueButtons: []
@@ -2167,22 +2220,22 @@ MonoBehaviour:
         are sufficiently competent enough to be shown to the world!
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: I will be scoring you on how many of your fellow brothers and sisters
         you destroy! Fun, RIGHT!?!?!?
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: "The more you ruthlessly murder in quick succession, the better I\u2019ll
         rate you! They will come in waves, so you\u2019ll get a brief rest per encounter."
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 3
       text: The test is over when you survive all the rounds or are shut down from
         sustaining to many injuries.
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 3
       text: '...And by shut down...I mean, explode...'
       dialogueButtons: []
     - speakerID: 0
@@ -2194,23 +2247,23 @@ MonoBehaviour:
       text: And...
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: I.
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 4
       text: MEAN.
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 5
       text: EVERYTHING!!!!!!!!!!!!!
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 5
       text: '......................'
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: '...Well then, now to basic controls.'
       dialogueButtons: []
     - speakerID: 0
@@ -2223,7 +2276,7 @@ MonoBehaviour:
         altLine: 0
         buttonText: Got it, boss!
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: "Good. Now try Dashing. It\x19s either mouse 1 or the right bumper."
       dialogueButtons:
       - action: 2
@@ -2231,7 +2284,7 @@ MonoBehaviour:
         altLine: 0
         buttonText: Dashing away!
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: Great! Notice it is on a short cooldown, as you only have so much fuel.
         Be conservative!
       dialogueButtons: []
@@ -2244,7 +2297,7 @@ MonoBehaviour:
       text: This is the Waspotronic 3000! Failed experiment 46.
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: I don't care too much about him anymore...Try bashing him into the sawblades!
       dialogueButtons:
       - action: 2
@@ -2252,35 +2305,35 @@ MonoBehaviour:
         altLine: 0
         buttonText: On it!
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 5
       text: Superb! This is how you destroy enemies!
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: Now, since you know your primary functions, lets go ahead and get you
         out in the arena and have you fight!
       dialogueButtons: []
     - speakerID: 0
       charPortraitID: 0
       text: Also, if you happen to notice another bot in the arena that looks like
-        you&
+        you...
       dialogueButtons: []
     - speakerID: 0
       charPortraitID: 0
-      text: "Except she\x19s blue, thats Specimen 67.5. You will be working together
+      text: "...Except she\x19s blue, thats Specimen 67.5. You will be working together
         and be graded on your overall cooperation as a single unit."
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: Otherwise, the process will continue as planned. Have fun Specimen 67!
         And remember...
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 4
       text: DO. NOT. FAIL. ME.
       dialogueButtons: []
     - speakerID: 0
-      charPortraitID: 0
+      charPortraitID: 1
       text: See you in the arena!
       dialogueButtons: []
 --- !u!4 &1099814368
@@ -2644,6 +2697,125 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1239638257
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6278266910289570256, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_Name
+      value: UIDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 02d34a682e647cb45a3d8007b845c9bc, type: 3}
 --- !u!1 &1242690012
 GameObject:
   m_ObjectHideFlags: 0
@@ -3170,6 +3342,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1395802375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 14404918, guid: 02d34a682e647cb45a3d8007b845c9bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1239638257}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1409693359
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -76,7 +76,8 @@ MonoBehaviour:
   ShowDialogueOnce: 1
   charProtraits:
   - {fileID: 21300000, guid: 6f2f951787887394daa4faa5a07d47a3, type: 3}
-  - {fileID: 21300000, guid: cf3f6c4d5566edb4a85f1c415d95d927, type: 3}
   - {fileID: 21300000, guid: f1edb0f601720624c8bcdc65102d0b38, type: 3}
+  - {fileID: 21300000, guid: cf3f6c4d5566edb4a85f1c415d95d927, type: 3}
+  - {fileID: 21300000, guid: 1d2dc9d4de9917a47b9e938e9e803e07, type: 3}
   - {fileID: 21300000, guid: fef049c96f8482f4e8ceac5aced6ecef, type: 3}
   - {fileID: 21300000, guid: 1d2db550f6d363c4dae3dfd6d2ba2c83, type: 3}

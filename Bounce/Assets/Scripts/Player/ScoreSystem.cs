@@ -30,6 +30,9 @@ public class ScoreSystem : MonoBehaviour
 		{
 			Destroy(this);
 		}
+
+		score = 0;
+		scoreMultiplier = 0;
     }
 
     // Update is called once per frame

@@ -70,7 +70,11 @@ public class PBDialogueFunctionality : MonoBehaviour, IDialogueFunctionality
 		packet.images[1].gameObject.SetActive(true);
 		packet.images[1].rectTransform.sizeDelta = status ? Vector2.zero : packet.images[0].rectTransform.sizeDelta;
 		packet.images[1].gameObject.GetComponent<ResizeCharacterProtrait>().PrepareResize(this, status ? 0 : 1, BoxChangeSizeTime / 8);
-		callbacks = 2;
+
+		packet.images[2].gameObject.SetActive(true);
+		packet.images[2].rectTransform.sizeDelta = status ? Vector2.zero : packet.images[0].rectTransform.sizeDelta;
+		packet.images[2].gameObject.GetComponent<ResizeBox>().StartResize(this, status ? 0 : 1, BoxChangeSizeTime);
+		callbacks = 3;
 
 		foreach (Text textObj in packet.textObjects)
 		{
