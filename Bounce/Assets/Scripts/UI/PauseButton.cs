@@ -12,7 +12,8 @@ public class PauseButton : MonoBehaviour
     void Start()
     {
         foreach(Image x in pauseScreen)
-            x.enabled = false;
+            if(x != null)
+                x.enabled = false;
     }
     
     void Update()
