@@ -51,6 +51,7 @@ public class MultiplayerManager : MonoBehaviour
         //double check math later
         Vector2 cameraTransform = (player1.transform.position - player2.transform.position).normalized * halfPoint;
         mainCamera.transform.position = cameraTransform;
+        //might need to zoom this out at some point too
     }
 
     private void HandlePlayerDeath()
