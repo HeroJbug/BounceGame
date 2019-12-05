@@ -5,11 +5,13 @@ using UnityEngine;
 public class Barrier : Hazard
 {
     protected bool drawGizmos = true;
+    BoxCollider2D collider;
 
     private void Awake()
     {
         Initialize();
         type = HazardTypes.BARRIER;
+        collider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -17,6 +19,7 @@ public class Barrier : Hazard
         //if we landed, check everything under us and just kill it
         if(Landed)
         {
+            collider.enabled = true;
             timer -= Time.deltaTime;
             if (timer <= 0)
                 Destroy(this.gameObject);
