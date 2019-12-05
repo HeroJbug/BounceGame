@@ -21,6 +21,9 @@ public class PlayerCollision : MonoBehaviour
 	private AudioSource source;
 	private bool preppedMusic = false;
 
+    public delegate void OnPlayerDeath();
+    public static event OnPlayerDeath thisPlayerDeath;
+
 	PlayerMovement moveRef;
     // Start is called before the first frame update
     void Start()
@@ -97,7 +100,8 @@ public class PlayerCollision : MonoBehaviour
         anim.SetBool("OnDeath", true);
         yield return new WaitForSeconds(1.3f);
         //transform.DetachChildren();
-        Invoke("NextScene", 2f);
+        thisPlayerDeath();
+        //Invoke("NextScene", 2f);
     }
 
 	public void TakeDamage(float amt, bool electric)
@@ -116,9 +120,9 @@ public class PlayerCollision : MonoBehaviour
 		}
     }
 
-    public void NextScene()
-    {
-        SceneManager.LoadScene(5);
-    }
+    //public void NextScene()
+    //{
+    //    SceneManager.LoadScene(5);
+    //}
 }
 

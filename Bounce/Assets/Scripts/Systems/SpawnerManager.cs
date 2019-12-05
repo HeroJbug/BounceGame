@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnerManager : MonoBehaviour
 {
     private EnemySpawner[] spawners;
-    private GameObject player;
+    private GameObject[] players = new GameObject[2];
     public List<Round> rounds;
     public float timeBetweenWaves;
     public float timeBetweenRounds;
@@ -39,7 +39,16 @@ public class SpawnerManager : MonoBehaviour
         spawnTimeCounter = spawnTime;
         spawners = FindObjectsOfType<EnemySpawner>();
         FirstRound();
-        player = FindObjectOfType<PlayerMovement>().gameObject;
+        FindPlayers();
+    }
+
+    public void FindPlayers()
+    {
+        PlayerMovement[] temp = FindObjectsOfType<PlayerMovement>();
+        for (int i = 0; i < temp.Length; i++)
+        {
+            players[i] = temp[i].gameObject;
+        }
     }
 
     // Update is called once per frame
@@ -83,7 +92,11 @@ public class SpawnerManager : MonoBehaviour
             if(enemiesStack.Count > 0)
             {
                 GameObject toSpawn = enemiesStack.Pop();
-                GameObject spawned = s.SpawnEnemy(toSpawn, player);
+                GameObject spawned;
+                if(players[1] != null)
+                    spawned = s.SpawnEnemy(toSpawn, players[Random.Range(0,2)]);
+                else
+                    spawned = s.SpawnEnemy(toSpawn, players[0]);
                 currentWaveEnemies.Add(spawned);
             }
         }
