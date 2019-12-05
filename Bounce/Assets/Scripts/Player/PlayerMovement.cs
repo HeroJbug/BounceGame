@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
 	Vector2 aim;
 	public bool isInTutorialMode = false;
 	private AudioSource source;
+    public int playerNum = 1;
 
 
 	// Start is called before the first frame update
@@ -70,11 +71,11 @@ public class PlayerMovement : MonoBehaviour
 
 				return;
 			}
-			moveVec.x = Input.GetAxisRaw("Horizontal");
-			moveVec.y = Input.GetAxisRaw("Vertical");
+			moveVec.x = Input.GetAxisRaw("Horizontal_" + playerNum);
+			moveVec.y = Input.GetAxisRaw("Vertical_" + playerNum);
 			int currentDir = GetDirThisFrame();
 			mainAnim.SetInteger("Direction", currentDir);
-			if (Input.GetButtonDown("Dash") && boostCooldownCounter <= 0)
+			if (Input.GetButtonDown("Dash_" + playerNum) && boostCooldownCounter <= 0)
 			{
 				Boost();
 			}
@@ -119,8 +120,8 @@ public class PlayerMovement : MonoBehaviour
 		}
 		else 
 		{
-			float joypadX = Input.GetAxis("Aim_Horizontal");
-			float joypadY = Input.GetAxis("Aim_Vertical");
+			float joypadX = Input.GetAxis("Aim_Horizontal_" + playerNum);
+			float joypadY = Input.GetAxis("Aim_Vertical_" + playerNum);
 
 			aim = new Vector2(joypadX == 0 ? aim.x : joypadX, joypadY == 0 ? aim.y : joypadY);
 		}
