@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea39f5fbbe1488e48ac98d3bf4c30ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallSound: HazardLand
   timer: 60
   startingDistance: 100
   targetRadius: 8.02
@@ -116,10 +117,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.05187893, y: 0.114133835}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -130,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.41, y: 0.4}
+  m_Size: {x: 4.3323, y: 6.522106}
   m_EdgeRadius: 0
 --- !u!95 &-2618860811531709316
 Animator:

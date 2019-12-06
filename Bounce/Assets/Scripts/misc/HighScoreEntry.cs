@@ -59,7 +59,7 @@ public class HighScoreEntry : MonoBehaviour
 
     public void EnterName()
     {
-        if (scores.ContainsKey(newScore))
+        if (scores.Count != 0 && scores.ContainsKey(newScore))
             scores[newScore].AddFirst(nameBox.text);
         else
         {

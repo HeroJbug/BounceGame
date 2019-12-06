@@ -93,6 +93,7 @@ public class LevelPiecesController : MonoBehaviour
 
     IEnumerator RemapPathfind()
     {
+        yield return new WaitForSeconds(2f);
         pathGrid.MapGrid();
         yield return null;
     }

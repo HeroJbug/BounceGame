@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 893839970907874803}
   - component: {fileID: 893839970907874804}
   - component: {fileID: 893839970907874805}
-  - component: {fileID: 5359327199621109542}
   - component: {fileID: 645164385}
+  - component: {fileID: 7827249361752052975}
   m_Layer: 11
   m_Name: Buzzsaw
   m_TagString: Untagged
@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5ae161b146fc5498a92666eb6c915a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallSound: HazardLand
   timer: 45
   startingDistance: 100
   targetRadius: 8
@@ -105,22 +106,6 @@ MonoBehaviour:
     type: 3}
   damageToDeal: 2
   drawGizmos: 1
---- !u!58 &5359327199621109542
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893839970907874806}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.000000011920929, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.14806925
 --- !u!95 &645164385
 Animator:
   serializedVersion: 3
@@ -140,3 +125,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &7827249361752052975
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893839970907874806}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 14.82, y: 10.44}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 14.82, y: 10.44}
+  m_EdgeRadius: 0

@@ -187,6 +187,11 @@ public class PlayerMovement : MonoBehaviour
         return isBoosting;
     }
 
+    public void SetBoostingFalse()
+    {
+        isBoosting = false;
+    }
+
     private void FixedUpdate()
     {
 		if (!isInTutorialMode || !DialogueManager.manager.DialogueBoxActive)

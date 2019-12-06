@@ -93,6 +93,8 @@ public class PlayerCollision : MonoBehaviour
 
     IEnumerator OnDeath()
     {
+        //is this clean? no. Does it work? yes.
+        GetComponent<PlayerMovement>().SetBoostingFalse();
         rbody.velocity = Vector2.zero;
         anim.SetBool("OnDeath", true);
         yield return new WaitForSeconds(1.3f);
