@@ -82,7 +82,7 @@ public abstract class Hazard : MonoBehaviour
 		hasLanded = (height <= 0);
 		if (hasLanded)
 		{
-			SoundSystem.system.PlaySFXMain(fallSound, 1);
+			SoundSystem.system.PlaySFXMain(fallSound, 0.5f);
 			transform.position = pos;
 			shadow.transform.position = new Vector3 (pos.x, pos.y - 0.6f, pos.z - 0.3f);
 		}

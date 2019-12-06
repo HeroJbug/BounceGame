@@ -795,6 +795,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 143175369, guid: df059d2682e46a749b29e1caaa6b435b, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 143175370, guid: df059d2682e46a749b29e1caaa6b435b, type: 3}
       propertyPath: Priority
       value: 1
@@ -921,7 +925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ef350b7561b2741905a284891eed18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayGridGizmos: 1
+  displayGridGizmos: 0
   playerPos: {fileID: 566293463}
   barrierMask:
     serializedVersion: 2
@@ -3128,6 +3132,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117352434602345497, guid: 688108fba00667d4fa38c6baff94505d,
+        type: 3}
+      propertyPath: boostTimer
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 688108fba00667d4fa38c6baff94505d, type: 3}
