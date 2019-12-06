@@ -17,6 +17,7 @@ public class FadeFlash : MonoBehaviour
     private void OnDisable()
     {
         fade = false;
+        textToFade.color = new Color(textToFade.color.r, textToFade.color.g, textToFade.color.b, 1);
     }
     private void FixedUpdate()
     {

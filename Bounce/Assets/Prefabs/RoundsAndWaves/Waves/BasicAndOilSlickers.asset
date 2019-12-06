@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyTypesToCounts:
   - enemyType: {fileID: 5300961001618834294, guid: 13b1e3e5996cb174ab47feca911e405f,
       type: 3}
-    enemyCount: 15
+    enemyCount: 10
   - enemyType: {fileID: 9156914789500585972, guid: e6e7f2d1ae0da5d4083216dc4e31d2bf,
       type: 3}
     enemyCount: 5

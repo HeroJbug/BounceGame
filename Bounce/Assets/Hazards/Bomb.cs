@@ -13,9 +13,12 @@ public class Bomb : Hazard
 	[SerializeField]
 	protected bool drawGizmos = true;
 
+    private SpriteRenderer sr;
+
 	// Start is called before the first frame update
 	void Awake()
     {
+        sr = GetComponent<SpriteRenderer>();
 		Initialize();
 		type = HazardTypes.BOMB;
     }
@@ -25,11 +28,9 @@ public class Bomb : Hazard
     {
         if (Landed)
 		{
-            timer -= Time.deltaTime;
-            if (timer <= 0)
-                Destroy(this.gameObject);
             countdownTimer -= Time.deltaTime;
-            if(countdownTimer <= 0)
+            sr.color = new Color(1, countdownTimer / 3, countdownTimer / 3);
+            if (countdownTimer <= 0)
             {
                 foreach (string layerName in layersToAffect)
                 {
@@ -37,9 +38,7 @@ public class Bomb : Hazard
                     {
                         foreach (RaycastHit2D hit in hits)
                         {
-                            //TODO: is there a cleaner way to do this?
                             //damage player by damageToDeal
-                            //Debug.Log("KAAAAAAAAA-BOOOOOOOOOOOOOMMMMM!!!!!!!!!!!!!!!!");
                             if(hit.rigidbody.gameObject.GetComponent<PlayerCollision>() != null)
                             {
                                 hit.rigidbody.gameObject.GetComponent<PlayerCollision>().TakeDamage(damageToDeal, false);
@@ -64,6 +63,7 @@ public class Bomb : Hazard
 
     IEnumerator Explode()
     {
+        sr.color = new Color(1, 1, 1);
         GetComponent<Animator>().SetTrigger("OnExplode");
         transform.localScale = new Vector3(3f, 3f, 1f);
         yield return new WaitForSeconds(0.5f);

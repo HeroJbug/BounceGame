@@ -21,7 +21,7 @@ public class HighScoreEntry : MonoBehaviour
     void Start()
     {
         bf = new BinaryFormatter();
-        newScoreDisplay.text = "Score: " + (-1 * newScore);
+        //newScoreDisplay.text = "Score: " + (-1 * newScore);
 
 		//Debug.Log("path: " + Application.persistentDataPath);
 

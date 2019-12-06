@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
 
     public void PathFound(Vector3[] waypoints, bool pathSuccess)
     {
-        if (pathSuccess)
+        if (pathSuccess && this != null)
         {
             path = new Path(waypoints, transform.position, turnDst);
             StopCoroutine("FollowPath");
