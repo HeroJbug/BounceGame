@@ -66,6 +66,7 @@ public class Bomb : Hazard
         sr.color = new Color(1, 1, 1);
         GetComponent<Animator>().SetTrigger("OnExplode");
         transform.localScale = new Vector3(3f, 3f, 1f);
+        SoundSystem.system.PlaySFXMain("EnemyBoom1", 0.5f);
         yield return new WaitForSeconds(0.5f);
         Destroy(this.gameObject);
     }

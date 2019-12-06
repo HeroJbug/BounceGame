@@ -29,7 +29,7 @@ public class Spikes : Hazard
                 Destroy(this.gameObject);
             foreach (string layerName in layersToAffect)
 			{
-				if (ColInCircleAll(transform.position, targetRadius, LayerMask.GetMask(layerName), out RaycastHit2D[] hits))
+				if (ColInCircleAll(new Vector3(transform.position.x - 2.85f, transform.position.y-0.3f, transform.position.z), targetRadius, LayerMask.GetMask(layerName), out RaycastHit2D[] hits))
 				{
 					foreach (RaycastHit2D hit in hits)
 					{
@@ -59,7 +59,7 @@ public class Spikes : Hazard
 		if (drawGizmos)
 		{
 			Gizmos.color = Color.red;
-			Gizmos.DrawWireSphere(transform.position, targetRadius);
+			Gizmos.DrawWireSphere(new Vector3(transform.position.x - 2.85f, transform.position.y-0.3f, transform.position.z), targetRadius);
 		}
 	}
 }
