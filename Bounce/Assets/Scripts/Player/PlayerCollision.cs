@@ -20,6 +20,7 @@ public class PlayerCollision : MonoBehaviour
 	private ScreenShake ss;
 	private AudioSource source;
 	private bool preppedMusic = false;
+	private bool isInTutorialMode;
 
 	PlayerMovement moveRef;
     // Start is called before the first frame update
@@ -32,6 +33,11 @@ public class PlayerCollision : MonoBehaviour
         mainCamera.transform.parent = transform;
 		ss = GetComponentInChildren<ScreenShake>();
 		source = GetComponent<AudioSource>();
+
+		if ((isInTutorialMode = GetComponent<PlayerMovement>().isInTutorialMode))
+		{
+			enemyDamage = 0;
+		}
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -50,7 +56,14 @@ public class PlayerCollision : MonoBehaviour
                 if (!collision.gameObject.GetComponent<TurtleEnemy>())
                 {
                     TakeDamage(enemyDamage, false);
-                    collision.gameObject.GetComponent<Enemy>().OnCollisionDeath();
+					if (!isInTutorialMode)
+					{
+						collision.gameObject.GetComponent<Enemy>().OnCollisionDeath();
+					}
+					else
+					{
+						SoundSystem.system.PlaySFXMain("EnemyBoom1", 1);
+					}
                 }
                 else
                 {
