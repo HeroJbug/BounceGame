@@ -25,6 +25,9 @@ public class PlayerCollision : MonoBehaviour
     public delegate void OnPlayerDeath();
     public static event OnPlayerDeath thisPlayerDeath;
 
+    public delegate void OnPlayerDeath();
+    public static event OnPlayerDeath thisPlayerDeath;
+
 	PlayerMovement moveRef;
     // Start is called before the first frame update
     void Start()
