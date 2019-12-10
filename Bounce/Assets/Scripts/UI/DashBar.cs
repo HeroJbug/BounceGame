@@ -5,13 +5,22 @@ using UnityEngine.UI;
 
 public class DashBar : MonoBehaviour
 {
-	private PlayerMovement player;
+	private PlayerMovement[] players;
+    private PlayerMovement player;
 	private Image image;
+    public int playerNum;
 
 	// Start is called before the first frame update
 	void Start()
     {
-		player = FindObjectOfType<PlayerMovement>();
+		players = FindObjectsOfType<PlayerMovement>();
+        foreach(PlayerMovement p in players)
+        {
+            if(p.playerNum == playerNum)
+            {
+                player = p;
+            }
+        }
 		image = GetComponent<Image>();
     }
 

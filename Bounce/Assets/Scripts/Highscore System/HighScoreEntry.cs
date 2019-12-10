@@ -27,13 +27,16 @@ public class HighScoreEntry : MonoBehaviour
 
         if(File.Exists(Application.persistentDataPath + "/highScores.gd"))
         {
+            //open file, load data
             file = File.Open(Application.persistentDataPath + "/highScores.gd",FileMode.Open);
             scores = (SortedDictionary<int, LinkedList<string>>)bf.Deserialize(file);
             int numOfBetterScores = 0;
             foreach(KeyValuePair<int,LinkedList<string>> x in scores)
             {
+                //if the score that we're looking at is less than what we just scored
                 if (x.Key <= newScore)
                     break;
+                //if not, add the number of people who've scored that score
                 numOfBetterScores+=x.Value.Count;
                 if (numOfBetterScores >= 10)
                     break;
