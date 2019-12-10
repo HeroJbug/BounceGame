@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnerManager : MonoBehaviour
 {
     private EnemySpawner[] spawners;
-    private GameObject player;
+    private GameObject[] players = new GameObject[2];
     public List<Round> rounds;
     public float timeBetweenWaves;
     public float timeBetweenRounds;
@@ -39,13 +39,22 @@ public class SpawnerManager : MonoBehaviour
         spawnTimeCounter = spawnTime;
         spawners = FindObjectsOfType<EnemySpawner>();
         FirstRound();
-        player = FindObjectOfType<PlayerMovement>().gameObject;
+        FindPlayers();
+    }
+
+    public void FindPlayers()
+    {
+        PlayerMovement[] temp = FindObjectsOfType<PlayerMovement>();
+        for (int i = 0; i < temp.Length; i++)
+        {
+            players[i] = temp[i].gameObject;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!waveFinished)
+        if (!waveFinished)
             spawnTimeCounter -= Time.deltaTime;
         if (spawnTimeCounter <= 0)
         {
@@ -77,13 +86,17 @@ public class SpawnerManager : MonoBehaviour
     {
         print("SPAWNING ENEMIES");
         //loop through all spawners
-        foreach(EnemySpawner s in spawners)
+        foreach (EnemySpawner s in spawners)
         {
             //if we can spawn something, do so
-            if(enemiesStack.Count > 0)
+            if (enemiesStack.Count > 0)
             {
                 GameObject toSpawn = enemiesStack.Pop();
-                GameObject spawned = s.SpawnEnemy(toSpawn, player);
+                GameObject spawned;
+                if (players[1] != null)
+                    spawned = s.SpawnEnemy(toSpawn, players[Random.Range(0, 2)]);
+                else
+                    spawned = s.SpawnEnemy(toSpawn, players[0]);
                 currentWaveEnemies.Add(spawned);
             }
         }
@@ -91,7 +104,7 @@ public class SpawnerManager : MonoBehaviour
 
     private void RemoveDeadEnemies(GameObject e)
     {
-        if(currentWaveEnemies.Count > 1)
+        if (currentWaveEnemies.Count > 1)
             currentWaveEnemies.Remove(e);
         else
         {
@@ -120,7 +133,7 @@ public class SpawnerManager : MonoBehaviour
     {
         nextWaveApproachingUI.SetActive(true);
         yield return new WaitForSeconds(timeBetweenWaves);
-        if(waveIdx < currRound.wavesInRound.Count)
+        if (waveIdx < currRound.wavesInRound.Count)
         {
             nextWaveApproachingUI.SetActive(false);
 
@@ -139,9 +152,9 @@ public class SpawnerManager : MonoBehaviour
     {
         enemiesStack = new Stack<GameObject>();
         currentWaveEnemies = new List<GameObject>();
-        foreach(TypeToCount e in currWaveInRound.enemyTypesToCounts)
+        foreach (TypeToCount e in currWaveInRound.enemyTypesToCounts)
         {
-            for(int i = 0; i < e.enemyCount; i++)
+            for (int i = 0; i < e.enemyCount; i++)
             {
                 enemiesStack.Push(e.enemyType);
             }

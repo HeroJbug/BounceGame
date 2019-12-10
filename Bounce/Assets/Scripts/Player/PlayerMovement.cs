@@ -22,21 +22,6 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 boostDir;
     private Camera cam;
     public GameObject dashIndicator;
-<<<<<<< Updated upstream
-	[SerializeField]
-	private float deathAnimTime;
-	private float deathAnimCounter = 0;
-	[HideInInspector]
-	public Vector2 slipVec;
-	public float frictionalAcceleration = 0.25f;
-	[HideInInspector]
-	public float slipSpeed;
-	private float playIdleSoundTimeDuration;
-	Vector2 boostVec;
-	Vector2 aim;
-	public bool isInTutorialMode = false;
-	private AudioSource source;
-=======
     [SerializeField]
     private float deathAnimTime;
     private float deathAnimCounter = 0;
@@ -52,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource source;
     public int playerNum = 1;
     public int numJoysticks = 0;
->>>>>>> Stashed changes
 
 
     // Start is called before the first frame update
@@ -73,60 +57,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (!isInTutorialMode || !DialogueManager.manager.DialogueBoxActive)
-<<<<<<< Updated upstream
-		{
-			//if we're dead ignore the rest of the work
-			if (mainAnim.GetBool("OnDeath"))
-			{
-				if (deathAnimCounter >= deathAnimTime)
-				{
-					GetComponent<SpriteRenderer>().enabled = false;
-				}
-				else
-				{
-					deathAnimCounter += Time.deltaTime;
-				}
-
-				return;
-			}
-			moveVec.x = Input.GetAxisRaw("Horizontal");
-			moveVec.y = Input.GetAxisRaw("Vertical");
-			int currentDir = GetDirThisFrame();
-			mainAnim.SetInteger("Direction", currentDir);
-			if (Input.GetButtonDown("Dash") && boostCooldownCounter <= 0)
-			{
-				Boost();
-			}
-
-			if (isBoosting)
-			{
-				boostTimerCounter -= Time.deltaTime;
-				boostCooldownCounter = boostCooldown * (1 - (boostTimerCounter / boostTimer));
-
-				if (boostTimerCounter <= 0)
-				{
-					rBody.velocity = Vector3.zero;
-					isBoosting = false;
-					boostCooldownCounter = boostCooldown;
-				}
-				mainAnim.SetBool("isBoosting", true);
-			}
-			else
-			{
-				if (mainAnim.GetBool("isBoosting"))
-					mainAnim.SetBool("isBoosting", false);
-			}
-
-			if (!isBoosting && boostCooldownCounter > 0)
-			{
-				boostCooldownCounter -= Time.deltaTime;
-				if (boostCooldownCounter <= 0)
-				{
-					boostCooldownCounter = 0;
-				}
-			}
-		}
-=======
         {
             //if we're dead ignore the rest of the work
             if (mainAnim.GetBool("OnDeath"))
@@ -179,30 +109,10 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
->>>>>>> Stashed changes
     }
 
     private void UpdateAimPos()
     {
-<<<<<<< Updated upstream
-		if (Input.GetJoystickNames().Length == 0)
-		{
-			//calculate aim based on mouse
-			Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-			aim = mousePos - (Vector2)transform.position;
-		}
-		else 
-		{
-			float joypadX = Input.GetAxis("Aim_Horizontal");
-			float joypadY = Input.GetAxis("Aim_Vertical");
-
-			aim = new Vector2(joypadX == 0 ? aim.x : joypadX, joypadY == 0 ? aim.y : joypadY);
-		}
-
-		aim.Normalize();
-
-		dashIndicator.transform.localPosition = aim * 25;
-=======
         //if no joysticks are connected, take input from the mouse, OR if we're player 2 and there's 1 joystick
         if (numJoysticks == 0 || (playerNum == 2 && numJoysticks == 1))
         {
@@ -222,7 +132,6 @@ public class PlayerMovement : MonoBehaviour
         aim.Normalize();
 
         dashIndicator.transform.localPosition = aim * 25;
->>>>>>> Stashed changes
     }
 
     private void Boost()

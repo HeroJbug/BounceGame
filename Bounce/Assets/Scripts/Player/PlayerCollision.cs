@@ -22,6 +22,9 @@ public class PlayerCollision : MonoBehaviour
 	private bool preppedMusic = false;
 	private bool isInTutorialMode;
 
+    public delegate void PlayerDeathDelegate();
+    public static event PlayerDeathDelegate thisPlayerDeath;
+
 	PlayerMovement moveRef;
     // Start is called before the first frame update
     void Start()
@@ -111,6 +114,7 @@ public class PlayerCollision : MonoBehaviour
         rbody.velocity = Vector2.zero;
         anim.SetBool("OnDeath", true);
         yield return new WaitForSeconds(1.3f);
+        thisPlayerDeath();
         //transform.DetachChildren();
         Invoke("NextScene", 2f);
     }

@@ -13,7 +13,6 @@ public class MultiplayerManager : MonoBehaviour
     GameObject player1;
     [SerializeField]
     GameObject player2;
-    public GameObject Player2UI;
 
     private int numJoysticks = 0;
 
@@ -32,13 +31,11 @@ public class MultiplayerManager : MonoBehaviour
     void Update()
     {
         //if we connect a new joystick or press the join key instantiate player 2 at the middle of the arena
-        if (!player2InGame && (numJoysticks == 2 || Input.GetKeyDown(KeyCode.Return)))
+        if (!player2InGame && (Input.GetJoystickNames().Length > 1 || Input.GetKeyDown(KeyCode.Return)))
         {
             player2 = Instantiate(player2Prefab, new Vector3(0f, 0f, 0f), Quaternion.identity);
             player2.GetComponent<PlayerMovement>().playerNum = 2;
-            mainCamera.transform.parent = null;
             spawnMgr.FindPlayers();
-            Player2UI.SetActive(true);
             player2InGame = true;
             numPlayers++;
         }
