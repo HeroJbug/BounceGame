@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private int dir;
     [HideInInspector]
     public Vector2 boostDir;
-    private Camera cam;
+    public Camera cam;
     public GameObject dashIndicator;
     [SerializeField]
     private float deathAnimTime;
@@ -48,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
         boostTimerCounter = boostTimer;
         isBoosting = false;
         mr = GetComponent<SpriteRenderer>();
-        cam = GetComponentInChildren<Camera>();
         aim = Vector2.up;
         source = GetComponent<AudioSource>();
     }
@@ -118,7 +117,6 @@ public class PlayerMovement : MonoBehaviour
         {
             //calculate aim based on mouse
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-            print(Input.mousePosition);
             aim = mousePos - (Vector2)transform.position;
         }
         else

@@ -13,19 +13,30 @@ public class MultiplayerManager : MonoBehaviour
     GameObject player1;
     [SerializeField]
     GameObject player2;
+    public GameObject player2UI;
+
+    private List<string> currJoysticks;
 
     private int numJoysticks = 0;
 
+    [SerializeField]
     private int numPlayers = 1;
+
+    private void Start()
+    {
+        StartCoroutine(CheckInputMethods());
+        currJoysticks = new List<string>();
+    }
 
     private void OnEnable()
     {
-        PlayerCollision.thisPlayerDeath += HandlePlayerDeath;
+        PlayerCollision.ThisPlayerDeath -= HandlePlayerDeath;
+        PlayerCollision.ThisPlayerDeath += HandlePlayerDeath;
     }
 
     private void OnDisable()
     {
-        PlayerCollision.thisPlayerDeath -= HandlePlayerDeath;
+        PlayerCollision.ThisPlayerDeath -= HandlePlayerDeath;
     }
 
     void Update()
@@ -35,14 +46,18 @@ public class MultiplayerManager : MonoBehaviour
         {
             player2 = Instantiate(player2Prefab, new Vector3(0f, 0f, 0f), Quaternion.identity);
             player2.GetComponent<PlayerMovement>().playerNum = 2;
+            mainCamera.transform.parent = null;
+            mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 1f);
+            player2.GetComponent<PlayerMovement>().cam = mainCamera;
+            player2UI.SetActive(true);
             spawnMgr.FindPlayers();
             player2InGame = true;
             numPlayers++;
         }
 
-        if (player2InGame)
+        if (numPlayers == 2 && mainCamera.orthographicSize <= 83)
         {
-            AdaptCamera();
+            mainCamera.orthographicSize += 1f;
         }
     }
 
@@ -53,32 +68,42 @@ public class MultiplayerManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(1.5f);
             for (int i = 0; i < Input.GetJoystickNames().Length; i++)
             {
-                if (!string.IsNullOrEmpty(Input.GetJoystickNames()[i]))
+                //if the name of the joystick isn't empty and wasn't already plugged in, we have one to add.
+                if (!string.IsNullOrEmpty(Input.GetJoystickNames()[i]) && !currJoysticks.Contains(Input.GetJoystickNames()[i]))
                 {
                     //joystick connected
+                    print("connected");
+                    currJoysticks.Add(Input.GetJoystickNames()[i]);
                     numJoysticks++;
                 }
-                else
-                {
-                    //joystick disconnected
-                    numJoysticks--;
-                }
+                //if it is empty, and it was in the list of currently plugged in ones
+                //else if(string.IsNullOrEmpty(Input.GetJoystickNames()[i]) && !string.IsNullOrEmpty(currJoysticks[i]) && numJoysticks > 0)
+                //{
+                //    //joystick disconnected
+                //    print("disconnected");
+                //    currJoysticks.Remove(Input.GetJoystickNames()[i]);
+                //    numJoysticks--;
+                //}
             }
-            player1.GetComponent<PlayerMovement>().numJoysticks = numJoysticks;
-            if (player2InGame)
+            if(player1 != null)
+                player1.GetComponent<PlayerMovement>().numJoysticks = numJoysticks;
+            if (numPlayers == 2)
                 player2.GetComponent<PlayerMovement>().numJoysticks = numJoysticks;
         }
     }
 
-    private void AdaptCamera()
-    {
-        float distBtwn = Vector2.Distance(player1.transform.position, player2.transform.position);
-        float halfPoint = distBtwn / 2;
-        //double check math later
-        Vector2 cameraTransform = (player1.transform.position - player2.transform.position).normalized * halfPoint;
-        mainCamera.transform.position = cameraTransform;
-        //might need to zoom this out at some point too
-    }
+    //private void AdaptCamera()
+    //{
+    //    float distBtwn = Vector2.Distance(player1.transform.position, player2.transform.position);
+    //    //float halfPoint = distBtwn / 2;
+    //    //double check math later
+    //    //Vector3 cameraTransform = mainCamera.transform.position;
+    //    if (distBtwn > 50 && mainCamera.orthographicSize < 83)
+    //        mainCamera.orthographicSize += 1f;
+    //    else if (distBtwn <= 50 && mainCamera.orthographicSize > 40)
+    //        mainCamera.orthographicSize -= 1f;
+    //    //might need to zoom this out at some point too
+    //}
 
     public int GetNumJoysticksConnected()
     {

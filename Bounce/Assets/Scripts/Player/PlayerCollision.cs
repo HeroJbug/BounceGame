@@ -23,7 +23,7 @@ public class PlayerCollision : MonoBehaviour
 	private bool isInTutorialMode;
 
     public delegate void PlayerDeathDelegate();
-    public static event PlayerDeathDelegate thisPlayerDeath;
+    public static event PlayerDeathDelegate ThisPlayerDeath;
 
 	PlayerMovement moveRef;
     // Start is called before the first frame update
@@ -33,8 +33,9 @@ public class PlayerCollision : MonoBehaviour
 		mr = GetComponent<SpriteRenderer>();
         rbody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        mainCamera.transform.parent = transform;
-		ss = GetComponentInChildren<ScreenShake>();
+        //mainCamera.transform.parent = transform;
+        mainCamera = FindObjectOfType<Camera>().gameObject;
+		ss = FindObjectOfType<ScreenShake>();
 		source = GetComponent<AudioSource>();
 
 		if ((isInTutorialMode = GetComponent<PlayerMovement>().isInTutorialMode))
@@ -114,9 +115,9 @@ public class PlayerCollision : MonoBehaviour
         rbody.velocity = Vector2.zero;
         anim.SetBool("OnDeath", true);
         yield return new WaitForSeconds(1.3f);
-        thisPlayerDeath();
+        ThisPlayerDeath();
+        Destroy(this.gameObject);
         //transform.DetachChildren();
-        Invoke("NextScene", 2f);
     }
 
 	public void TakeDamage(float amt, bool electric)
@@ -133,11 +134,6 @@ public class PlayerCollision : MonoBehaviour
 				invinciblityTime = maxInvincibilityTime;
 			}
 		}
-    }
-
-    public void NextScene()
-    {
-        SceneManager.LoadScene(5);
     }
 }
 
