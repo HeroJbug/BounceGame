@@ -5,13 +5,21 @@ using UnityEngine.UI;
 
 public class HighScoreDisplay : MonoBehaviour
 {
+    public Text highscoresField;
     // Start is called before the first frame update
     void Start()
     {
-        string[] entries = HighScoreEntry.Display;
-        for(int i=0;i<10;i++)
+        List<HighscoreItem> scoreItems = HighScoreEntry.scores;
+        for(int i = 0; i < scoreItems.Count; i++)
         {
-            transform.GetChild(i).GetComponent<Text>().text = entries[i];
+            if(scoreItems[i] != null)
+            {
+                highscoresField.text += scoreItems[i].name + ": " + scoreItems[i].score + "\n";
+            }
+            else
+            {
+                highscoresField.text += "...........\n";
+            }
         }
     }
 }
