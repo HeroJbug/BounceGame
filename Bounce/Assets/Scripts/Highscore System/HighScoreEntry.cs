@@ -92,7 +92,6 @@ public class HighScoreEntry : MonoBehaviour
                 //print(x.Key + "," + s);
                 string currentLine = s + ": " + (-1*x.Key);
                 Display[numOfBetterScores] = currentLine;
-                //
 
                 numOfBetterScores++;
             }
