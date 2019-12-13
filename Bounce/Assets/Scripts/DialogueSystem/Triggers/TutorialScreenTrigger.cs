@@ -73,7 +73,7 @@ public class TutorialScreenTrigger : MonoBehaviour
 						break;
 
 					case 1: //if the player needs to learn how to dash
-						if (Input.GetButtonDown("Dash"))
+						if (Input.GetButtonDown("Dash_1"))
 						{
 							trig.InitiateDialogue(28);
 							state++;
@@ -120,8 +120,8 @@ public class TutorialScreenTrigger : MonoBehaviour
 
 	private void DetectMoveInputs()
 	{
-		float inputX = Input.GetAxisRaw("Horizontal");
-		float inputY = Input.GetAxisRaw("Vertical");
+		float inputX = Input.GetAxisRaw("Horizontal_1");
+		float inputY = Input.GetAxisRaw("Vertical_1");
 
 		if (inputX > 0)
 		{

@@ -13,22 +13,29 @@ public class DashBar : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		players = FindObjectsOfType<PlayerMovement>();
-        foreach(PlayerMovement p in players)
-        {
-            if(p.playerNum == playerNum)
-            {
-                player = p;
-            }
-        }
-		image = GetComponent<Image>();
+		
     }
 
     // Update is called once per frame
     void Update()
     {
-		float percentage = 1 - (player.BoostCooldownCounter / player.boostCooldown);
+		if (player != null)
+		{
+			float percentage = 1 - (player.BoostCooldownCounter / player.boostCooldown);
 
-		image.fillAmount = percentage;
+			image.fillAmount = percentage;
+		}
+		else
+		{
+			players = FindObjectsOfType<PlayerMovement>();
+			foreach (PlayerMovement p in players)
+			{
+				if (p.playerNum == playerNum)
+				{
+					player = p;
+				}
+			}
+			image = GetComponent<Image>();
+		}
 	}
 }
