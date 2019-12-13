@@ -97,7 +97,7 @@ MonoBehaviour:
   fallSound: HazardLand
   timer: 60
   startingDistance: 100
-  targetRadius: 8.02
+  targetRadius: 12
   fallSpeed: 100
   layersToAffect:
   - Player

@@ -93,10 +93,13 @@ public class SpawnerManager : MonoBehaviour
             {
                 GameObject toSpawn = enemiesStack.Pop();
                 GameObject spawned;
-                if (players[1] != null)
-                    spawned = s.SpawnEnemy(toSpawn, players[Random.Range(0, 2)]);
-                else
+                if (players[1] == null)
                     spawned = s.SpawnEnemy(toSpawn, players[0]);
+                else if(players[0] == null)
+                    spawned = s.SpawnEnemy(toSpawn, players[1]);
+                else
+                    spawned = s.SpawnEnemy(toSpawn, players[Random.Range(0, 2)]);
+                    
                 currentWaveEnemies.Add(spawned);
             }
         }
