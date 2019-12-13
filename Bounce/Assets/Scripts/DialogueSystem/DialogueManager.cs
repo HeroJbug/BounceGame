@@ -343,7 +343,7 @@ public class DialogueManager : MonoBehaviour {
 	/// </summary>
 	private void KeyboardInput()
 	{
-		float inputX = Input.GetAxisRaw("Horizontal");
+		float inputX = Input.GetAxisRaw("Horizontal_1");
 
 		//if the player presses left or right
 		if (inputX != 0)
@@ -407,7 +407,7 @@ public class DialogueManager : MonoBehaviour {
 	/// <returns></returns>
 	public bool PressEnter()
 	{
-		if (Input.GetButtonDown("Dash") && canPress) //TODO: change to whatever the accept button is
+		if (Input.GetButtonDown("Dash_1") && canPress) //TODO: change to whatever the accept button is
 		{
 			canPress = false;
 			return true;

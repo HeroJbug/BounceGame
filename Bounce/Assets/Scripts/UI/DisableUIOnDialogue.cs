@@ -7,7 +7,7 @@ public class DisableUIOnDialogue : MonoBehaviour
 	private PlayerMovement player;
 	private bool currentStatus = false;
 	[SerializeField]
-	private GameObject keepDisabled;
+	private List<GameObject> keepDisabled;
 	
 	// Start is called before the first frame update
     void Start()
@@ -27,10 +27,9 @@ public class DisableUIOnDialogue : MonoBehaviour
 		{
 			for(int i = 0; i < transform.childCount; i++)
 			{
-				transform.GetChild(i).gameObject.SetActive(false);
+				if (!keepDisabled.Contains(transform.GetChild(i).gameObject))
+					transform.GetChild(i).gameObject.SetActive(false);
 			}
-
-			keepDisabled.SetActive(false);
 
 			currentStatus = true;
 		}
@@ -38,10 +37,9 @@ public class DisableUIOnDialogue : MonoBehaviour
 		{
 			for (int i = 0; i < transform.childCount; i++)
 			{
-				transform.GetChild(i).gameObject.SetActive(true);
+				if (!keepDisabled.Contains(transform.GetChild(i).gameObject))
+					transform.GetChild(i).gameObject.SetActive(true);
 			}
-
-			keepDisabled.SetActive(false);
 
 			currentStatus = false;
 		}
