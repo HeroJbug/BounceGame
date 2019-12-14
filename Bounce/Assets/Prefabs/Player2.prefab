@@ -182,6 +182,7 @@ MonoBehaviour:
   hp: 5
   maxInvincibilityTime: 3
   mainCamera: {fileID: 0}
+  timeTillDeath: 2
 --- !u!114 &5117352434602345497
 MonoBehaviour:
   m_ObjectHideFlags: 0

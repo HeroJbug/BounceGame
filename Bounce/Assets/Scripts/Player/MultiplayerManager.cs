@@ -22,7 +22,21 @@ public class MultiplayerManager : MonoBehaviour
     [SerializeField]
     private int numPlayers = 1;
 
-    private void Start()
+	public static MultiplayerManager manager;
+
+	private void Awake()
+	{
+		if (manager != null)
+		{
+			Destroy(this);
+		}
+		else
+		{
+			manager = this;
+		}
+	}
+
+	private void Start()
     {
         StartCoroutine(CheckInputMethods());
         currJoysticks = new List<string>();
@@ -113,7 +127,23 @@ public class MultiplayerManager : MonoBehaviour
     private void HandlePlayerDeath()
     {
         numPlayers--;
-        if (numPlayers <= 0)
-            SceneManager.LoadScene(5);
-    }
+		if (numPlayers <= 0)
+			SceneManager.LoadScene(5);
+	}
+
+	public bool Is2Player
+	{
+		get
+		{
+			return player2InGame;
+		}
+	}
+
+	public int PlayerCount
+	{
+		get
+		{
+			return numPlayers;
+		}
+	}
 }

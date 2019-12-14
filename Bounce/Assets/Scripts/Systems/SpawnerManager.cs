@@ -21,7 +21,7 @@ public class SpawnerManager : MonoBehaviour
     private List<GameObject> currentWaveEnemies;
 
     private bool waveFinished = true;
-    public GameObject nextWaveApproachingUI;
+    public FadeFlash nextWaveApproachingUI;
 
     private void OnEnable()
     {
@@ -134,11 +134,11 @@ public class SpawnerManager : MonoBehaviour
 
     private IEnumerator StartNextWave()
     {
-        nextWaveApproachingUI.SetActive(true);
+        nextWaveApproachingUI.gameObject.SetActive(true);
         yield return new WaitForSeconds(timeBetweenWaves);
         if (waveIdx < currRound.wavesInRound.Count)
         {
-            nextWaveApproachingUI.SetActive(false);
+            nextWaveApproachingUI.gameObject.SetActive(false);
 
             currWaveInRound = currRound.wavesInRound[waveIdx];
             waveIdx++;

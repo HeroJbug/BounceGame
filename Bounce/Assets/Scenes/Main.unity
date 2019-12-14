@@ -199,12 +199,18 @@ Transform:
   m_Father: {fileID: 1071221560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!1 &14404918 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 14404918, guid: 02d34a682e647cb45a3d8007b845c9bc,
+--- !u!114 &14404920 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 14404922, guid: 02d34a682e647cb45a3d8007b845c9bc,
     type: 3}
   m_PrefabInstance: {fileID: 273762514}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97b8df357a3de44fbe6a520455e6544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &97072774
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,6 +513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 14404918, guid: 02d34a682e647cb45a3d8007b845c9bc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6278266910289570268, guid: 02d34a682e647cb45a3d8007b845c9bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -745,6 +755,14 @@ PrefabInstance:
       propertyPath: playerNum
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 14404922, guid: 02d34a682e647cb45a3d8007b845c9bc, type: 3}
+      propertyPath: fadeTime
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 14404922, guid: 02d34a682e647cb45a3d8007b845c9bc, type: 3}
+      propertyPath: startingTimeOffset
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02d34a682e647cb45a3d8007b845c9bc, type: 3}
 --- !u!1 &278260554
@@ -947,11 +965,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 143175369, guid: df059d2682e46a749b29e1caaa6b435b, type: 3}
-      propertyPath: m_Volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 143175370, guid: df059d2682e46a749b29e1caaa6b435b, type: 3}
-      propertyPath: Priority
+      propertyPath: BypassListenerEffects
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2888,7 +2902,7 @@ MonoBehaviour:
   timeBetweenWaves: 8
   timeBetweenRounds: 15
   spawnTime: 5
-  nextWaveApproachingUI: {fileID: 14404918}
+  nextWaveApproachingUI: {fileID: 14404920}
 --- !u!1 &1409453731
 GameObject:
   m_ObjectHideFlags: 0
@@ -3433,6 +3447,11 @@ PrefabInstance:
     - target: {fileID: 860098210, guid: 688108fba00667d4fa38c6baff94505d, type: 3}
       propertyPath: shakeAmtMax
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117352434602345498, guid: 688108fba00667d4fa38c6baff94505d,
+        type: 3}
+      propertyPath: timeTillDeath
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 688108fba00667d4fa38c6baff94505d, type: 3}

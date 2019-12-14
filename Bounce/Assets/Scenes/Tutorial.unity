@@ -1325,16 +1325,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 687029784672183333, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 687029784672183333, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
-        type: 3}
-      propertyPath: m_Type
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 687029784672183334, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
         type: 3}
       propertyPath: m_SpriteState.m_HighlightedSprite
@@ -1355,6 +1345,16 @@ PrefabInstance:
       propertyPath: m_SpriteState.m_DisabledSprite
       value: 
       objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 687029784672183333, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 687029784672183333, guid: a00e0c6e0b788e94ba016a8c88c0a7a6,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00e0c6e0b788e94ba016a8c88c0a7a6, type: 3}
 --- !u!224 &717562365 stripped
@@ -2283,7 +2283,8 @@ MonoBehaviour:
         buttonText: Got it, boss!
     - speakerID: 0
       charPortraitID: 1
-      text: "Good. Now try Dashing. It\x19s either spacebar or the right bumper."
+      text: "Good. Now try Dashing. It\x19s either shift key or the right bumper.
+        You can aim where you dash towards with either the mouse or the right stick."
       dialogueButtons:
       - action: 2
         line: 0
@@ -2825,13 +2826,13 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1388579531, guid: 02d34a682e647cb45a3d8007b845c9bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2872728978890883174, guid: 02d34a682e647cb45a3d8007b845c9bc,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1388579531, guid: 02d34a682e647cb45a3d8007b845c9bc, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3390159767287688252, guid: 02d34a682e647cb45a3d8007b845c9bc,
